@@ -2741,6 +2741,7 @@
 						API.sendChat(subChat(basicBot.chat.website));
 					}
 				}
+			},
 			}
 		}
 	};
