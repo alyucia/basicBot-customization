@@ -1,6 +1,6 @@
 (function() {
     //Link location of your fork so you don't have to modify so many things.
-    var fork = "Yemasthui";
+    var fork = "iEclipse";
     //Define our function responsible for extending the bot.
     function extend() {
             //If the bot hasn't been loaded properly, try again in 1 second(s).
@@ -86,6 +86,6 @@
         }
     }));
     //Start the bot and extend it when it has loaded.
-    $.getScript("https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
+    $.getScript("https://rawgit.com/iEclipse/basicBot/master/basicBot.js",
         extend);
 }).call(this);
