@@ -130,7 +130,7 @@
 	"emojilist": "\/me Emoji list: %%LINK%%",
 	"notinwaitlist": "\/me @%%NAME%%, you're not on the waitlist.",
 	"eta": "\/me @%%NAME%% your turn is in approximately %%TIME%%.",
-	"facebook": "\/me Like us on facebook: %%LINK%%",
+	"facebook": "\/me Like us on facebook: https://www.facebook.com/MapleRoyals?fref=ts",
 	"starterhelp": "\/me This image will get you started on plug: %%LINK%%",
 	"roulettejoin": "\/me @%%NAME%% joined the roulette! (!leave before you regret it.)",
 	"jointime": "\/me [@%%NAMEFROM%%] @%%USERNAME%% has been in the room for %%TIME%%.",
