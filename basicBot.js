@@ -179,17 +179,17 @@
 	var basicBot = {
 		version: "2.4.5",
 		status: false,
-		name: "NikkiBot",
+		name: "RoyalsBot",
 		loggedInID: null,
 		scriptLink: "https://rawgit.com/iEclipse/basicBot-customization/master/basicBot.js",
-		cmdLink: "http://git.io/245Ppg",
+		cmdLink: "https://github.com/iEclipse/basicBot-customization/blob/master/README.md#royalsbot-commands",
 		chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
 		chat: null,
 		loadChat: loadChat,
 		retrieveSettings: retrieveSettings,
 		retrieveFromStorage: retrieveFromStorage,
 		settings: {
-			botName: "NikkiBot",
+			botName: "RoyalsBot",
 			language: "english",
 			startupCap: 50, // 1-200
 			startupVolume: 50, // 0-100
@@ -244,11 +244,11 @@
 			opLink: null,
 			rulesLink: null,
 			themeLink: null,
-			fbLink: null,
+			fbLink: "https://www.facebook.com/MapleRoyals?fref=ts",
 			youtubeLink: null,
-			website: null,
+			website: "http://mapleroyals.com/?page=index",
 			intervalMessages: [],
-			messageInterval: 5,
+			messageInterval: 3,
 			songstats: false,
 			commandLiteral: "!",
 			blacklists: {
