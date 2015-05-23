@@ -22,7 +22,7 @@
         startupVolume: 50, // 0-100
         startupEmoji: false, // true or false
         cmdDeletion: true,
-        chatLink: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/en.json",
+        chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
         maximumAfk: 120,
         afkRemoval: false,
         maximumDc: 60,
@@ -86,6 +86,6 @@
         }
     }));
     //Start the bot and extend it when it has loaded.
-    $.getScript("https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/basicBot.js",
+    $.getScript("https://rawgit.com/iEclipse/basicBot-customization/master/basicBot.js",
         extend);
 }).call(this);
