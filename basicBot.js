@@ -1668,7 +1668,7 @@
 			},
 
 			ballCommand: {
-				command: ['8ball', 'ask'],
+				command: ['asknikki'],
 				rank: 'user',
 				type: 'startsWith',
 				functionality: function(chat, cmd) {
