@@ -1,44 +1,57 @@
-basicBot-customization
+======================
+RoyalsBot Commands
 ======================
 
-A not so basic bot for plug.dj 
+USER
+===========
+!active (x) - Shows how many people talked in the last x minutes.
+!ask (x) - Answers yes/no to question x.
+!help - Shows a link to this help page.
+!give (@user) - Gives a random thing to the user. 
+!eta - Shows how long until your turn to play music.
+!fb - Shows facebook page for Royals . 
+!join - Joins roulette (if open).
+!leave - Leaves roulette.
+!status - Shows how long the user has been in the room.
+!geturl - Shows url to current song.
+!rules - Links to rules.
+!website - Links to maple royals page.
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Yemasthui/basicBot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![facebook group](http://i.bnzi.uk/97dW.svg)](https://facebook.com/groups/basicBot) [![twitter](http://i.bnzi.uk/4KEn.svg)](https://twitter.com/bscBt)
-
-Stay updated on **basicBot**'s development by following the project on Twitter [@bscBt](http://twitter.com/bscBt)
-
-Created by [Yemasthui](https://github.com/Yemasthui) but now maintained by [Benzi](https://github.com/Benzi).
-
-(You can email me via hi@benzi.io or send me a message on [Gitter](https://gitter.im/Benzi) if you have any queries about the bot)
-
----
-
-Click [here](https://github.com/Yemasthui/basicBot) for basicBot's main repository.
-
-Using custom room settings or adding functionality is done by loading your own script loading and modifying the bot.
-This repository's purpose is to facilitate this. You can fork the repository and customise [the example script](https://github.com/Yemasthui/basicBot-customization/blob/master/extension.js). 
-When you have forked the repo, bookmark the following script, __but change _Yemasthui_ to your own github handle__. 
-
-`javascript:(function(){$.getScript('https://rawgit.com/Yemasthui/basicBot-customization/master/extension.js');})();`
-
-If you are using your own hosting service for your script, swap the link with your own.
-
-A detailed overview of the possible settings can be found [here](https://github.com/Yemasthui/basicBot-customization/blob/master/settingsOverview.md).
-
-(A custom .json file can still be used for custom file settings, but is discouraged as the method provided here allows for more customization.)
-
-###Blacklists###
-
-Blacklists can be added in the settings through either links to raw json files with the same format as those in the examples provided (forking and using [rawgit's development link](https://rawgit.com/) is a great way to do this),
-or replacing the link with a custom function that loads your lists into the bot (this option requires extensive knowledge of javascript and a good understanding of the bot's inner workings).
-
-To update your lists manually, you can use the details specified in chat messages after a song is blacklisted, or use either of these in the console periodically:
-```javascript
-bot.getNewBlacklistedSongs(); //get a javascript object
-bot.logNewBlacklistedSongs(); //get a list
-```
+BOUNCER
+===========
+!add (@user) - Adds the user to the waitlist. 
+!remove (@user) - Removes the user from the waitlist. 
+!afkreset (@user) - Resets the user's afk timer. 
+!afktime (@user) - Shows the last interaction by the user.
+!autoskip - Toggles skipping songs when bugged.
+!bladd (list) - Adds song to the specified blacklist.
+!blinfo - Checks the current song for the blacklist info.
+!filter -  Filters the chat.
+!kick (x) - Kicks the user for however x minutes (takes decimal). 
+!reset - Skips the current dj and puts them on the 1st spot on waitlist. 
+!mute (@user) (x) - Mutes the user for x mins.
+!unmute (@user) - Unmutes the user.
+!roulette - starts a round of roulette.
+!skip - Skips the current song.
 
 
-Copyright
----------
-Copyright &copy; 2014 Yemasthui
+MANAGER
+===========
+!afklimit - Sets how many minutes before kicking afk people from waitlist.
+!afktoggle - Toggles kicking of people on waitlist when afk.
+!ban (@user) - Bans the user for a day.
+!unban (@user) - Unbans the user.
+!botname (name) - Changes the botname.
+!clear - Clears the entire chat conversation.
+!lock - Prevents people from joining the waitlist.
+!unlock - Unlocks the waitlist.
+!quit - Ends the bot.
+!togglechat - Disables user chat and only allows staff members to speak. 
+!maxlength (x) - Sets a limit of x mins per song. 
+!msg (x)(message) - Message to be displayed per x songs.
+!togglemsg - Toggles whether or not the message will be shown.
+!move (@user) (x) - Moves the user to x position on the waitlist. 
+!botstatus - Shows the bot's settings.
+!usercommands - Toggles user command availability.
+!voteskip -Sets how many Mehs it takes to skip a song.
+!welcome - Toggles the welcome message.
