@@ -250,8 +250,7 @@
 			songstats: false,
 			commandLiteral: "!",
 			blacklists: {
-				NSFW: "https://rawgit.com/iEclipse/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
-				OP: "https://rawgit.com/iEclipse/basicBot-customization/master/blacklists/ExampleOPlist.json"
+				list1: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json",
 			}
 		},
 		room: {
