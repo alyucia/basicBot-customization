@@ -91,7 +91,7 @@
 	"afklimit": "AFK limit",
 	"autodisable": "Autodisable",
 	"autoskip": "Autoskip",
-	"newblacklisted": "\/me [@%%NAME%%] This track belongs on the %%BLACKLIST%% blacklist! [ %%AUTHOR%% - %%TITLE%% - %%MID%% ]",
+	"newblacklisted": "\/me [@%%NAME%%] This track belongs on the %%BLACKLIST%% blacklist!\n%%AUTHOR%% - %%TITLE%% - %%MID%%",
 	"blinfo": "[@%%NAME%%] Blacklist Info\nauthor: %%AUTHOR%%\n, title: %%TITLE%%\n, mid: %%SONGID%%",
 	"blacklist": "Blacklist",
 	"cycleguard": "Cycleguard",
