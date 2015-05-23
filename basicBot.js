@@ -1167,18 +1167,17 @@
 			},
 			spam: [
                 'hueh', 'hu3', 'brbr', 'heu', 'brbr', 'kkkk', 'spoder', 'mafia',
-				'zuera', 'zueira',
-                'zueria', 'aehoo', 'aheu', 'alguem', 'algum', 'brazil',
-				'zoeira', 'fuckadmins', 'affff', 'vaisefoder', 'huenaarea',
+		'zuera', 'zueira', 'zueria', 'aehoo', 'aheu', 'alguem', 'algum', 'brazil',
+		'zoeira', 'fuckadmins', 'affff', 'vaisefoder', 'huenaarea',
                 'hitler', 'ashua', 'ahsu', 'ashau', 'lulz', 'huehue', 'hue',
-				'huehuehue', 'merda', 'pqp', 'puta', 'mulher', 'pula', 'retarda',
-				'caralho', 'filha', 'ppk',
+		'huehuehue', 'merda', 'pqp', 'puta', 'mulher', 'pula', 'retarda',
+		'caralho', 'filha', 'ppk',
                 'gringo', 'fuder', 'foder', 'hua', 'ahue', 'modafuka',
-				'modafoka', 'mudafuka', 'mudafoka', 'ooooooooooooooo', 'foda'
+		'modafoka', 'mudafuka', 'mudafoka', 'ooooooooooooooo', 'foda'
             ],
 			curses: [
                 'nigger', 'fag', 'f@g', 'cunt', 'bitch', 'b1tch', 'bltch',
-				'b|tch', 'nigga', 'n1gga', 'n1gg@', 'niqqa', 'n1qqa', 'nigg@', 'fuck3r',
+				'nigga', 'n1gga', 'n1gg@', 'niqqa', 'n1qqa', 'nigg@', 'fuck3r',
 				'f@gs', 'motherfucker', 'm0therfucker', 'm0therfuck3r',
 				'bastard', 'b@st@rd', 'ba5tard', 'b@stard', 'basterd', 'fuck', 'fucker',
 				'asshole', '@asshole', 'shit', 'sh1t', 'pussy', 'pu55y', 'pu5sy',
