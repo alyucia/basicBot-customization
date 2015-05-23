@@ -1880,9 +1880,7 @@
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
-						API.sendChat(subChat(basicBot.chat.facebook, {
-							link: "https://www.facebook.com/MapleRoyals?fref=ts"
-						}));
+						API.sendChat(subChat(basicBot.chat.facebook));
 					}
 				}
 			},
