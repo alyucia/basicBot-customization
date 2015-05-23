@@ -329,7 +329,7 @@ version: "2.4.5",
         loggedInID: null,
        
 
- scriptLink: "https://github.com/iEclipse/basicBot-customization/blob/master/basicBot.js",
+ scriptLink: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/basicBot.js",
       
 
   cmdLink: "http://git.io/245Ppg",
