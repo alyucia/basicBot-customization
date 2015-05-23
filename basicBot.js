@@ -261,9 +261,7 @@ text missing.");
         songstats: false,
         commandLiteral: "!",
                     blacklists: {
-                        NSFW: "https://github.com/iEclipse/basicBot-
-
-customization/blob/master/blacklists/ExampleNSFWlist.json",
+                        NSFW: "https://github.com/iEclipse/basicBot-customization/blob/master/blacklists/ExampleNSFWlist.json",
                         OP: "https://github.com/iEclipse/basicBot-customization/blob/master/blacklists/ExampleOPlist.json"
                     }
                 },
