@@ -183,7 +183,7 @@
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
+        scriptLink: "https://rawgit.com/iEclipse/basicBot/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
         chatLink: "https://github.com/iEclipse/basicBot-customization/blob/master/en.json",
         chat: null,
@@ -254,8 +254,8 @@
         songstats: false,
         commandLiteral: "!",
             blacklists: {
-                NSFW: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
-                OP: "https://rawgit.com/Yemasthui/basicBot-customization/master/blacklists/ExampleOPlist.json"
+                NSFW: "https://rawgit.com/iEclipse/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
+                OP: "https://rawgit.com/iEclipse/basicBot-customization/master/blacklists/ExampleOPlist.json"
             }
         },
         room: {
