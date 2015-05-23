@@ -121,7 +121,7 @@
 	"chatcleared": "\/me [@%%NAME%%] Mwahaha I erased the chat history!",
 	"deletechat": "\/me [@%%NAME%%] All chat of %%USERNAME%% has been erased.",
 	"commandslink": "\/me %%BOTNAME%% commands: %%LINK%%",
-	"eatcookie": "\/me eats all your cookies.",
+	"eatcookie": "\/me %%BOTNAME%% eats all your cookies.",
 	"nousercookie": "\/em [@%%NAME%%] isn't in the room. The cookies are all mine!",
 	"selfcookie": "\/me I already ate all the cookies! :D",
 	"cookie": "\/me @%%NAMETO%%, %%NAMEFROM%% %%COOKIE%%",
