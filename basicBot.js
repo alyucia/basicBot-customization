@@ -212,7 +212,7 @@
 			maximumSongLength: 7,
 			autodisable: false,
 			commandCooldown: 30,
-			usercommandsEnabled: false,
+			usercommandsEnabled: true,
 			lockskipPosition: 3,
 			lockskipReasons: [
                         ["theme",
@@ -265,7 +265,7 @@
 			usercommand: true,
 			allcommand: true,
 			afkInterval: null,
-			autoskip: false,
+			autoskip: true,
 			autoskipTimer: null,
 			autodisableInterval: null,
 			autodisableFunc: function() {
