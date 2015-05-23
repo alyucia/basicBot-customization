@@ -2101,7 +2101,7 @@
 			},
 
 			lockCommand: {
-				command: 'togglewl',
+				command: 'lock',
 				rank: 'manager',
 				type: 'exact',
 				functionality: function(chat, cmd) {
