@@ -1,11 +1,10 @@
-======================
 RoyalsBot Commands
 ======================
 
 USER
 ===========
-!active (x) - Shows how many people talked in the last x minutes._
-!ask (x) - Answers yes/no to question x.
+!active (x) - Shows how many people talked in the last x minutes.__
+!ask (x) - Answers yes/no to question x.__
 !help - Shows a link to this help page.
 !give (@user) - Gives a random thing to the user. 
 !eta - Shows how long until your turn to play music.
