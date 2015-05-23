@@ -55,7 +55,7 @@
     //Change the bots default settings and make sure they are loaded on launch
 
     localStorage.setItem("basicBotsettings", JSON.stringify({
-        botName: "RoyalBot",
+        botName: "AlyBot",
         language: "english",
         startupCap: 100, // 1-200
         startupVolume: 0, // 0-100
