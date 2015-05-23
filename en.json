@@ -43,7 +43,7 @@
 	"greyuser": "Only bouncers and up can run a bot.",
 	"bouncer": "The bot can't move people when it's run as a bouncer.",
 	"online": "\/me RoyalsBot is now online.",
-	"welcome": "\/me Welcome to the Maple Royals DJ Radio, %%NAME%%!\nType !help for more a list of commands.",
+	"welcome": "\/me Welcome to the Maple Royals DJ Radio, %%NAME%%!\\nType !help for more a list of commands.",
 	"welcomeback": "\/me Welcome back %%NAME%%! Enjoy the music!",
 	"songknown": "@%%NAME%%, this song is in the DJ history.",
 	"timelimit": "\/me @%%NAME%%, you can't play songs longer than %%MAXLENGTH%% minutes.",
