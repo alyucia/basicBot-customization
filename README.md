@@ -30,7 +30,7 @@ BOUNCER
 !reset - Skips the current dj and puts them on the 1st spot on waitlist.<br>
 !mute (@user) (x) - Mutes the user for x mins.<br>
 !unmute (@user) - Unmutes the user.<br>
-!roulette - starts a round of roulette.<br>
+!roulette - Starts a round of roulette.<br>
 !skip - Skips the current song.
 
 
