@@ -244,9 +244,7 @@
 			opLink: null,
 			rulesLink: null,
 			themeLink: null,
-			fbLink: "https://www.facebook.com/MapleRoyals?fref=ts",
 			youtubeLink: null,
-			website: "Apple",
 			intervalMessages: [],
 			messageInterval: 3,
 			songstats: false,
@@ -1883,7 +1881,7 @@
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
 						API.sendChat(subChat(basicBot.chat.facebook, {
-							link: basicBot.settings.fbLink
+							link: "https://www.facebook.com/MapleRoyals?fref=ts"
 						}));
 					}
 				}
@@ -2744,7 +2742,7 @@
 					else {
 						if (typeof basicBot.settings.website === "string")
 							API.sendChat(subChat(basicBot.chat.website, {
-								link: basicBot.settings.website
+								link: "http://mapleroyals.com/?page=index"
 							}));
 					}
 				}
