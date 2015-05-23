@@ -22,7 +22,7 @@
         startupVolume: 0, // 0-100
         startupEmoji: false, // true or false
         cmdDeletion: true,
-        chatLink: "en.json",
+        chatLink: "https://github.com/iEclipse/basicBot-customization/blob/master/en.json",
         maximumAfk: 120,
         afkRemoval: false,
         maximumDc: 60,
