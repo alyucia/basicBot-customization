@@ -47,7 +47,7 @@ MANAGER
 !quit - Ends the bot.<br>
 !togglechat - Disables user chat and only allows staff members to speak.<br>
 !maxlength (x) - Sets a limit of x mins per song. <br>
-!msg (x)(message) - Message to be displayed per x songs.<br>
+!msg (x) (message) - Message to be displayed per x songs.<br>
 !togglemsg - Toggles whether or not the message will be shown.<br>
 !move (@user) (x) - Moves the user to x position on the waitlist. <br>
 !botstatus - Shows the bot's settings.<br>
