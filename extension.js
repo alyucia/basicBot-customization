@@ -18,8 +18,8 @@
     localStorage.setItem("basicBotsettings", JSON.stringify({
         botName: "RoyalsBot",
         language: "english",
-        startupCap: 1, // 1-200
-        startupVolume: 0, // 0-100
+        startupCap: 50, // 1-200
+        startupVolume: 50, // 0-100
         startupEmoji: false, // true or false
         cmdDeletion: true,
         chatLink: "https://github.com/iEclipse/basicBot-customization/blob/master/en.json",
