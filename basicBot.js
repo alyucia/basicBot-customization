@@ -250,7 +250,7 @@
 			songstats: false,
 			commandLiteral: "!",
 			blacklists: {
-				list1: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json",
+				banned: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json"
 			}
 		},
 		room: {
@@ -295,7 +295,7 @@
 				position: []
 			},
 			blacklists: {
-
+				banned: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json"
 			},
 			newBlacklisted: [],
 			newBlacklistedSongFunction: null,
