@@ -122,7 +122,7 @@
 	"deletechat": "\/me [@%%NAME%%] All chat of %%USERNAME%% has been erased.",
 	"commandslink": "\/me %%BOTNAME%% commands: %%LINK%%",
 	"eatcookie": "\/me eats all your cookies.",
-	"nousercookie": "\/em [@%%NAME%%] doesn't see %%NAME%% in room and eats a cookie herself.",
+	"nousercookie": "\/em [@%%NAME%%] isn't in the room. The cookies are all mine!",
 	"selfcookie": "\/me I already ate all the cookies! :D",
 	"cookie": "\/me @%%NAMETO%%, %%NAMEFROM%% %%COOKIE%%",
 	"cycleguardtime": "\/me [@%%NAME%%] The cycleguard is set to %%TIME%% minute(s).",
