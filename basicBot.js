@@ -2444,32 +2444,6 @@
 				}
 			},
 
-			songstatsCommand: {
-				command: 'songstats',
-				rank: 'mod',
-				type: 'exact',
-				functionality: function(chat, cmd) {
-					if (this.type === 'exact' && chat.message.length !== cmd.length) return
-					void(0);
-					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-					else {
-						if (basicBot.settings.songstats) {
-							basicBot.settings.songstats = !basicBot.settings.songstats;
-							return API.sendChat(subChat(basicBot.chat.toggleoff, {
-								name: chat.un,
-								'function': basicBot.chat.songstats
-							}));
-						} else {
-							basicBot.settings.songstats = !basicBot.settings.songstats;
-							return API.sendChat(subChat(basicBot.chat.toggleon, {
-								name: chat.un,
-								'function': basicBot.chat.songstats
-							}));
-						}
-					}
-				}
-			},
-
 			statusCommand: {
 				command: 'botstatus',
 				rank: 'manager',
