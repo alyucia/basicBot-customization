@@ -57,8 +57,8 @@
     localStorage.setItem("basicBotsettings", JSON.stringify({
         botName: "AlyBot",
         language: "english",
-        startupCap: 100, // 1-200
-        startupVolume: 0, // 0-100
+        startupCap: 50, // 1-200
+        startupVolume: 50, // 0-100
         startupEmoji: false, // true or false
         cmdDeletion: true,
         chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
