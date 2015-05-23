@@ -192,7 +192,7 @@ text missing.");
                 loggedInID: null,
                 scriptLink: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/basicBot.js",
                 cmdLink: "http://git.io/245Ppg",
-                chatLink: "https://github.com/iEclipse/basicBot-customization/blob/master/en.json",
+                chatLink: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/en.json",
                 chat: null,
                 loadChat: loadChat,
                 retrieveSettings: retrieveSettings,
@@ -204,7 +204,7 @@ text missing.");
         startupVolume: 50, // 0-100
         startupEmoji: false, // true or false
         cmdDeletion: true,
-        chatLink: "https://github.com/iEclipse/basicBot-customization/blob/master/en.json",
+        chatLink: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/en.json",
         maximumAfk: 120,
         afkRemoval: false,
         maximumDc: 60,
@@ -261,8 +261,8 @@ text missing.");
         songstats: false,
         commandLiteral: "!",
                     blacklists: {
-                        NSFW: "https://github.com/iEclipse/basicBot-customization/blob/master/blacklists/ExampleNSFWlist.json",
-                        OP: "https://github.com/iEclipse/basicBot-customization/blob/master/blacklists/ExampleOPlist.json"
+                        NSFW: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/blacklists/ExampleNSFWlist.json",
+                        OP: "https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/blacklists/ExampleOPlist.json"
                     }
                 },
                 room: {
