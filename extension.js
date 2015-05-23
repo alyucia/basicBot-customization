@@ -86,6 +86,6 @@
         }
     }));
     //Start the bot and extend it when it has loaded.
-    $.getScript("https://github.com/iEclipse/basicBot-customization/blob/master/basicBot.js",
+    $.getScript("https://raw.githubusercontent.com/iEclipse/basicBot-customization/master/basicBot.js",
         extend);
 }).call(this);
