@@ -179,7 +179,7 @@
 	var basicBot = {
 		version: "2.4.5",
 		status: false,
-		name: "RoyalsBot",
+		name: "NikkiBot",
 		loggedInID: null,
 		scriptLink: "https://rawgit.com/iEclipse/basicBot-customization/master/basicBot.js",
 		cmdLink: "http://git.io/245Ppg",
@@ -189,7 +189,7 @@
 		retrieveSettings: retrieveSettings,
 		retrieveFromStorage: retrieveFromStorage,
 		settings: {
-			botName: "RoyalsBot",
+			botName: "NikkiBot",
 			language: "english",
 			startupCap: 50, // 1-200
 			startupVolume: 50, // 0-100
@@ -237,7 +237,7 @@
 			afkRankCheck: "ambassador",
 			motdEnabled: false,
 			motdInterval: 3,
-			motd: "I'm afk right now! PM me on the Maple Royals forum if you need anything.",
+			motd: "I'm afk right now! PM me on the Maple Nikki forum if you need anything.",
 			filterChat: true,
 			etaRestriction: false,
 			welcome: true,
