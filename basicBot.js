@@ -244,7 +244,7 @@
 			opLink: null,
 			rulesLink: null,
 			themeLink: null,
-			fbLink: "Apple",
+			fbLink: "https://www.facebook.com/MapleRoyals?fref=ts",
 			youtubeLink: null,
 			website: "Apple",
 			intervalMessages: [],
