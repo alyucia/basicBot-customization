@@ -3,7 +3,7 @@ RoyalsBot Commands
 
 USER
 ===========
-!active (x) - Shows how many people talked in the last x minutes.__
+!active (x) - Shows how many people talked in the last x minutes.<br>
 !ask (x) - Answers yes/no to question x.__
 !help - Shows a link to this help page.
 !give (@user) - Gives a random thing to the user. 
