@@ -55,7 +55,7 @@
     //Change the bots default settings and make sure they are loaded on launch
 
     localStorage.setItem("basicBotsettings", JSON.stringify({
-        botName: "AlyBot",
+        botName: "RoyalBot",
         language: "english",
         startupCap: 50, // 1-200
         startupVolume: 50, // 0-100
@@ -75,10 +75,10 @@
         voteSkip: false,
         voteSkipLimit: 10,
         timeGuard: true,
-        maximumSongLength: 10,
-        autodisable: true,
+        maximumSongLength: 7,
+        autodisable: false,
         commandCooldown: 30,
-        usercommandsEnabled: true,
+        usercommandsEnabled: false,
         lockskipPosition: 3,
         lockskipReasons: [
             ["theme", "This song does not fit the room theme. "],
@@ -93,7 +93,7 @@
         afkRankCheck: "ambassador",
         motdEnabled: false,
         motdInterval: 5,
-        motd: "IS THIS ACTUALLY WORKING",
+        motd: "I CODED A MINIMAL AMOUNT OF THIS - aly",
         filterChat: true,
         etaRestriction: false,
         welcome: true,
@@ -105,7 +105,7 @@
         website: null,
         intervalMessages: [],
         messageInterval: 5,
-        songstats: true,
+        songstats: false,
         commandLiteral: "!",
         blacklists: {
             NSFW: "https://rawgit.com/" + fork +"/basicBot-customization/master/blacklists/blacklist1.json",
