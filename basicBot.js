@@ -54,7 +54,7 @@
 
 	var loadChat = function(cb) {
 		if (!cb) cb = function() {};
-		$.get("https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json",
+		$.get("https://rawgit.com/iEclipse/basicBot-customization/master/langIndex.json",
 			function(json) {
 				var link = basicBot.chatLink;
 				if (json !== null && typeof json !== "undefined") {
@@ -2537,7 +2537,7 @@
 						var argument = msg.substring(cmd.length + 1);
 
 						$.get(
-							"https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json",
+							"https://rawgit.com/iEclipse/basicBot-customization/master/langIndex.json",
 							function(json) {
 								var langIndex = json;
 								var link = langIndex[argument.toLowerCase()];
