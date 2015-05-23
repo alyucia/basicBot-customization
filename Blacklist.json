@@ -1,13 +1,12 @@
 {
     "1":{
-        "mid": "1:NSFWsongID1"
+        "title": "GANGNAM STYLE (강남스타일) M/V",
+        "author": "Funny Japanese Chin dog dances and sings to PSY",
+        "mid": "1:lWsvgeaOQ84"
     },
     "2":{
-        "title": "This is a NSFW song",
-        "author": "The NSFW band",
-        "mid": "1:NSFWsongID2"
+        "title": "GANGNAM STYLE (강남스타일) M/V00",
+        "author": "Funny Japanese Chin dog dances and sings to PSY00",
+        "mid": "1:lWsvgeaOQ8400"
     },
-    "3":{
-        "mid": "1:NSFWsongID3"
-    }
 }
