@@ -2739,9 +2739,7 @@
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
 						if (typeof basicBot.settings.website === "string")
-							API.sendChat(subChat(basicBot.chat.website, {
-								link: "http://mapleroyals.com/?page=index"
-							}));
+							API.sendChat(subChat(basicBot.chat.website));
 					}
 				}
 			}
