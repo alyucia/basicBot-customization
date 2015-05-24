@@ -51,7 +51,7 @@
 	"isblacklisted": "\/me This song is on our blacklist. Pick something else! :P",
 	"isopen": "Type !join to participate in the roulette!",
 	"winnerpicked": "\/me Omg I swear @%%NAME%% is a hacker! Oh well, now you're %%POSITION%% on the waitlist.",
-	"ball": "\/me Question: %%QUESTION%%\r\n Answer: %%RESPONSE%%",
+	"ball": "\/me Question: %%QUESTION%%\r\nAnswer: %%RESPONSE%%",
 	"notghosting": "[%%NAME1%%] %%NAME2%% is not ghosting.",
 	"ghosting": "[%%NAME1%%] %%NAME2%% is either ghosting or not here.",
 	"alreadyadding": "User is already being added! Changed the desired position to %%POSITION%%.",
