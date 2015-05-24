@@ -1355,20 +1355,6 @@
 				return perm >= minPerm;
 
 			},
-			/**
-             command: {
-                        command: 'cmd',
-                        rank: 'user/bouncer/mod/manager',
-                        type: 'startsWith/exact',
-                        functionality: function(chat, cmd){
-                                if(this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                                if( !basicBot.commands.executable(this.rank, chat) ) return void (0);
-                                else{
-                                
-                                }
-                        }
-                },
-             **/
 
 			activeCommand: {
 				command: 'active',
@@ -2258,30 +2244,7 @@
 						var permFrom = basicBot.userUtilities.getPermission(chat.uid);
 						var permUser = basicBot.userUtilities.getPermission(user.id);
 						if (permFrom > permUser) {
-							/*
-                             basicBot.room.mutedUsers.push(user.id);
-                             if (time === null) API.sendChat(subChat(basicBot.chat.mutednotime, {name: chat.un, username: name}));
-                             else {
-                             API.sendChat(subChat(basicBot.chat.mutedtime, {name: chat.un, username: name, time: time}));
-                             setTimeout(function (id) {
-                             var muted = basicBot.room.mutedUsers;
-                             var wasMuted = false;
-                             var indexMuted = -1;
-                             for (var i = 0; i < muted.length; i++) {
-                             if (muted[i] === id) {
-                             indexMuted = i;
-                             wasMuted = true;
-                             }
-                             }
-                             if (indexMuted > -1) {
-                             basicBot.room.mutedUsers.splice(indexMuted);
-                             var u = basicBot.userUtilities.lookupUser(id);
-                             var name = u.username;
-                             API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
-                             }
-                             }, time * 60 * 1000, user.id);
-                             }
-                             */
+
 							if (time > 45) {
 								API.sendChat(subChat(basicBot.chat.mutedmaxtime, {
 									name: chat.un,
