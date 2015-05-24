@@ -2485,7 +2485,7 @@
                         API.sendChat(basicBot.chat.reload);
                         storeToStorage();
                         basicBot.disconnectAPI();
-                        quit();
+                        kill();
                         localStorage.clear();
                         setTimeout(function() {
                             $.getScript(basicBot.scriptLink);
