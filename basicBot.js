@@ -1633,6 +1633,26 @@
                 }
             },
 
+            blinfoCommand: {
+                command: 'blinfo',
+                rank: 'bouncer',
+                type: 'exact',
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
+                    else {
+                        var author = API.getMedia().author;
+                        var title = API.getMedia().title;
+                        var name = chat.un;
+                        var format = API.getMedia().format;
+                        var cid = API.getMedia().cid;
+                        var songid = format + ":" + cid;
+
+                        API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
+                    }
+                }
+            },
+
             blacklistCommand: {
                 command: ['bladd'],
                 rank: 'bouncer',
@@ -1678,26 +1698,6 @@
                 }
             },
 
-            blinfoCommand: {
-                command: 'blinfo',
-                rank: 'bouncer',
-                type: 'exact',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var author = API.getMedia().author;
-                        var title = API.getMedia().title;
-                        var name = chat.un;
-                        var format = API.getMedia().format;
-                        var cid = API.getMedia().cid;
-                        var songid = format + ":" + cid;
-
-                        API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
-                    }
-                }
-            },
-            
             botnameCommand: {
                 command: 'botname',
                 rank: 'manager',
@@ -2387,18 +2387,11 @@
             lockskipCommand: {
                 command: 'reset',
                 rank: 'bouncer',
-                type: 'startsWith',
+                type: 'exact',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if (basicBot.room.skippable) {
-                            var dj = API.getDJ();
-                            var id = dj.id;
-                            var name = dj.username;
-                            var msgSend = '@' + name + ': ';
-                            basicBot.room.queueable = false;
-
                             if (chat.message.length === cmd.length) {
                                 API.sendChat(subChat(basicBot.chat.usedlockskip, {
                                     name: chat.un
@@ -2407,8 +2400,8 @@
                                     API.moderateForceSkip();
                                     setTimeout(function(id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
-                                    }, 1000, id);
-                                }, 5000, id);
+                                    }, 5000, id);
+                                }, 10000, id);
                                 return void(0);
                             }
                         }
