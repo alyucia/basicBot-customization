@@ -199,6 +199,6 @@
     "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
     "attack": "\/me %%HITS%%",
     "hp": "\/me %%HP%%/20 HP remaining.",
-    "dead": "\/NikkiBot is offline for repairs.",
+    "dead": "\/NikkiBot went offline.",
     "reborn": "\/me Guess who's back from the dead?! Mwahaha!!"
 }
