@@ -171,7 +171,7 @@
         name: "NikkiBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/iEclipse/Settings/master/Bot.js",
-        cmdLink: "https://github.com/iEclipse/Settings/blob/master/README.md#royalsbot-commands",
+        cmdLink: "https://github.com/iEclipse/Settings/blob/master/README.md#nikkibot-commands",
         chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
         chat: null,
         loadChat: loadChat,
