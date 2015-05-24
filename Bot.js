@@ -2641,6 +2641,7 @@
                             }));
                         } else if (basicBot.settings.hp == 1){
                             API.sendChat(subChat(basicBot.chat.kill));
+                            API.sendChat(subChat(basicBot.chat.dead));
                             storeToStorage();
                             basicBot.disconnectAPI();
                             setTimeout(function() {
