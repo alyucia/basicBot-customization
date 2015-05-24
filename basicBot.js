@@ -221,7 +221,7 @@
                 ["nsfw", "The song you contained was NSFW (image or sound). "],
                 ["unavailable", "The song you played was not available for some users. "]
             ],
-            afkpositionCheck: 3,
+            afkpositionCheck: 1,
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 3,
@@ -1678,14 +1678,13 @@
                 }
             },
 
-            blinfoCommand: {
+            Cblinfoommand: {
                 command: 'blinfo',
                 rank: 'bouncer',
                 type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return
-                    void(0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                functionality: function (chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var author = API.getMedia().author;
                         var title = API.getMedia().title;
@@ -1693,17 +1692,11 @@
                         var format = API.getMedia().format;
                         var cid = API.getMedia().cid;
                         var songid = format + ":" + cid;
-
-                        API.sendChat(subChat(basicBot.chat.blinfo, {
-                            name: name,
-                            author: author,
-                            title: title,
-                            songid: songid
-                        }));
+                        API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
                     }
                 }
             },
-
+            
             botnameCommand: {
                 command: 'botname',
                 rank: 'manager',
