@@ -2408,15 +2408,15 @@
                                     basicBot.room.skippable = false;
                                     setTimeout(function() {
                                         basicBot.room.skippable = true
-                                    }, 5 * 1000);
+                                    }, 10 * 1000);
                                     setTimeout(function(id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
                                         basicBot.room.queueable = true;
                                         setTimeout(function() {
                                             basicBot.roomUtilities.booth.unlockBooth();
-                                        }, 1000);
-                                    }, 1500, id);
-                                }, 1000, id);
+                                        }, 5000);
+                                    }, 3000, id);
+                                }, 2000, id);
                                 return void(0);
                             }
                             var validReason = false;
@@ -2440,15 +2440,15 @@
                                     API.sendChat(msgSend);
                                     setTimeout(function() {
                                         basicBot.room.skippable = true
-                                    }, 5 * 1000);
+                                    }, 10 * 1000);
                                     setTimeout(function(id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
                                         basicBot.room.queueable = true;
                                         setTimeout(function() {
                                             basicBot.roomUtilities.booth.unlockBooth();
-                                        }, 1000);
-                                    }, 1500, id);
-                                }, 1000, id);
+                                        }, 5000);
+                                    }, 3000, id);
+                                }, 2000, id);
                                 return void(0);
                             }
                         }
