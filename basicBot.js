@@ -290,7 +290,7 @@
                         API.sendChat(subChat(basicBot.chat.ishalfway))
                     }, 30 * 1000);
                     setTimeout(function() {
-                        API.sendChat(subChat(basicBot.chat.winnerpicked))
+                        API.sendChat(subChat(basicBot.chat.isnearend))
                     }, 20 * 1000);
                     basicBot.room.roulette.countdown = setTimeout(function() {
                         basicBot.room.roulette.endRoulette();
