@@ -1456,7 +1456,10 @@
                 rank: 'manager',
                 type: 'exact',
                 functionality: function(chat, cmd) {
-                    if (basicbot.settings.hp < 1) return void(0);
+                    if (basicbot.settings.hp < 1){
+                        API.sendChat(subChat(basicBot.chat.dead));
+                        return void(0);
+                    }
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
