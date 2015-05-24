@@ -105,7 +105,7 @@
     "isopen": "\/me DJ Roulette is now open! Type !join to participate in the roulette!",
     "ishalfway": "\/me 30 seconds remaining! Type !join to participate in the roulette.",
     "isnearend": "\/me 10 seconds remaining! Type !join to participate in the roulette.",
-    "winnerpicked": "\/me Omg I swear @%%NAME%% is a hacker! Oh well, now you're %%POSITION%% on the waitlist.",
+    "winnerpicked": "\/me Congratulations @%%NAME%%, you're our lucky DJ! You will be moved to %%POSITION%% on the waitlist.",
     "ball": "\/me Question: %%QUESTION%%Answer: %%RESPONSE%%",
     "notghosting": "\/me %%NAME2%% is not ghosting.",
     "ghosting": "\/me %%NAME2%% is either ghosting or not here.",
