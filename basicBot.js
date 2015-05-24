@@ -2649,7 +2649,8 @@
                     else {
                         if(basicBot.settings.hp>0){
                             basicBot.settings.hp--;
-                            API.sendChat(subChat(basicBot.chat.attack, {hp: basicBot.settings.hp}));
+                            var ow = Math.floor(Math.random() * basicBot.chat.hits.length);
+                            API.sendChat(subChat(basicBot.chat.attack, {hp: basicBot.settings.hp,hits:basicBot.chat.hits[ow]}));
                         }
                         else{
                         setTimeout(function() {
