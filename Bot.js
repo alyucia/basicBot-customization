@@ -2371,5 +2371,5 @@
             }
         }
     };
-    e(b.startup)
+    (b.startup)
 }).call(this);
