@@ -237,7 +237,7 @@
             messageInterval: 3,
             songstats: false,
             commandLiteral: "!",
-            blacklists: {[]
+            blacklists: {
             }
         },
         room: {
