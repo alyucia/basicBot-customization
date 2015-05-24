@@ -25,7 +25,13 @@
         "wants to go on a long romantic walk with you.", "handed you a bag of potato chips.",
         "borrowed your computer. You'll get it back in a month.", "gave you a goldfish. Hurry, put it in a bowl!",
         "put extra spicy hot sauce in your soup!", "paid you back for that time he left you in horntail alone.",
-        "accidentally broke your zhelm. Oops!", "made you a cupcake! Eat it while it's hot!", "brought you a strawberry smoothie!"
+        "accidentally broke your zhelm. Oops!", "made you a cupcake! Eat it while it's hot!", "brought you a strawberry smoothie!",
+        "gave you a scoop of poop. (Recommended by Cyndy)", "hands you a bag of mesos and runs away. You should probably hide.",
+        "bought you a fluffy teddybear!", "bought you a beautiful bouquet of flowers!", "made smores to share with you!",
+        "walks in with a bag full of candy to share!", "serenaded you with a romantic melody.", "prepared a batch of white chocolate cookies for you.",
+        "is coming after you with a bag of peanuts!", "bought you a star! Just don't run into Goombas!", "broke the fourth wall to get to you!",
+        "ran out of nx. Do you have any to lend?","woke up with bed head. Time to point and laugh!", "bought you some deodorant. I'd use it if I were you.",
+        "jumped on top of you and gave you a bear hug!"
     ],
 	"balls": [
     	"Of course.", "Duh..", "Nutella is the answer to everything. f3",
@@ -41,7 +47,10 @@
         "10/10 says no, but Nikki says yes.", "0/10. <-- Legit answer. I feel so helpful rn.",
         "Give me a cookie and I'll tell you.", "The answer is totally yes!", "No, but one day.",
         "Is Manny good at playing games?", "The cake is a lie!", "Huh? Oh right, the answer is no!",
-        "No lol.", "Yep. It is. :P"
+        "No lol.", "Yep. It is. :P","Well, I think so.","Probably not, but whatever.","Yes, yes, yes!",
+        "This has nothing to do with your question, but, I like pie.", "Maybe you should ask AlyBot.",
+        "Yes! :P", "No! D:", "Did you say something? xD", "Yes. What do you think?", "No.. Isn't that obvious?",
+        "Pay me, then we'll talk.", "I don't get paid enough for this. q_q", "Nope. x3", "Nononononono!!","Yaaassss!!"
     ],
 	"nodatafound": "No previous data found.",
 	"currentlang": "me Language currently set to: %%LANGUAGE%%",
