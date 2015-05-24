@@ -31,8 +31,8 @@ BOUNCER
 !mute (@user) (x) - Mutes the user for x mins.<br>
 !unmute (@user) - Unmutes the user.<br>
 !roulette - Starts a round of roulette.<br>
-!skip - Skips the current song.
-!reset - Sets the current DJ to 1st on waitlist.
+!skip - Skips the current song.<br>
+!reset - Sets the current DJ to 1st on waitlist.<br>
 !reload - Resets bot back to default settings.
 
 
