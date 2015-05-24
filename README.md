@@ -1,4 +1,4 @@
-RoyalsBot Commands
+NikkiBot Commands
 ======================
 
 USER
