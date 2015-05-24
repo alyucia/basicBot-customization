@@ -291,10 +291,10 @@
                     }, 30 * 1000);
                     setTimeout(function() {
                         API.sendChat(subChat(basicBot.chat.isnearend))
-                    }, 20 * 1000);
+                    }, 50 * 1000);
                     basicBot.room.roulette.countdown = setTimeout(function() {
                         basicBot.room.roulette.endRoulette();
-                    }, 10 * 1000);
+                    }, 60 * 1000);
                 },
                 endRoulette: function() {
                     basicBot.room.roulette.rouletteStatus = false;
