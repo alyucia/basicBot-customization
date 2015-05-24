@@ -215,22 +215,8 @@
 			usercommandsEnabled: true,
 			lockskipPosition: 1,
 			lockskipReasons: [
-                        ["theme",
+                        ["",
                             "The song doesn't match the theme. "
-                        ],
-                        ["op", "This song is on the OP list. "],
-                        ["history", "This song is in the history. "],
-                        ["mix",
-                            "Mixes are not allowed. "
-                        ],
-                        ["sound",
-                            "The song does not have any volume or is incorrect. "
-                        ],
-                        ["nsfw",
-                            "The song contains nudity or overly sexualized content. "
-                        ],
-                        ["unavailable",
-                            "The song you played was not available for some users. "
                         ]
                     ],
 			afkpositionCheck: 15,
