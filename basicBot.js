@@ -2403,53 +2403,12 @@
                                 API.sendChat(subChat(basicBot.chat.usedlockskip, {
                                     name: chat.un
                                 }));
-                                basicBot.roomUtilities.booth.lockBooth();
                                 setTimeout(function(id) {
                                     API.moderateForceSkip();
-                                    basicBot.room.skippable = false;
-                                    setTimeout(function() {
-                                        basicBot.room.skippable = true
-                                    }, 3 * 1000);
                                     setTimeout(function(id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
-                                        basicBot.room.queueable = true;
-                                        setTimeout(function() {
-                                            basicBot.roomUtilities.booth.unlockBooth();
-                                        }, 1000);
                                     }, 1000, id);
-                                }, 1000, id);
-                                return void(0);
-                            }
-                            var validReason = false;
-                            var msg = chat.message;
-                            var reason = msg.substring(cmd.length + 1);
-                            for (var i = 0; i < basicBot.settings.lockskipReasons.length; i++) {
-                                var r = basicBot.settings.lockskipReasons[i][0];
-                                if (reason.indexOf(r) !== -1) {
-                                    validReason = true;
-                                    msgSend += basicBot.settings.lockskipReasons[i][1];
-                                }
-                            }
-                            if (validReason) {
-                                API.sendChat(subChat(basicBot.chat.usedlockskip, {
-                                    name: chat.un
-                                }));
-                                basicBot.roomUtilities.booth.lockBooth();
-                                setTimeout(function(id) {
-                                    API.moderateForceSkip();
-                                    basicBot.room.skippable = false;
-                                    API.sendChat(msgSend);
-                                    setTimeout(function() {
-                                        basicBot.room.skippable = true
-                                    }, 3 * 1000);
-                                    setTimeout(function(id) {
-                                        basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
-                                        basicBot.room.queueable = true;
-                                        setTimeout(function() {
-                                            basicBot.roomUtilities.booth.unlockBooth();
-                                        }, 1000);
-                                    }, 1000, id);
-                                }, 1000, id);
+                                }, 5000, id);
                                 return void(0);
                             }
                         }
