@@ -2656,6 +2656,7 @@
                     else {
                             $(".icon-population").click();
                             $(".icon-ignored").click();
+                            API.sendChat(subChat("Test1"));
                     }
                 }
             },
