@@ -220,7 +220,7 @@
             afkRankCheck: "ambassador",
             motdEnabled: true,
             motdInterval: 3,
-            motd: "Notice: Don't forget to use !help for a list of commands.",
+            motd: "Notice: Use !help for a list of commands.",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
