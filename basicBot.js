@@ -285,10 +285,16 @@
                 countdown: null,
                 startRoulette: function() {
                     basicBot.room.roulette.rouletteStatus = true;
+                    API.sendChat(basicBot.chat.isopen);
+                    setTimeout(function() {
+                        API.sendChat(subChat(basicBot.chat.ishalfway))
+                    }, 30 * 1000);
+                    setTimeout(function() {
+                        API.sendChat(subChat(basicBot.chat.winnerpicked))
+                    }, 20 * 1000);
                     basicBot.room.roulette.countdown = setTimeout(function() {
                         basicBot.room.roulette.endRoulette();
-                    }, 30 * 1000);
-                    API.sendChat(basicBot.chat.isopen);
+                    }, 10 * 1000);
                 },
                 endRoulette: function() {
                     basicBot.room.roulette.rouletteStatus = false;
@@ -2442,26 +2448,26 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                            var msg = chat.message;
-                            if (msg.length === cmd.length) return API.sendChat();
-                            var name = msg.substring(cmd.length + 2);
-                            var bannedUsers = API.getBannedUsers();
-                            var found = false;
-                            var bannedUser = null;
-                            for (var i = 0; i < bannedUsers.length; i++) {
-                                var user = bannedUsers[i];
-                                if (user.username === name) {
-                                    bannedUser = user;
-                                    API.moderateUnbanUser(bannedUser.id);
-                                    console.log("Unbanned " + name);
-                                }
+                        var msg = chat.message;
+                        if (msg.length === cmd.length) return API.sendChat();
+                        var name = msg.substring(cmd.length + 2);
+                        var bannedUsers = API.getBannedUsers();
+                        var found = false;
+                        var bannedUser = null;
+                        for (var i = 0; i < bannedUsers.length; i++) {
+                            var user = bannedUsers[i];
+                            if (user.username === name) {
+                                bannedUser = user;
+                                API.moderateUnbanUser(bannedUser.id);
+                                console.log("Unbanned " + name);
                             }
-                            if (!found) {
-                                $(".icon-chat").click();
-                                return API.sendChat(subChat(basicBot.chat.notbanned, {
-                                    name: chat.un
-                                }));
-                            }
+                        }
+                        if (!found) {
+                            $(".icon-chat").click();
+                            return API.sendChat(subChat(basicBot.chat.notbanned, {
+                                name: chat.un
+                            }));
+                        }
                     }
                 }
             },
@@ -2636,7 +2642,7 @@
                     }
                 }
             },
-            
+
             attackCommand: {
                 command: 'attack',
                 rank: 'user',
