@@ -187,7 +187,7 @@
     "eta": "\/me @%%NAME%%, your turn is in approximately %%TIME%%.",
     "facebook": "\/me Like us on facebook: https://www.facebook.com/MapleRoyals?fref=ts",
     "starterhelp": "\/me This image will get you started on plug: %%LINK%%",
-    "roulettejoin": "\/me @%%NAME%% joined the roulette! (!leave before you regret it.)",
+    "roulettejoin": "\/me @%%NAME%% has joined the roulette! (!leave before you regret it.)",
     "jointime": "\/me @%%USERNAME%% has been in the room for %%TIME%%.",
     "kickrank": "\/me You can't kick users with an equal or higher rank than you!",
     "kick": "\/me @%%USERNAME%%, you are being kicked from the room for an hour.",
