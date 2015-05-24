@@ -2648,8 +2648,11 @@
                             }));
                         } else if (basicBot.settings.hp == 1){
                             API.sendChat(subChat(basicBot.chat.kill));
+                            storeToStorage();
+                            basicBot.disconnectAPI();
+                            localStorage.clear();
                             setTimeout(function() {
-                                basicBot.settings.hp = 20;
+                                $.getScript(basicBot.scriptLink);
                                 API.sendChat(subChat(basicBot.chat.reborn));
                             }, 60000);
                         }
