@@ -178,7 +178,7 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "RoyalsBot",
+            botName: "NikkiBot",
             language: "english",
             startupCap: 30, // 1-200
             startupVolume: 50, // 0-100
