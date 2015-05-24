@@ -36,38 +36,38 @@
         }
         return b
     };
-    -    var e = function(c) {
--        if (!c) c = function() {};
--        $.get("https://rawgit.com/iEclipse/basicBot-customization/master/langIndex.json", function(e) {
--            var d = b.chatLink;
--            if (e !== null && typeof e !== "undefined") {
--                langIndex = e;
--                d = langIndex[b.settings.language.toLowerCase()];
--                if (b.settings.chatLink !== b.chatLink) {
--                    d = b.settings.chatLink
--                } else {
--                    if (typeof d === "undefined") {
--                        d = b.chatLink
--                    }
--                }
--                $.get(d, function(d) {
--                    if (d !== null && typeof d !== "undefined") {
--                        if (typeof d === "string") d = JSON.parse(d);
--                        b.chat = d;
--                        c()
--                    }
--                })
--            } else {
--                $.get(b.chatLink, function(d) {
--                    if (d !== null && typeof d !== "undefined") {
--                        if (typeof d === "string") d = JSON.parse(d);
--                        b.chat = d;
--                        c()
--                    }
--                })
--            }
--        })
--    };
+    var e = function(c) {
+        if (!c) c = function() {};
+        $.get("https://rawgit.com/iEclipse/basicBot-customization/master/langIndex.json", function(e) {
+            var d = b.chatLink;
+            if (e !== null && typeof e !== "undefined") {
+                langIndex = e;
+                d = langIndex[b.settings.language.toLowerCase()];
+                if (b.settings.chatLink !== b.chatLink) {
+                    d = b.settings.chatLink
+                } else {
+                    if (typeof d === "undefined") {
+                        d = b.chatLink
+                    }
+                }
+                $.get(d, function(d) {
+                    if (d !== null && typeof d !== "undefined") {
+                        if (typeof d === "string") d = JSON.parse(d);
+                        b.chat = d;
+                        c()
+                    }
+                })
+            } else {
+                $.get(b.chatLink, function(d) {
+                    if (d !== null && typeof d !== "undefined") {
+                        if (typeof d === "string") d = JSON.parse(d);
+                        b.chat = d;
+                        c()
+                    }
+               })
+            }
+        })
+    };
     var i = function() {
         var c = JSON.parse(localStorage.getItem("basicBotsettings"));
         if (c !== null) {
