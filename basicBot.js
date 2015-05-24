@@ -2396,12 +2396,8 @@
                                 API.sendChat(subChat(basicBot.chat.usedlockskip, {
                                     name: chat.un
                                 }));
-                                setTimeout(function(id) {
                                     API.moderateForceSkip();
-                                    setTimeout(function(id) {
-                                        basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
-                                    }, 5000, id);
-                                }, 10000, id);
+                                        basicBot.userUtilities.moveUser(id, 1, false);
                                 return void(0);
                             }
                         }
