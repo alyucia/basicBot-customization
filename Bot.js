@@ -1030,16 +1030,6 @@
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
-                /**
-                             var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-                             if (plugRoomLinkPatt.exec(msg)) {
-                                if (perm === 0) {
-                                    API.sendChat(subChat(basicBot.chat.roomadvertising, {name: chat.un}));
-                                    API.moderateDeleteChat(chat.cid);
-                                    return true;
-                                }
-                            }
-                             **/
                 if (msg.indexOf('http://adf.ly/') > -1) {
                     API.moderateDeleteChat(chat.cid);
                     API.sendChat(subChat(basicBot.chat.adfly, {
@@ -1070,9 +1060,6 @@
 
                 if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) &&
                     chat.uid === basicBot.loggedInID) {
-                    setTimeout(function(id) {
-                        API.moderateDeleteChat(id);
-                    }, 2 * 1000, chat.cid);
                     return true;
                 }
                 return false;
@@ -1125,7 +1112,7 @@
                     }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    if (basicBot.settings.cmdDeletion && basicbot.settings.hp > 0) {
+                    if (basicBot.settings.cmdDeletion && basicbot.settings.hp >= 1) {
                         API.moderateDeleteChat(chat.cid);
                     }
                     basicBot.room.allcommand = false;
@@ -1460,7 +1447,7 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if (basicbot.settings.hp < 1){
+                        if (basicbot.settings.hp <= 0){
                         API.sendChat(subChat(basicBot.chat.dead));
                         return void(0);
                         }
