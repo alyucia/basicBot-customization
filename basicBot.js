@@ -189,7 +189,7 @@
             startupEmoji: false, // true or false
             cmdDeletion: true,
             chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
-            hp: 50,
+            hp: 20,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
@@ -230,7 +230,7 @@
             themeLink: null,
             youtubeLink: null,
             intervalMessages: [],
-            messageInterval: 3,
+            messageInterval: 5,
             songstats: false,
             commandLiteral: "!",
             blacklists: {
@@ -2150,7 +2150,7 @@
                         var name;
                         if (lastSpace === msg.indexOf(' ')) {
                             name = msg.substring(cmd.length + 2);
-                            time = 45;
+                            time = 10;
                         } else {
                             time = msg.substring(lastSpace + 1);
                             if (isNaN(time) || time == "" || time == null || typeof time ==
@@ -2647,15 +2647,15 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if(basicBot.settings.hp>0){
+                        if(basicBot.settings.hp>1){
                             basicBot.settings.hp--;
                             var ow = Math.floor(Math.random() * basicBot.chat.hits.length);
                             API.sendChat(subChat(basicBot.chat.attack, {hp: basicBot.settings.hp,hits:basicBot.chat.hits[ow]}));
                         }
                         else{
-                        setTimeout(function() {
                             API.sendChat(subChat(basicBot.chat.kill));
-                            basicBot.settings.hp=50;
+                            setTimeout(function() {
+                            basicBot.settings.hp=20;
                             API.sendChat(subChat(basicBot.chat.reborn));
                             },60000);
                         }
