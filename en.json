@@ -205,7 +205,7 @@
     "move": "\/me [%%NAME%%] used the move command.",
     "mutednotime": "\/me @%%USERNAME%% has been silenced!",
     "mutedmaxtime": "\/me You can only mute for maximum %%TIME%% minutes.",
-    "mutedtime": "\/me [@%%NAME%%] muted @%%USERNAME%% for %%TIME%% minutes.",
+    "mutedtime": "\/me [@%%NAME%%] silenced @%%USERNAME%%.",
     "unmuted": "\/me @%%USERNAME%% now has permission to speak.",
     "muterank": "\/me You can't mute persons with an equal or higher rank than you.",
     "oplist": "\/me OP list: %%LINK%%",
