@@ -2671,6 +2671,7 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
+                        if (basicBot.settings.hp > 0)
                             API.sendChat(subChat(basicBot.chat.hp));
                         else{
                             API.sendChat(subChat(basicBot.chat.dead));
