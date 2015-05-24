@@ -128,10 +128,12 @@
         cmdLink: "https://github.com/iEclipse/basicBot-customization/blob/master/README.md#royalsbot-commands",
         chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
         chat: null,
+        loadChat: e,
         retrieveSettings: i,
         retrieveFromStorage: h,
         settings: {
             botName: "RoyalsBot",
+            language: "english",
             startupCap: 30,
             startupVolume: 50,
             startupEmoji: false,
@@ -2371,5 +2373,5 @@
             }
         }
     };
-    (b.startup)
+    e(b.startup)
 }).call(this);
