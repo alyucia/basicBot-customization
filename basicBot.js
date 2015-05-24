@@ -2655,6 +2655,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                             $(".icon-population").click();
+                            API.sendChat(subChat(basicBot.chat.test));
                     }
                 }
             },
