@@ -14,7 +14,8 @@ USER
 !status - Shows how long the user has been in the room.<br>
 !geturl - Shows url to current song.<br>
 !rules - Links to rules. (COMING SOON)<br>
-!website - Links to maple royals page.
+!website - Links to maple royals page.<br>
+!attack - Attacks the bot!
 
 BOUNCER
 ===========
