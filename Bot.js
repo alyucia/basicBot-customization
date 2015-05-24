@@ -1125,7 +1125,7 @@
                     }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    if (basicBot.settings.cmdDeletion) {
+                    if (basicBot.settings.cmdDeletion && basicbot.settings.hp > 0) {
                         API.moderateDeleteChat(chat.cid);
                     }
                     basicBot.room.allcommand = false;
@@ -1456,6 +1456,7 @@
                 rank: 'manager',
                 type: 'exact',
                 functionality: function(chat, cmd) {
+                    if (basicbot.settings.hp < 1) return void(0);
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
