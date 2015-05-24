@@ -16,6 +16,7 @@ USER
 !rules - Links to rules. (COMING SOON)<br>
 !website - Links to maple royals page.<br>
 !attack - Attacks the bot!
+!hp - Checks for the bot's HP.
 
 BOUNCER
 ===========
