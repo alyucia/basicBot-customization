@@ -2658,7 +2658,7 @@
                         $(".icon-ban").click()
                     }
                 }
-            }
+            },
             
             attackCommand: {
                 command: 'attack',
