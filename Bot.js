@@ -47,7 +47,7 @@
 
     var loadChat = function(cb) {
         if (!cb) cb = function() {};
-        $.get("https://rawgit.com/iEclipse/basicBot-customization/master/langIndex.json",
+        $.get("https://rawgit.com/iEclipse/Settings/master/langIndex.json",
             function(json) {
                 var link = basicBot.chatLink;
                 if (json !== null && typeof json !== "undefined") {
@@ -170,9 +170,9 @@
         status: false,
         name: "NikkiBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/iEclipse/basicBot-customization/master/Bot.js",
-        cmdLink: "https://github.com/iEclipse/basicBot-customization/blob/master/README.md#royalsbot-commands",
-        chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
+        scriptLink: "https://rawgit.com/iEclipse/Settings/master/Bot.js",
+        cmdLink: "https://github.com/iEclipse/Settings/blob/master/README.md#royalsbot-commands",
+        chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -184,7 +184,7 @@
             startupVolume: 50, // 0-100
             startupEmoji: false, // true or false
             cmdDeletion: true,
-            chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
+            chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             hp: 20,
             maximumAfk: 120,
             afkRemoval: false,
