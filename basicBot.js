@@ -14,7 +14,6 @@
     };
 
     var kill = function() {
-        clearInterval(basicBot.room.autodisableInterval);
         clearInterval(basicBot.room.afkInterval);
         basicBot.status = false;
     };
@@ -204,31 +203,18 @@
             voteSkipLimit: 6,
             timeGuard: true,
             maximumSongLength: 7,
-            autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
             lockskipPosition: 1,
-            lockskipReasons: [
-                ["theme", "This song does not fit the room theme. "],
-                ["op", "This song is on the OP list. "],
-                ["history", "This song is in the history. "],
-                ["mix", "You played a mix, which is against the rules. "],
-                ["sound", "The song you played had bad sound quality or no sound. "],
-                ["nsfw", "The song you contained was NSFW (image or sound). "],
-                ["unavailable", "The song you played was not available for some users. "]
-            ],
             afkpositionCheck: 1,
-            afkRankCheck: "ambassador",
             motdEnabled: true,
             motdInterval: 3,
             motd: "Notice: Use !help for a list of commands.",
             filterChat: true,
             etaRestriction: false,
             welcome: true,
-            opLink: null,
             rulesLink: null,
             themeLink: null,
-            youtubeLink: null,
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
@@ -246,13 +232,6 @@
             afkInterval: null,
             autoskip: true,
             autoskipTimer: null,
-            autodisableInterval: null,
-            autodisableFunc: function() {
-                if (basicBot.status && basicBot.settings.autodisable) {
-                    API.sendChat('!afkdisable');
-                    API.sendChat('!joindisable');
-                }
-            },
             queueing: 0,
             queueable: true,
             currentDJID: null,
@@ -515,7 +494,7 @@
                         break;
                     case "ambassador":
                         rankInt = 0;
-                        break;
+                        break;    
                     case "user":
                         rankInt = 0;
                         break;
@@ -1030,16 +1009,6 @@
                     API.moderateDeleteChat(chat.cid);
                     return true;
                 }
-                /**
-                             var plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?plug\.dj[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-                             if (plugRoomLinkPatt.exec(msg)) {
-                                if (perm === 0) {
-                                    API.sendChat(subChat(basicBot.chat.roomadvertising, {name: chat.un}));
-                                    API.moderateDeleteChat(chat.cid);
-                                    return true;
-                                }
-                            }
-                             **/
                 if (msg.indexOf('http://adf.ly/') > -1) {
                     API.moderateDeleteChat(chat.cid);
                     API.sendChat(subChat(basicBot.chat.adfly, {
@@ -1049,7 +1018,6 @@
                 }
                 if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf(
                         'AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 ||
-                    msg.indexOf('!joindisable') > 0 || msg.indexOf('autojoin disabled') > 0 ||
                     msg.indexOf('AFK message disabled') > 0) {
                     API.moderateDeleteChat(chat.cid);
                     return true;
@@ -1285,9 +1253,6 @@
             basicBot.room.afkInterval = setInterval(function() {
                 basicBot.roomUtilities.afkCheck()
             }, 10 * 1000);
-            basicBot.room.autodisableInterval = setInterval(function() {
-                basicBot.room.autodisableFunc();
-            }, 60 * 60 * 1000);
             basicBot.loggedInID = API.getUser().id;
             basicBot.status = true;
             API.sendChat('/cap ' + basicBot.settings.startupCap);
@@ -1298,13 +1263,11 @@
                 if (emojibuttonoff.length > 0) {
                     emojibuttonoff[0].click();
                 }
-                API.chatLog(':smile: Emojis enabled.');
             } else {
                 var emojibuttonon = $(".icon-emoji-on");
                 if (emojibuttonon.length > 0) {
                     emojibuttonon[0].click();
                 }
-                API.chatLog('Emojis disabled.');
             }
             API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
             API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
@@ -2353,11 +2316,6 @@
                             '. ';
                         msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk +
                             '. ';
-
-                        msg += 'Bouncer+: ';
-                        if (basicBot.settings.bouncerPlus) msg += 'ON';
-                        else msg += 'OFF';
-                        msg += '. ';
 
                         msg += basicBot.chat.blacklist + ': ';
                         if (basicBot.settings.blacklistEnabled) msg += 'ON';
