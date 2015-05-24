@@ -2656,7 +2656,7 @@
                     else {
                         $(".icon-population").click();
                         $(".bans selected").click();
-                        API.sendChat(subChat(basicBot.chat.test));
+                        API.sendChat(subChat(basicBot.chat.website));
                     }
                 }
             },
