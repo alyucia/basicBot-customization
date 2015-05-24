@@ -21,7 +21,6 @@
         var c = {
             time: Date.now(),
             stored: true,
-            version: b.version
         };
         localStorage.setItem("basicBotStorageInfo", JSON.stringify(c))
     };
@@ -36,38 +35,6 @@
             b = b.replace(c + d.toUpperCase() + c, e[d])
         }
         return b
-    };
-    var e = function(c) {
-        if (!c) c = function() {};
-        $.get("https://rawgit.com/iEclipse/basicBot-customization/master/langIndex.json", function(e) {
-            var d = b.chatLink;
-            if (e !== null && typeof e !== "undefined") {
-                langIndex = e;
-                d = langIndex[b.settings.language.toLowerCase()];
-                if (b.settings.chatLink !== b.chatLink) {
-                    d = b.settings.chatLink
-                } else {
-                    if (typeof d === "undefined") {
-                        d = b.chatLink
-                    }
-                }
-                $.get(d, function(d) {
-                    if (d !== null && typeof d !== "undefined") {
-                        if (typeof d === "string") d = JSON.parse(d);
-                        b.chat = d;
-                        c()
-                    }
-                })
-            } else {
-                $.get(b.chatLink, function(d) {
-                    if (d !== null && typeof d !== "undefined") {
-                        if (typeof d === "string") d = JSON.parse(d);
-                        b.chat = d;
-                        c()
-                    }
-                })
-            }
-        })
     };
     var i = function() {
         var c = JSON.parse(localStorage.getItem("basicBotsettings"));
@@ -154,7 +121,6 @@
     var l = "Benzi (Quoona)";
     var f = ["3851534", "4105209"];
     var b = {
-        version: "2.4.5",
         status: false,
         name: "RoyalsBot",
         loggedInID: null,
@@ -345,13 +311,6 @@
                     }
                 }
                 return false
-            },
-            voteRatio: function(d) {
-                var e = b.userUtilities.lookupUser(d);
-                var c = e.votes;
-                if (c.meh === 0) c.ratio = 1;
-                else c.ratio = (c.woot / c.meh).toFixed(2);
-                return c
             },
             getPermission: function(d) {
                 var b;
@@ -1191,7 +1150,6 @@
             API.chatLog('Volume set to ' + b.settings.startupVolume);
             e(API.sendChat(c(b.chat.online, {
                 botname: b.settings.botName,
-                version: b.version
             })))
         },
         commands: {
