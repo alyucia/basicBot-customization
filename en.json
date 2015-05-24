@@ -92,7 +92,7 @@
 	"autodisable": "Autodisable",
 	"autoskip": "Autoskip",
 	"newblacklisted": "\/me [@%%NAME%%] This track belongs on the %%BLACKLIST%% blacklist!%%AUTHOR%% - %%TITLE%% - %%MID%%",
-	"blinfo": "Blacklist Info\r\nauthor: %%AUTHOR%%\r\ntitle: %%TITLE%%\r\nmid: %%SONGID%%",
+	"blinfo": "Blacklist Info - author: %%AUTHOR%%, title: %%TITLE%%, mid: %%SONGID%%",
 	"blacklist": "Blacklist",
 	"cycleguard": "Cycleguard",
 	"timeguard": "Timeguard",
