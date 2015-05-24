@@ -165,14 +165,10 @@
         return m;
     };
 
-    var botCreator = "Matthew (Yemasthui)";
-    var botMaintainer = "Benzi (Quoona)"
-    var botCreatorIDs = ["3851534", "4105209"];
-
     var basicBot = {
         version: "2.4.5",
         status: false,
-        name: "RoyalsBot",
+        name: "NikkiBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/iEclipse/basicBot-customization/master/Bot.js",
         cmdLink: "https://github.com/iEclipse/basicBot-customization/blob/master/README.md#royalsbot-commands",
@@ -395,9 +391,6 @@
                 var u;
                 if (typeof obj === "object") u = obj;
                 else u = API.getUser(obj);
-                for (var i = 0; i < botCreatorIDs.length; i++) {
-                    if (botCreatorIDs[i].indexOf(u.id) > -1) return 10;
-                }
                 if (u.gRole < 2) return u.role;
                 else {
                     switch (u.gRole) {
@@ -2650,9 +2643,9 @@
                             API.sendChat(subChat(basicBot.chat.kill));
                             storeToStorage();
                             basicBot.disconnectAPI();
-                            localStorage.clear();
                             setTimeout(function() {
                                 $.getScript(basicBot.scriptLink);
+                                basicBot.settings.hp = 20;
                                 API.sendChat(subChat(basicBot.chat.reborn));
                             }, 60000);
                         }
