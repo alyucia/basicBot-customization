@@ -13,7 +13,7 @@ USER
 !leave - Leaves roulette.<br>
 !status - Shows how long the user has been in the room.<br>
 !geturl - Shows url to current song.<br>
-!rules - Links to rules.<br>
+!rules - Links to rules. (COMING SOON)<br>
 !website - Links to maple royals page.
 
 BOUNCER
