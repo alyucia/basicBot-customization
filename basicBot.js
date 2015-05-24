@@ -215,8 +215,8 @@
 			usercommandsEnabled: true,
 			lockskipPosition: 1,
 			lockskipReasons: [
-                        ["",
-                            "The song doesn't match the theme. "
+                        ["dj",
+                            ""
                         ]
                     ],
 			afkpositionCheck: 15,
@@ -2449,7 +2449,7 @@ lockskipCommand: {
                                         basicBot.room.skippable = true
                                     }, 5 * 1000);
                                     setTimeout(function (id) {
-                                        basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
+                                        basicBot.userUtilities.moveUser(id, 1, false);
                                         basicBot.room.queueable = true;
                                         setTimeout(function () {
                                             basicBot.roomUtilities.booth.unlockBooth();
@@ -2479,7 +2479,7 @@ lockskipCommand: {
                                         basicBot.room.skippable = true
                                     }, 5 * 1000);
                                     setTimeout(function (id) {
-                                        basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
+                                        basicBot.userUtilities.moveUser(id, 1, false);
                                         basicBot.room.queueable = true;
                                         setTimeout(function () {
                                             basicBot.roomUtilities.booth.unlockBooth();
