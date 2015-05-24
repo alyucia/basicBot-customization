@@ -22,14 +22,14 @@ BOUNCER
 !add (@user) - Adds the user to the waitlist.<br>
 !remove (@user) - Removes the user from the waitlist.<br>
 !ban (@user) - Bans the user for one day.<br>
-!unban (@user) - Unbans the user.<br>
+!unban (@user) - Unbans the user. (BUGGED)<br>
 !afkreset (@user) - Resets the user's afk timer.<br>
 !afktime (@user) - Shows the last interaction by the user.<br>
 !autoskip - Toggles skipping songs when bugged.<br>
 !filter -  Filters the chat.<br>
 !kick (x) - Kicks the user for x mins.<br>
 !mute (@user) (x) - Mutes the user for x mins.<br>
-!unmute (@user) - Unmutes the user.<br>
+!unmute (@user) - Unmutes the user. (BUGGED)<br>
 !roulette - Starts a round of roulette.<br>
 !skip - Skips the current song.<br>
 !reset - Sets the current DJ to 1st on waitlist.<br>
