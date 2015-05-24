@@ -2655,7 +2655,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         $(".icon-population").click();
-                            $(".icon-staff").click()
+                            $(".icon-mute").click()
                     }
                 }
             },
