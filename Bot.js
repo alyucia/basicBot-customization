@@ -2654,7 +2654,8 @@
                                 basicBot.settings.hp = 20;
                                 API.sendChat(subChat(basicBot.chat.reborn));
                             }, 60000);
-                        else
+                        }
+                        else{
                             API.sendChat(subChat(basicBot.chat.dead));
                         }
                     }
