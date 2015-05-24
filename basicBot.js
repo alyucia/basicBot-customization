@@ -211,7 +211,7 @@
             autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
-            lockskipPosition: 2,
+            lockskipPosition: 1,
             lockskipReasons: [
                 ["theme", "This song does not fit the room theme. "],
                 ["op", "This song is on the OP list. "],
@@ -221,7 +221,7 @@
                 ["nsfw", "The song you contained was NSFW (image or sound). "],
                 ["unavailable", "The song you played was not available for some users. "]
             ],
-            afkpositionCheck: 5,
+            afkpositionCheck: 3,
             afkRankCheck: "ambassador",
             motdEnabled: false,
             motdInterval: 3,
@@ -282,7 +282,9 @@
                 id: [],
                 position: []
             },
-            blacklists: {},
+            blacklists: {
+                banned: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json"
+            },
             newBlacklisted: [],
             newBlacklistedSongFunction: null,
             roulette: {
