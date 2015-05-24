@@ -2644,7 +2644,17 @@
                     }
                 }
             },
-
+            
+            testCommand: {
+                command: 'test',
+                rank: 'manager',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                        $(".icon-population").click();
+                        $(".icon-ban").click();
+                }
+            }
+            
             attackCommand: {
                 command: 'attack',
                 rank: 'user',
