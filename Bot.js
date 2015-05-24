@@ -2643,7 +2643,6 @@
                             basicBot.settings.hp--;
                             var ow = Math.floor(Math.random() * basicBot.chat.hits.length);
                             API.sendChat(subChat(basicBot.chat.attack, {
-                                hp: basicBot.settings.hp,
                                 hits: basicBot.chat.hits[ow]
                             }));
                         } else if (basicBot.settings.hp == 1){
@@ -2672,7 +2671,9 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         if (basicBot.settings.hp > 0)
-                            API.sendChat(subChat(basicBot.chat.hp));
+                            API.sendChat(subChat(basicBot.chat.hp,{
+                                hp: basicBot.settings.hp
+                            }));
                         else{
                             API.sendChat(subChat(basicBot.chat.dead));
                         }
