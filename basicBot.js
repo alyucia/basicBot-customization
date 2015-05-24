@@ -2442,9 +2442,6 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $(".icon-population").click();
-                        $(".icon-ban").click();
-                        setTimeout(function(chat) {
                             var msg = chat.message;
                             if (msg.length === cmd.length) return API.sendChat();
                             var name = msg.substring(cmd.length + 2);
@@ -2455,7 +2452,8 @@
                                 var user = bannedUsers[i];
                                 if (user.username === name) {
                                     bannedUser = user;
-                                    found = true;
+                                    API.moderateUnbanUser(bannedUser.id);
+                                    console.log("Unbanned " + name);
                                 }
                             }
                             if (!found) {
@@ -2464,12 +2462,6 @@
                                     name: chat.un
                                 }));
                             }
-                            API.moderateUnbanUser(bannedUser.id);
-                            console.log("Unbanned " + name);
-                            setTimeout(function() {
-                                $(".icon-chat").click();
-                            }, 1000);
-                        }, 1000, chat);
                     }
                 }
             },
@@ -2640,22 +2632,6 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        API.sendChat(subChat(basicBot.chat.website));
-                    }
-                }
-            },
-            
-            testCommand: {
-                command: 'test',
-                rank: 'user',
-                type: 'exact',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return
-                    void(0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        $(".icon-population").click();
-                        $(".bans selected").click();
                         API.sendChat(subChat(basicBot.chat.website));
                     }
                 }
