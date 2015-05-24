@@ -1678,7 +1678,7 @@
                 }
             },
 
-            Cblinfoommand: {
+            blinfoCommand: {
                 command: 'blinfo',
                 rank: 'bouncer',
                 type: 'exact',
@@ -1692,6 +1692,7 @@
                         var format = API.getMedia().format;
                         var cid = API.getMedia().cid;
                         var songid = format + ":" + cid;
+
                         API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
                     }
                 }
@@ -2408,15 +2409,15 @@
                                     basicBot.room.skippable = false;
                                     setTimeout(function() {
                                         basicBot.room.skippable = true
-                                    }, 10 * 1000);
+                                    }, 3 * 1000);
                                     setTimeout(function(id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
                                         basicBot.room.queueable = true;
                                         setTimeout(function() {
                                             basicBot.roomUtilities.booth.unlockBooth();
-                                        }, 5000);
-                                    }, 3000, id);
-                                }, 2000, id);
+                                        }, 1000);
+                                    }, 1000, id);
+                                }, 1000, id);
                                 return void(0);
                             }
                             var validReason = false;
@@ -2440,15 +2441,15 @@
                                     API.sendChat(msgSend);
                                     setTimeout(function() {
                                         basicBot.room.skippable = true
-                                    }, 10 * 1000);
+                                    }, 3 * 1000);
                                     setTimeout(function(id) {
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
                                         basicBot.room.queueable = true;
                                         setTimeout(function() {
                                             basicBot.roomUtilities.booth.unlockBooth();
-                                        }, 5000);
-                                    }, 3000, id);
-                                }, 2000, id);
+                                        }, 1000);
+                                    }, 1000, id);
+                                }, 1000, id);
                                 return void(0);
                             }
                         }
