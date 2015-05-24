@@ -2654,7 +2654,8 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                            $(".icon-ban").click()
+                            $(".icon-population").click();
+                            $(".icon-ignored").click();
                     }
                 }
             },
