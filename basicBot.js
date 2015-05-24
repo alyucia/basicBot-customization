@@ -238,7 +238,6 @@
             songstats: false,
             commandLiteral: "!",
             blacklists: {
-                banned: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json"
             }
         },
         room: {
@@ -283,7 +282,6 @@
                 position: []
             },
             blacklists: {
-                banned: "https://rawgit.com/iEclipse/basicBot-customization/master/Blacklist.json"
             },
             newBlacklisted: [],
             newBlacklistedSongFunction: null,
@@ -1648,51 +1646,6 @@
                         var cid = API.getMedia().cid;
                         var songid = format + ":" + cid;
                         API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
-                    }
-                }
-            },
-
-            blacklistCommand: {
-                command: ['bladd'],
-                rank: 'bouncer',
-                type: 'startsWith',
-                functionality: function(chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return
-                    void(0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-                    else {
-                        var msg = chat.message;
-                        if (msg.length === cmd.length) return API.sendChat(subChat(basicBot.chat
-                            .nolistspecified, {
-                                name: chat.un
-                            }));
-                        var list = msg.substr(cmd.length + 1);
-                        if (typeof basicBot.room.blacklists[list] === 'undefined') return API.sendChat(
-                            subChat(basicBot.chat.invalidlistspecified, {
-                                name: chat.un
-                            }));
-                        else {
-                            var media = API.getMedia();
-                            var track = {
-                                list: list,
-                                author: media.author,
-                                title: media.title,
-                                mid: media.format + ':' + media.cid
-                            };
-                            basicBot.room.newBlacklisted.push(track);
-                            basicBot.room.blacklists[list].push(media.format + ':' + media.cid);
-                            API.sendChat(subChat(basicBot.chat.newblacklisted, {
-                                name: chat.un,
-                                blacklist: list,
-                                author: media.author,
-                                title: media.title,
-                                mid: media.format + ':' + media.cid
-                            }));
-                            API.moderateForceSkip();
-                            if (typeof basicBot.room.newBlacklistedSongFunction === 'function') {
-                                basicBot.room.newBlacklistedSongFunction(track);
-                            }
-                        }
                     }
                 }
             },
