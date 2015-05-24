@@ -29,6 +29,7 @@ BOUNCER
 !unmute (@user) - Unmutes the user.<br>
 !roulette - Starts a round of roulette.<br>
 !skip - Skips the current song.
+!reset - Sets the current DJ to 1st on waitlist.
 
 
 MANAGER
