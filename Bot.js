@@ -1447,10 +1447,6 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if (basicbot.settings.hp <= 0){
-                        API.sendChat(subChat(basicBot.chat.dead));
-                        return void(0);
-                        }
                         if (basicBot.settings.afkRemoval) {
                             basicBot.settings.afkRemoval = !basicBot.settings.afkRemoval;
                             clearInterval(basicBot.room.afkInterval);
@@ -2652,12 +2648,14 @@
                                 hp: basicBot.settings.hp,
                                 hits: basicBot.chat.hits[ow]
                             }));
-                        } else {
+                        } else if (basicBot.settings.hp == 1){
                             API.sendChat(subChat(basicBot.chat.kill));
                             setTimeout(function() {
                                 basicBot.settings.hp = 20;
                                 API.sendChat(subChat(basicBot.chat.reborn));
                             }, 60000);
+                        else
+                            API.sendChat(subChat(basicBot.chat.dead));
                         }
                     }
                 }
