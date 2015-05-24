@@ -197,7 +197,8 @@
     "unmuterank": "\/me You can't unmute persons with an equal or higher rank than you.",
     "website": "\/me Please visit our website: http://mapleroyals.com/?page=index",
     "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
-    "attack": "\/me %%HITS%% %%HP%% hits left until bot disabled.",
+    "attack": "\/me %%HITS%%",
+    "hp": "%%HP%%/20 HP remaining.",
     "dead": "\/NikkiBot is currently not operational. Please wait until she is rebuilt.",
     "reborn": "\/me Guess who's back from the dead?! Mwahaha!!"
 }
