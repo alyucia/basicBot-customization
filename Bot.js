@@ -1112,7 +1112,7 @@
                     }, basicBot.settings.commandCooldown * 1000);
                 }
                 if (executed) {
-                    if (basicBot.settings.cmdDeletion && basicbot.settings.hp >= 1) {
+                    if (basicBot.settings.cmdDeletion) {
                         API.moderateDeleteChat(chat.cid);
                     }
                     basicBot.room.allcommand = false;
