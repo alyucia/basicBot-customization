@@ -189,6 +189,7 @@
             startupEmoji: false, // true or false
             cmdDeletion: true,
             chatLink: "https://rawgit.com/iEclipse/basicBot-customization/master/en.json",
+            hp: 50,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
@@ -2633,6 +2634,30 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.website));
+                    }
+                }
+            }
+        }
+    }
+                attackCommand: {
+                command: 'attack',
+                rank: 'user',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return
+                    void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        API.sendChat(subChat(basicBot.chat.attack));
+                        if (hp>0){
+                            hp--;
+                            API.sendChat(subChat(hp+"/50 more hits until bot needs to recharge."));
+                        }
+                        else{
+                        setTimeout(continueExecution, 60000)
+                            API.sendChat(subChat("Mwahaha!! I've returned with full power!.""));
+                            hp=50;
+                        }
                     }
                 }
             }
