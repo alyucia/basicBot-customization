@@ -132,7 +132,6 @@
         retrieveFromStorage: h,
         settings: {
             botName: "RoyalsBot",
-            language: "english",
             startupCap: 30,
             startupVolume: 50,
             startupEmoji: false,
