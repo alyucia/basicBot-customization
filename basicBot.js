@@ -2636,10 +2636,9 @@
                         API.sendChat(subChat(basicBot.chat.website));
                     }
                 }
-            }
-        }
-    }
-                attackCommand: {
+            },
+            
+            attackCommand: {
                 command: 'attack',
                 rank: 'user',
                 type: 'exact',
@@ -2648,15 +2647,16 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        API.sendChat(subChat(basicBot.chat.attack));
-                        if (hp>0){
-                            hp--;
-                            API.sendChat(subChat(hp+"/50 more hits until bot needs to recharge."));
+                        if(basicBot.settings.hp>0){
+                            basicBot.settings.hp--;
+                            API.sendChat(subChat(basicBot.chat.attack, {hp: basicBot.settings.hp}));
                         }
                         else{
-                        setTimeout(continueExecution, 60000)
-                            API.sendChat(subChat("Mwahaha!! I've returned with full power!.""));
-                            hp=50;
+                        setTimeout(function() {
+                            API.sendChat(subChat(basicBot.chat.kill));
+                            basicBot.settings.hp=50;
+                            API.sendChat(subChat(basicBot.chat.reborn));
+                            },60000);
                         }
                     }
                 }
