@@ -19,7 +19,13 @@
         "thinks Nikki is so much more amazing than you.",
         "sold your body to Nikki for a cookie!",
         "brings you a cup of coffee. 2 sugars right?",
-        "has no life. You are everything."
+        "has no life. You are everything.",
+        "made a bowl of spaghetti for you!", "borrowed your shirt. It's so cute!"
+        "loves your smile, but brush your teeth!","stole a couple items from your shop.",
+        "wants to go on a long romantic walk with you.", "handed you a bag of potato chips.",
+        "borrowed your computer. You'll get it back in a month.", "gave you a goldfish. Hurry, put it in a bowl!",
+        "put extra spicy hot sauce in your soup!", "paid you back for that time he left you in horntail alone.",
+        "accidentally broke your zhelm. Oops!", "made you a cupcake! Eat it while it's hot!", "brought you a strawberry smoothie!"
     ],
 	"balls": [
     	"Of course.", "Duh..", "Nutella is the answer to everything. f3",
@@ -32,7 +38,10 @@
         "Nope! :P", "Yeah, but don't tell anyone.", "How about we listen to music instead? xD",
         "Meh. Maybe..", "What! This doesn't even deserve an answer.", "Who knows? I don't.",
         "Yes. If you don't believe me, ask again.", "Probably.. Yes.", "Ew no.",
-        "10/10 says no, but Nikki says yes.", "0/10. <-- Legit answer. I feel so helpful rn."
+        "10/10 says no, but Nikki says yes.", "0/10. <-- Legit answer. I feel so helpful rn.",
+        "Give me a cookie and I'll tell you.", "The answer is totally yes!", "No, but one day.",
+        "Is Manny good at playing games?", "The cake is a lie!", "Huh? Oh right, the answer is no!",
+        "No lol.", "Yep. It is. :P"
     ],
 	"nodatafound": "No previous data found.",
 	"currentlang": "me Language currently set to: %%LANGUAGE%%",
