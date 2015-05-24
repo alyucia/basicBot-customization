@@ -1647,7 +1647,6 @@
                         var format = API.getMedia().format;
                         var cid = API.getMedia().cid;
                         var songid = format + ":" + cid;
-
                         API.sendChat(subChat(basicBot.chat.blinfo, {name: name, author: author, title: title, songid: songid}));
                     }
                 }
