@@ -219,7 +219,7 @@
                             ""
                         ]
                     ],
-			afkpositionCheck: 15,
+			afkpositionCheck: 5,
 			afkRankCheck: "ambassador",
 			motdEnabled: false,
 			motdInterval: 3,
