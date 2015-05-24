@@ -91,7 +91,7 @@
     "retrievingdata": "Retrieving previously stored data.",
     "datarestored": "Previously stored data successfully retrieved.",
     "greyuser": "Only bouncers and up can run the bot.",
-    "online": "\/me RoyalsBot is now online.",
+    "online": "\/me NikkiBot is now online.",
     "welcome": "\/me Welcome to the Maple Royals DJ Radio, %%NAME%%!",
     "welcomeback": "\/me Welcome back %%NAME%%! Enjoy the music!",
     "songknown": "@%%NAME%%, this song is in the DJ history.",
@@ -199,6 +199,6 @@
     "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
     "attack": "\/me %%HITS%%",
     "hp": "\/me %%HP%%/20 HP remaining.",
-    "dead": "\/NikkiBot is currently not operational. Please wait until she is rebuilt.",
+    "dead": "\/NikkiBot has offline.",
     "reborn": "\/me Guess who's back from the dead?! Mwahaha!!"
 }
