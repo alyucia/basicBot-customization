@@ -140,7 +140,7 @@
 	"logout": "\/me [@%%NAME%%] Logging out %%BOTNAME%%",
 	"rouletteleave": "\/me @%%NAME%% chickened out of the roulette!",
 	"songlink": "\/me [@%%NAME%%] Current Song: %%LINK%%",
-	"usedlockskip": "\/me [%%NAME%% used lockskip.]",
+	"usedlockskip": "\/me %%NAME%% reset the current DJ to position 1.",
 	"lockskippos": "\/me [@%%NAME%%] Lockskip will now move the dj to position %%POSITION%%.",
 	"lockguardtime": "\/me [@%%NAME%%] The lockguard is set to %%TIME%% minute(s).",
 	"maxlengthtime": "\/me [@%%NAME%%] The maximum song duration is set to %%TIME%% minutes.",
