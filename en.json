@@ -198,6 +198,6 @@
     "website": "\/me Please visit our website: http://mapleroyals.com/?page=index",
     "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
     "attack": "\/me %%HITS%% %%HP%% hits left until bot disabled.",
-    "dead": "\/NikkiBot is currently not operational. Please wait until she is rebuilt."
+    "dead": "\/NikkiBot is currently not operational. Please wait until she is rebuilt.",
     "reborn": "\/me Guess who's back from the dead?! Mwahaha!!"
 }
