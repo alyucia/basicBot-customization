@@ -1060,6 +1060,7 @@
 
                 if ((msg.indexOf(joinedroulette) > -1 || msg.indexOf(leftroulette) > -1) &&
                     chat.uid === basicBot.loggedInID) {
+                        API.moderateDeleteChat(chat.cid);
                     return true;
                 }
                 return false;
