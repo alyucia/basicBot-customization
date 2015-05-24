@@ -2654,10 +2654,7 @@
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        $(".icon-population").click();
-                        setTimeout(function() {
                             $(".icon-ban").click()
-                        }, 5000);
                     }
                 }
             },
