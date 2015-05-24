@@ -97,7 +97,6 @@
                 b.room.roomstats = c.roomstats;
                 b.room.messages = c.messages;
                 b.room.queue = c.queue;
-                b.room.newBlacklisted = c.newBlacklisted;
                 API.chatLog(b.chat.datarestored)
             }
         }
@@ -178,7 +177,6 @@
             afkRemoval: false,
             maximumDc: 60,
             bouncerPlus: false,
-            blacklistEnabled: true,
             lockdownEnabled: false,
             lockGuard: false,
             maximumLocktime: 10,
@@ -204,7 +202,6 @@
             messageInterval: 5,
             songstats: false,
             commandLiteral: "!",
-            blacklists: {}
         },
         room: {
             users: [],
@@ -240,9 +237,6 @@
                 id: [],
                 position: []
             },
-            blacklists: {},
-            newBlacklisted: [],
-            newBlacklistedSongFunction: null,
             roulette: {
                 rouletteStatus: false,
                 participants: [],
@@ -640,58 +634,6 @@
                     API.sendChat('/me ' + c)
                 }
             },
-            updateBlacklists: function() {
-                for (var c in b.settings.blacklists) {
-                    b.room.blacklists[c] = [];
-                    if (typeof b.settings.blacklists[c] === 'function') {
-                        b.room.blacklists[c] = b.settings.blacklists()
-                    } else if (typeof b.settings.blacklists[c] === 'string') {
-                        if (b.settings.blacklists[c] === '') {
-                            continue
-                        }
-                        try {
-                            (function(c) {
-                                $.get(b.settings.blacklists[c], function(d) {
-                                    if (typeof d === 'string') {
-                                        d = JSON.parse(d)
-                                    }
-                                    var f = [];
-                                    for (var e in d) {
-                                        if (typeof d[e].mid !== 'undefined') {
-                                            f.push(d[e].mid)
-                                        }
-                                    }
-                                    b.room.blacklists[c] = f
-                                })
-                            })(c)
-                        } catch (b) {
-                            API.chatLog('Error setting' + c + 'blacklist.');
-                            console.log('Error setting' + c + 'blacklist.');
-                            console.log(b)
-                        }
-                    }
-                }
-            },
-            logNewBlacklistedSongs: function() {
-                if (typeof console.table !== 'undefined') {
-                    console.table(b.room.newBlacklisted)
-                } else {
-                    console.log(b.room.newBlacklisted)
-                }
-            },
-            exportNewBlacklistedSongs: function() {
-                var d = {};
-                for (var e = 0; e < b.room.newBlacklisted.length; e++) {
-                    var c = b.room.newBlacklisted[e];
-                    d[c.list] = [];
-                    d[c.list].push({
-                        title: c.title,
-                        author: c.author,
-                        mid: c.mid
-                    })
-                }
-                return d
-            }
         },
         eventChat: function(c) {
             c.message = j(c.message);
@@ -819,37 +761,7 @@
             b.roomUtilities.intervalMessage();
             b.room.currentDJID = f.dj.id;
             var p = f.media.format + ':' + f.media.cid;
-            for (var k in b.room.blacklists) {
-                if (b.settings.blacklistEnabled) {
-                    if (b.room.blacklists[k].indexOf(p) > -1) {
-                        API.sendChat(c(b.chat.isblacklisted, {
-                            blacklist: k
-                        }));
-                        return API.moderateForceSkip()
-                    }
-                }
-            }
             clearTimeout(o);
-            if (b.settings.historySkip) {
-                var j = false;
-                var l = API.getHistory();
-                var i = f.dj.username;
-                var o = setTimeout(function() {
-                    for (var d = 0; d < l.length; d++) {
-                        if (l[d].media.cid === f.media.cid) {
-                            API.sendChat(c(b.chat.songknown, {
-                                name: i
-                            }));
-                            API.moderateForceSkip();
-                            b.room.historyList[d].push(+new Date());
-                            j = true
-                        }
-                    }
-                    if (!j) {
-                        b.room.historyList.push([f.media.cid, +new Date()])
-                    }
-                }, 2000)
-            }
             var m = f.media;
             if (b.settings.timeGuard && m.duration > b.settings.maximumSongLength * 60 && !b.room.roomevent) {
                 var name = f.dj.username;
@@ -1139,10 +1051,6 @@
             i();
             h();
             window.bot = b;
-            b.roomUtilities.updateBlacklists();
-            setInterval(b.roomUtilities.updateBlacklists, 60 * 60 * 1000);
-            b.getNewBlacklistedSongs = b.roomUtilities.exportNewBlacklistedSongs;
-            b.logNewBlacklistedSongs = b.roomUtilities.logNewBlacklistedSongs;
             if (b.room.roomstats.launchTime === null) {
                 b.room.roomstats.launchTime = Date.now()
             }
@@ -2133,10 +2041,6 @@
                         d += '. ';
                         d += b.chat.afksremoved + ": " + b.room.afkList.length + '. ';
                         d += b.chat.afklimit + ': ' + b.settings.maximumAfk + '. ';
-                        d += b.chat.blacklist + ': ';
-                        if (b.settings.blacklistEnabled) d += 'ON';
-                        else d += 'OFF';
-                        d += '. ';
                         d += b.chat.lockguard + ': ';
                         if (b.settings.lockGuard) d += 'ON';
                         else d += 'OFF';
@@ -2151,10 +2055,6 @@
                         d += '. ';
                         d += b.chat.chatfilter + ': ';
                         if (b.settings.filterChat) d += 'ON';
-                        else d += 'OFF';
-                        d += '. ';
-                        d += b.chat.historyskip + ': ';
-                        if (b.settings.historySkip) d += 'ON';
                         else d += 'OFF';
                         d += '. ';
                         d += b.chat.voteskip + ': ';
