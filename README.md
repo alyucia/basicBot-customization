@@ -20,11 +20,13 @@ BOUNCER
 ===========
 !add (@user) - Adds the user to the waitlist.<br>
 !remove (@user) - Removes the user from the waitlist.<br>
+!ban (@user) (reason) - Bans the user permanently.<br>
+!unban (@user) - Unbans the user.<br>
 !afkreset (@user) - Resets the user's afk timer.<br>
 !afktime (@user) - Shows the last interaction by the user.<br>
 !autoskip - Toggles skipping songs when bugged.<br>
 !filter -  Filters the chat.<br>
-!kick (x) - Kicks the user for however x minutes (takes decimal).<br>
+!kick - Kicks the user for one hour.<br>
 !mute (@user) (x) - Mutes the user for x mins.<br>
 !unmute (@user) - Unmutes the user.<br>
 !roulette - Starts a round of roulette.<br>
@@ -36,8 +38,6 @@ MANAGER
 ===========
 !afklimit - Sets how many minutes before kicking afk people from waitlist.<br>
 !afktoggle - Toggles kicking of people on waitlist when afk.<br>
-!ban (@user) - Bans the user for a day.<br>
-!unban (@user) - Unbans the user.<br>
 !botname (name) - Changes the botname.<br>
 !clear - Clears the entire chat conversation.<br>
 !lock - Prevents people from joining the waitlist.<br>
