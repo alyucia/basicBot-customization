@@ -60,7 +60,7 @@
         startupCap: 50, // 1-200
         startupVolume: 50, // 0-100
         startupEmoji: false, // true or false
-        cmdDeletion: true,
+        cmdDeletion: false,
         chatLink: "https://rawgit.com/alyucia/basicBot/master/lang/en.json",
         maximumAfk: 120,
         afkRemoval: true,
