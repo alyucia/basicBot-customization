@@ -184,7 +184,7 @@
         settings: {
             botName: "RoyalsBot",
             language: "english",
-            startupCap: 50, // 1-200
+            startupCap: 30, // 1-200
             startupVolume: 50, // 0-100
             startupEmoji: false, // true or false
             cmdDeletion: true,
