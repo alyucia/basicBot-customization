@@ -232,5 +232,6 @@
     "youtube": "\/me Subscribe to us on youtube: %%LINK%%",
     "songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
     "attack": "\/me %%HITS%% %%HP%% hits left until bot disabled.",
-    "reborn": "\/me Guess who's back from the dead?! Mwahaha!!"
+    "reborn": "\/me Guess who's back from the dead?! Mwahaha!!",
+    "test": "\/me test!!"
 }
