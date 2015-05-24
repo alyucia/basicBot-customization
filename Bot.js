@@ -2658,7 +2658,7 @@
                         }
                     }
                 }
-            }
+            },
             hpCommand: {
                 command: 'hp',
                 rank: 'user',
