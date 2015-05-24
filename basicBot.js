@@ -1,4 +1,4 @@
-(function() {
+(function() { 
 
     API.getWaitListPosition = function(id) {
         if (typeof id === 'undefined' || id === null) {
