@@ -52,6 +52,10 @@
         "Yes! :P", "No! D:", "Did you say something? xD", "Yes. What do you think?", "No.. Isn't that obvious?",
         "Pay me, then we'll talk.", "I don't get paid enough for this. q_q", "Nope. x3", "Nononononono!!","Yaaassss!!"
     ],
+    	"hits": [
+    	"Oww! That hurts!"
+    	],
+    
 	"nodatafound": "No previous data found.",
 	"currentlang": "me Language currently set to: %%LANGUAGE%%",
 	"langerror": "me The language you've selected isn't available. Please visit %%LINK%% to find a list of languages available.",
@@ -195,5 +199,7 @@
 	"voteratio": "\/me @%%USERNAME%% ~ woots: %%WOOT%%, mehs: %%MEHS%%, ratio (w\/m): %%RATIO%%.",
 	"website": "\/me Please visit our website:http://mapleroyals.com/?page=index",
 	"youtube": "\/me Subscribe to us on youtube: %%LINK%%",
-	"songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M."
+	"songstatistics": "\/me %%ARTIST%% - %%TITLE%%: %%WOOTS%%W\/%%GRABS%%G\/%%MEHS%%M.",
+	"attack": "\/me %%HITS%% %%HP%% hits left until bot disabled."
+	"reborn": "\/me Guess who's back from the dead?! Mwahaha!!"
 }
