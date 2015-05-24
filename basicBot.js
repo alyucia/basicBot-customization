@@ -2329,7 +2329,6 @@
                             if (chat.message.length === cmd.length) {
                                 API.sendChat(subChat(basicBot.chat.usedlockskip, {
                                     name: chat.un,
-                                    username: id
                                 }));
                                     API.moderateForceSkip();
                                         basicBot.userUtilities.moveUser(id, basicBot.settings.lockskipPosition, false);
