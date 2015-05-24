@@ -21,6 +21,7 @@
         var c = {
             time: Date.now(),
             stored: true,
+            version: b.version
         };
         localStorage.setItem("basicBotStorageInfo", JSON.stringify(c))
     };
@@ -64,7 +65,7 @@
                         b.chat = d;
                         c()
                     }
-               })
+                })
             }
         })
     };
@@ -153,6 +154,7 @@
     var l = "Benzi (Quoona)";
     var f = ["3851534", "4105209"];
     var b = {
+        version: "2.4.5",
         status: false,
         name: "RoyalsBot",
         loggedInID: null,
@@ -343,6 +345,13 @@
                     }
                 }
                 return false
+            },
+            voteRatio: function(d) {
+                var e = b.userUtilities.lookupUser(d);
+                var c = e.votes;
+                if (c.meh === 0) c.ratio = 1;
+                else c.ratio = (c.woot / c.meh).toFixed(2);
+                return c
             },
             getPermission: function(d) {
                 var b;
@@ -1182,6 +1191,7 @@
             API.chatLog('Volume set to ' + b.settings.startupVolume);
             e(API.sendChat(c(b.chat.online, {
                 botname: b.settings.botName,
+                version: b.version
             })))
         },
         commands: {
