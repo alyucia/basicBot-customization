@@ -1603,7 +1603,7 @@
 
             banCommand: {
                 command: 'ban',
-                rank: 'manager',
+                rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return
@@ -1900,8 +1900,8 @@
                                 username: name,
                                 time: time
                             }));
-                            if (time > 24 * 60 * 60) API.moderateBanUser(user.id, 1, API.BAN.PERMA);
-                            else API.moderateBanUser(user.id, 1, API.BAN.DAY);
+                            if (time > 24 * 60 * 60) API.moderateBanUser(user.id, 1, API.BAN.DAY);
+                            else API.moderateBanUser(user.id, 1, API.BAN.HOUR);
                             setTimeout(function(id, name) {
                                 API.moderateUnbanUser(id);
                                 console.log('Unbanned @' + name + '. (' + id + ')');
@@ -2444,7 +2444,7 @@
 
             unbanCommand: {
                 command: 'unban',
-                rank: 'manager',
+                rank: 'bouncer',
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return
