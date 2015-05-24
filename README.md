@@ -23,11 +23,8 @@ BOUNCER
 !afkreset (@user) - Resets the user's afk timer.<br>
 !afktime (@user) - Shows the last interaction by the user.<br>
 !autoskip - Toggles skipping songs when bugged.<br>
-!bladd (list) - Adds song to the specified blacklist.<br>
-!blinfo - Checks the current song for the blacklist info.<br>
 !filter -  Filters the chat.<br>
 !kick (x) - Kicks the user for however x minutes (takes decimal).<br>
-!reset - Skips the current dj and puts them on the 1st spot on waitlist.<br>
 !mute (@user) (x) - Mutes the user for x mins.<br>
 !unmute (@user) - Unmutes the user.<br>
 !roulette - Starts a round of roulette.<br>
