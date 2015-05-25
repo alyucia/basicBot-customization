@@ -2588,20 +2588,20 @@
                 type: 'startsWith',
                 functionality: function(chat, cmd) {
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return
-                    void(0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-                    if (!basicBot.settings.fighter1 == null) {
+					void(0);
+					if (!basicBot.settings.fighter1 == null) {
                         API.sendChat(basicBot.chat.challengeexists);
                         return void(0);
-                    } else {
-                        var msg = chat.message;
+                    }
+                    var msg = chat.message;
+					var space = msg.indexOf(' ');
+					if (space === -1) {
+						API.sendChat(basicBot.chat.nochallenger);
+						return false;
+					} else {
                         var name = msg.substring(space + 2);
                         var user = basicBot.userUtilities.lookupUserName(name);
-                        var space = msg.indexOf(' ');
-                        if (space === -1) {
-                            API.sendChat(basicBot.chat.nochallenger);
-                            return false;
-                        } else if (user === false || !user.inRoom) {
+                        if (user === false || !user.inRoom) {
                             return API.sendChat(subChat(basicBot.chat.nothere, {
                                 name: name
                             }));
