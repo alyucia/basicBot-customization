@@ -201,7 +201,8 @@
     "hp": "\/me NikkiBot has %%HP%%/20 HP remaining.",
     "dead": "\/me NikkiBot went offline.",
     "reborn": "\/me NikkiBot: Guess who's back from the dead?! Mwahaha!!",
-    "nothere": "\/me NikkiBot: %%NAME%% is not in the room.",
+    "nothere": "\/me NikkiBot: %%NAME%% is not in the room or is spelled incorrectly.",
+    "nochallenger": "\/ NikkiBot: You didn't challenge anyone."
     "selfchallenge": "\/me NikkiBot: What's the point of challenging yourself?",
     "battle": "\/me %%NAME1%% has challenged %%NAME2%% to a battle. %%NAME2%%, type !accept to confirm."
 }
