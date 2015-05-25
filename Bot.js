@@ -2603,10 +2603,12 @@
 							}));
 							var random = Math.random() * 2;
 							if (random > 1) {
+							setTimeout(function() {
 								API.sendChat(subChat(basicBot.chat.winningchallenger, {
 									name1: basicBot.settings.fighter2,
 									name2: basicBot.settings.fighter1
 								}));
+							}, 3000);
 								setTimeout(function() {
 									var id1 = API.getWaitListPosition(basicBot.settings.fighter2.id);
 									var id2 = API.getWaitListPosition(basicBot.settings.fighter1.id);
@@ -2616,14 +2618,16 @@
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
 									} else API.sendChat(basicBot.chat.unnecessaryswap);
-								}, 5000);
+								}, 6000);
 							basicBot.settings.fighter1 = null;
 							basicBot.settings.fighter2 = null;	
 							} else {
+								setTimeout(function() {
 								API.sendChat(subChat(basicBot.chat.winningchallenger, {
 									name1: basicBot.settings.fighter1,
 									name2: basicBot.settings.fighter2
 								}));
+								}, 3000);
 								setTimeout(function() {
 									var id1 = API.getWaitListPosition(basicBot.settings.fighter1.id);
 									var id2 = API.getWaitListPosition(basicBot.settings.fighter2.id);
@@ -2635,7 +2639,7 @@
 									} else API.sendChat(basicBot.chat.unnecessaryswap);
 								basicBot.settings.fighter1 = null;
 								basicBot.settings.fighter2 = null;
-								}, 5000);
+								}, 6000);
 							}
 						} else {
 							API.sendChat(subChat(basicBot.chat.notchallenged, {
