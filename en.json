@@ -204,6 +204,7 @@
     "nothere": "\/me NikkiBot: %%NAME%% is not in the room or is spelled incorrectly.",
     "nochallenger": "\/ NikkiBot: You didn't challenge anyone.",
     "selfchallenge": "\/me NikkiBot: What's the point of challenging yourself?",
-    "battle": "\/me NikkiBot: %%NAME1%% has challenged %%NAME2%% to a battle. %%NAME2%%, type !accept to confirm."
-    "withdraw": "\/me NikkiBot: %%NAME1%%, %%NAME2%% did not respond to your challenge. Your fight has been withdrawn.."
+    "battle": "\/me NikkiBot: %%NAME1%% has challenged %%NAME2%% to a battle. %%NAME2%%, type !accept to confirm.",
+    "withdraw": "\/me NikkiBot: %%NAME1%%, %%NAME2%% did not respond to your challenge. Your fight has been withdrawn..",
+    "challengeexists": "\/ NikkiBot: A challenge already exists. Please wait for it to be completed or withdrawn."
 }
