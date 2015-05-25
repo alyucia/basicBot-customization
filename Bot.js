@@ -2290,8 +2290,6 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        $("i.icon.icon-population").click();
-                        setTimeout(function (chat) {
                             var msg = chat.message;
                             if (msg.length === cmd.length) return API.sendChat();
                             var name = msg.substring(cmd.length + 2);
@@ -2306,15 +2304,10 @@
                                 }
                             }
                             if (!found) {
-                                $(".icon-chat").click();
                                 return API.sendChat(subChat(basicBot.chat.notbanned, {name: chat.un}));
                             }
                             API.moderateUnbanUser(bannedUser.id);
                             console.log("Unbanned " + name);
-                            setTimeout(function () {
-                                $(".icon-chat").click();
-                            }, 1000);
-                        }, 2000, chat);
                     }
                 }
             },
@@ -2363,25 +2356,19 @@
                         var permFrom = basicBot.userUtilities.getPermission(chat.uid);
                         var from = chat.un;
                         var name = msg.substr(cmd.length + 2);
-                        var user = basicBot.userUtilities.lookupUserName(name);
+                        var user = basicBot.userUtilities.lookupUserName(name).id;
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
-                        var permUser = basicBot.userUtilities.getPermission(user.id);
+                        var permUser = basicBot.userUtilities.getPermission(user);
                         if (permFrom > permUser) {
                             try {
-                            	$("i.icon.icon-population").click();
-                            	setTimeout(function () {
                                 API.moderateUnmuteUser(user.id);
                                 API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
-                                $(".icon-chat").click();
-                            	}, 2000);
                             }
                             catch (e) {
                                 API.sendChat(subChat(basicBot.chat.notmuted, {name: chat.un}));
-                                $(".icon-chat").click();
                             }
                         }
                         else API.sendChat(subChat(basicBot.chat.unmuterank, {name: chat.un}));
-                        $(".icon-chat").click();
                     }
                 }
             },
