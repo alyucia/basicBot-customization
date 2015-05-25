@@ -2612,7 +2612,7 @@
 								setTimeout(function() {
 									id1 = API.getWaitListPosition(basicBot.settings.fighter2.id)
 									id2 = API.getWaitListPosition(basicBot.settings.fighter1.id)
-									if (id1 == -1 || id2 == -1) API.sendChat(basicBot.chat.notonwaitlist);
+									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 > id2) {
 										API.sendChat(basicBot.chat.swap);
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
@@ -2627,7 +2627,7 @@
 								setTimeout(function() {
 									id1 = API.getWaitListPosition(basicBot.settings.fighter1.id)
 									id2 = API.getWaitListPosition(basicBot.settings.fighter2.id)
-									if (id1 == -1 || id2 == -1) API.sendChat(basicBot.chat.notonwaitlist);
+									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 > id2) {
 										API.sendChat(basicBot.chat.swap);
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
