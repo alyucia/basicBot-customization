@@ -2673,16 +2673,16 @@
 							basicBot.settings.challenge = false;
 							basicBot.settings.fighter1 = chat.un;
 							basicBot.settings.fighter2 = user.username;
-							if (!basicBot.settings.challenge) {
 								setTimeout(function() {
+									if (!basicBot.settings.challenge) {
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
 									API.sendChat(subChat(basicBot.chat.withdraw, {
 										name1: chat.un,
 										name2: user.username
 									}));
+									}
 								}, 15000);
-							}
 							return API.sendChat(subChat(basicBot.chat.battle, {
 								name1: basicBot.settings.fighter1,
 								name2: basicBot.settings.fighter2,
