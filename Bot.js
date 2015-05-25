@@ -287,7 +287,7 @@
 					setTimeout(function(winner, pos) {
 						if (user.id == API.getDJ()
 							.id) API.sendChat(subChat(basicBot.chat.winnerdj));
-						else if (basicBot.getWaitListPosition(user.id) == -1) API.moderateAddDJ(
+						else if (API.getWaitListPosition(user.id) == -1) API.moderateAddDJ(
 							user.id);
 						basicBot.userUtilities.moveUser(winner, pos, false);
 					}, 1 * 1000, winner, pos);
