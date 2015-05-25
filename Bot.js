@@ -2620,7 +2620,7 @@
 					void(0);
 					var msg = chat.message;
 					var space = msg.indexOf(' ');
-					if (basicBot.settings.fighter1 != null) {
+					if (basicBot.settings.fighter1 != null && !basicBot.settings.challenge) {
 						API.sendChat(basicBot.chat.challengeexists);
 						return false;
 					} else if (space === -1) {
@@ -2646,7 +2646,6 @@
 										name1: chat.un,
 										name2: user.username
 									}));
-								basicBot.settings.challenge = false;
 								}
 							}, 30000);
 							return API.sendChat(subChat(basicBot.chat.battle, {
