@@ -2684,8 +2684,8 @@
                             var user = basicBot.userUtilities.lookupUserName(name);
                             var space = msg.indexOf(' ');
                             if (space === -1) {
-                            API.sendChat(basicBot.chat.nochallenger);
-                            return false;
+                                API.sendChat(basicBot.chat.nochallenger);
+                                return false;
                             }
                             if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nothere, {
