@@ -2566,13 +2566,13 @@
 										setTimeout(function() {
 											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2)
 												.id, id1+1, false);
-										}, 2000);
+										}, 5000);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter1
 									}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
-								}, 4000);
+								}, 6000);
 							} else {
 								setTimeout(function() {
 									API.sendChat(subChat(basicBot.chat.winningchallenger, {
@@ -2593,13 +2593,13 @@
 										setTimeout(function() {
 											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1)
 												.id, id2+1, false);
-										}, 2000);
+										}, 5000);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter2
 									}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
-								}, 4000);
+								}, 6000);
 							}
 						} else {
 							API.sendChat(subChat(basicBot.chat.notchallenged, {
