@@ -2566,7 +2566,7 @@
 										setTimeout(function() {
 											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1)
 												.id, id2, false);
-										}, 4000);
+										}, 2000);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter1
 									}));
@@ -2593,7 +2593,7 @@
 										setTimeout(function() {
 											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2)
 												.id, id1, false);
-										}, 4000);
+										}, 2000);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter2
 									}));
