@@ -2291,7 +2291,6 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         $(".icon-population").click();
-                        $(".icon-ban").click();
                         setTimeout(function (chat) {
                             var msg = chat.message;
                             if (msg.length === cmd.length) return API.sendChat();
@@ -2315,7 +2314,7 @@
                             setTimeout(function () {
                                 $(".icon-chat").click();
                             }, 1000);
-                        }, 1000, chat);
+                        }, 2000, chat);
                     }
                 }
             },
@@ -2370,9 +2369,11 @@
                         if (permFrom > permUser) {
                             try {
                             	$(".icon-population").click();
+                            	setTimeout(function () {
                                 API.moderateUnmuteUser(user.id);
                                 API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
                                 $(".icon-chat").click();
+                            	}, 2000);
                             }
                             catch (e) {
                                 API.sendChat(subChat(basicBot.chat.notmuted, {name: chat.un}));
