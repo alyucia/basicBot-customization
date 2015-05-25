@@ -30,7 +30,7 @@ BOUNCER
 !remove (@user) - Removes the user from the waitlist.<br>
 !mute (@user) (x) - Mutes the user for x mins.<br>
 !unmute (@user) - Unmutes the user. (BUGGED)<br>
-!ban (@user) - Bans the user for one day.<br>
+!ban (@user) - Bans the user for one day. (Manager+ can ban permanently)<br>
 !unban (@user) - Unbans the user. (BUGGED)<br>
 !afkreset (@user) - Resets the user's afk timer.<br>
 !afktime (@user) - Shows the last interaction by the user.<br>
