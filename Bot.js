@@ -2615,12 +2615,11 @@
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 > id2) {
 										API.sendChat(basicBot.chat.swap);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2), id2, false);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1), id1, false);
+										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2), id1, false);
+										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1), id2, false);
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										name: chat.un
+										name: basicBot.settings.fighter2
 										}));
-										API.sendChat(basicBot.settings.fighter2.id);
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;		
 								}, 4000);
@@ -2640,7 +2639,7 @@
 										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1), id2, false);
 										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2), id1, false);
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										name: chat.un
+										name: basicBot.settings.fighter1
 										}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
