@@ -1213,16 +1213,15 @@
 				if (emojibuttonoff.length > 0) {
 					emojibuttonoff[0].click();
 				}
-				API.chatLog(':smile: Emojis enabled.');
+				
 			} else {
 				var emojibuttonon = $(".icon-emoji-on");
 				if (emojibuttonon.length > 0) {
 					emojibuttonon[0].click();
 				}
-				API.chatLog('Emojis disabled.');
 			}
-			API.chatLog('Avatars capped at ' + basicBot.settings.startupCap);
-			API.chatLog('Volume set to ' + basicBot.settings.startupVolume);
+			API.chatLog('Max Visible Avatars: ' + basicBot.settings.startupCap);
+			API.chatLog('Volume: ' + basicBot.settings.startupVolume);
 			loadChat(API.sendChat(subChat(basicBot.chat.online, {
 				botname: basicBot.settings.botName,
 				version: basicBot.version
@@ -2199,53 +2198,38 @@
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
-						var from = chat.un;
-						var msg = '/me [@' + from + '] ';
+						var msg = '/me [Settings:] ';
 						msg += basicBot.chat.afkremoval + ': ';
-						if (basicBot.settings.afkRemoval) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.settings.afkRemoval) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.afksremoved + ": " + basicBot.room.afkList.length + '. ';
 						msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + '. ';
 						msg += 'Bouncer+: ';
-						if (basicBot.settings.bouncerPlus) msg += 'ON';
-						else msg += 'OFF';
-						msg += '. ';
-						msg += basicBot.chat.blacklist + ': ';
-						if (basicBot.settings.blacklistEnabled) msg += 'ON';
-						else msg += 'OFF';
-						msg += '. ';
-						msg += basicBot.chat.lockguard + ': ';
-						if (basicBot.settings.lockGuard) msg += 'ON';
-						else msg += 'OFF';
-						msg += '. ';
-						msg += basicBot.chat.cycleguard + ': ';
-						if (basicBot.settings.cycleGuard) msg += 'ON';
-						else msg += 'OFF';
 						msg += '. ';
 						msg += basicBot.chat.timeguard + ': ';
-						if (basicBot.settings.timeGuard) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.settings.timeGuard) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.chatfilter + ': ';
-						if (basicBot.settings.filterChat) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.settings.filterChat) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.historyskip + ': ';
-						if (basicBot.settings.historySkip) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.settings.historySkip) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.voteskip + ': ';
-						if (basicBot.settings.voteSkip) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.settings.voteSkip) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.cmddeletion + ': ';
-						if (basicBot.settings.cmdDeletion) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.settings.cmdDeletion) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.autoskip + ': ';
-						if (basicBot.room.autoskip) msg += 'ON';
-						else msg += 'OFF';
+						if (basicBot.room.autoskip) msg += 'Y';
+						else msg += 'N';
 						msg += '. ';
 						var launchT = basicBot.room.roomstats.launchTime;
 						var durationOnline = Date.now() - launchT;
