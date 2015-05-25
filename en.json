@@ -127,7 +127,7 @@
     "toggleoff": "\/me NikkiBot: %%FUNCTION%% Disabled.",
     "cmddeletion": "Command Deletion",
     "afkremoval": "Remove AFK DJs",
-    "afksremoved": "AFKer removed.",
+    "afksremoved": "AFK Removed:",
     "afklimit": "AFK limit",
     "autodisable": "Autodisable",
     "autoskip": "Autoskip",
