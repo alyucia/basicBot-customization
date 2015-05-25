@@ -2605,8 +2605,8 @@
 							if (random > 1) {
 							setTimeout(function() {
 								API.sendChat(subChat(basicBot.chat.winningchallenger, {
-									name1: basicBot.settings.fighter2,
-									name2: basicBot.settings.fighter1
+									name1: basicBot.settings.fighter1,
+									name2: basicBot.settings.fighter2
 								}));
 							}, 2000);
 								setTimeout(function() {
@@ -2627,8 +2627,8 @@
 							} else {
 								setTimeout(function() {
 								API.sendChat(subChat(basicBot.chat.winningchallenger, {
-									name1: basicBot.settings.fighter1,
-									name2: basicBot.settings.fighter2
+									name1: basicBot.settings.fighter2,
+									name2: basicBot.settings.fighter1
 								}));
 								}, 2000);
 								setTimeout(function() {
