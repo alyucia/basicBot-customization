@@ -2615,12 +2615,17 @@
 								setTimeout(function() {
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
-									API.sendChat(subChat(basicBot.chat.withdraw));
-								}, 15000);
-							}
+									API.sendChat(subChat(basicBot.chat.withdraw,{
+									name1: chat.un,
+									name2: user.username
+									}
+								}));
+							}, 15000);
+						}
 							return API.sendChat(subChat(basicBot.chat.battle, {
 								name1: chat.un,
-								name2: user.username
+								name2: user.username,
+								name3: user.username
 							}));
 						}
 					}
