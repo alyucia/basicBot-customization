@@ -2621,6 +2621,8 @@
 										name: chat.un
 										}));
 										API.sendChat(basicBot.settings.fighter2.id);
+									basicBot.settings.fighter1 = null;
+									basicBot.settings.fighter2 = null;		
 								}, 4000);
 							} else {
 								setTimeout(function() {
@@ -2640,12 +2642,10 @@
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: chat.un
 										}));
+									basicBot.settings.fighter1 = null;
+									basicBot.settings.fighter2 = null;
 								}, 4000);
 							}
-							setTimeout(function() {
-							basicBot.settings.fighter1 = null;
-							basicBot.settings.fighter2 = null;
-							}, 6000);
 						} else {
 							API.sendChat(subChat(basicBot.chat.notchallenged, {
 								name: chat.un
