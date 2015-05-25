@@ -2610,16 +2610,16 @@
 								}));
 							}, 2000);
 								setTimeout(function() {
-									var id1 = API.getWaitListPosition(basicBot.settings.fighter2.id);
-									var id2 = API.getWaitListPosition(basicBot.settings.fighter1.id);
+									var id1 = API.getWaitListPosition(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id);
+									var id2 = API.getWaitListPosition(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id);
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 < id2) {
 										API.sendChat(basicBot.chat.swap);
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
-									} else 	//API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										//name: chat.un
-										//}));
+									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
+										name: chat.un
+										}));
 										API.sendChat(basicBot.settings.fighter2.id);
 								}, 4000);
 							} else {
@@ -2630,17 +2630,16 @@
 								}));
 								}, 2000);
 								setTimeout(function() {
-									var id1 = API.getWaitListPosition(basicBot.settings.fighter1.id);
-									var id2 = API.getWaitListPosition(basicBot.settings.fighter2.id);
+									var id1 = API.getWaitListPosition(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id);
+									var id2 = API.getWaitListPosition(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id);
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 < id2) {
 										API.sendChat(basicBot.chat.swap);
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
-									} else 	//API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										//name: chat.un
-										//}));
-										API.sendChat(basicBot.settings.fighter1.id);
+									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
+										name: chat.un
+										}));
 								}, 4000);
 							}
 							setTimeout(function() {
