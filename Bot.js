@@ -2618,9 +2618,9 @@
 									API.sendChat(subChat(basicBot.chat.withdraw,{
 									name1: chat.un,
 									name2: user.username
-									}
-								}));
-							}, 15000);
+									}));
+								}, 15000);
+							}
 						}
 							return API.sendChat(subChat(basicBot.chat.battle, {
 								name1: chat.un,
