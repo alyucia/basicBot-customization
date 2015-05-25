@@ -2591,11 +2591,10 @@
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
-						if (basicBot.settings.fighter1 == null) API.sendChat(subChat(basicBot.chat
-							.nochallenge, {
+						if (basicBot.settings.fighter1 == null) API.sendChat(subChat(basicBot.chat.nochallenge, {
 							name: chat.un
 						}));
-						else if (chat.un === basicBot.settings.fighter2) {
+						else if (chat.un == basicBot.settings.fighter2) {
 							basicBot.settings.challenge = true;
 							API.sendChat(subChat(basicBot.chat.acceptedchallenge, {
 								name1: basicBot.settings.fighter2,
