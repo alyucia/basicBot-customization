@@ -2561,12 +2561,8 @@
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id2 < id1) {
 										API.sendChat(basicBot.chat.swap);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1)
-											.id, id2+1, false);
-										setTimeout(function() {
-											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2)
-												.id, id1+1, false);
-										}, 5000);
+										API.moderateMoveDJ(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id, id2+1, false);
+										API.moderateMoveDJ(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id, id1+1, false);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter1
 									}));
@@ -2588,12 +2584,8 @@
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 < id2) {
 										API.sendChat(basicBot.chat.swap);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2)
-											.id, id1+1, false);
-										setTimeout(function() {
-											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1)
-												.id, id2+1, false);
-										}, 5000);
+										API.moderateMoveDJ(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id, id1+1, false);
+										API.moderateMoveDJ(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id, id2+1, false);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter2
 									}));
