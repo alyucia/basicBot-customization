@@ -191,7 +191,8 @@
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
-            bouncerPlus: false,
+            fighter1:null,
+            fighter2:null,
             blacklistEnabled: false,
             lockdownEnabled: false,
             lockGuard: false,
@@ -1747,7 +1748,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.facebook,{
-                            url: basicBot.settings.facebook;
+                            url: basicBot.settings.facebook
                         }));
                     }
                 }
@@ -2607,7 +2608,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.website,{
-                            url: basicBot.settings.website;
+                            url: basicBot.settings.website
                         }));
                     }
                 }
@@ -2661,6 +2662,40 @@
                         else{
                             API.sendChat(subChat(basicBot.chat.dead));
                         }
+                    }
+                }
+            },
+            
+            challengeCommand: {
+                command: 'challenge',
+                rank: 'user',
+                type: 'startsWith',
+                getWinner: function(chat) {
+                    return Math.floor(Math.random() * 100);
+                },
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return
+                    void(0);
+                    if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        var msg = chat.message;
+                        var space = msg.indexOf(' ');
+                            var name = msg.substring(space + 2);
+                            var user = basicBot.userUtilities.lookupUserName(name);
+                            if (user === false || !user.inRoom) {
+                                return API.sendChat(subChat(basicBot.chat.nothere, {
+                                    name: name
+                                }));
+                            } else if (user.username === chat.un) {
+                                return API.sendChat(subChat(basicBot.chat.selfchallenge));
+                            } else {
+                                fighter1 = chat.un,
+                                fighter2 = user.username
+                                return API.sendChat(subChat(basicBot.chat.battle, {
+                                    name1: chat.un,
+                                    name2: user.username
+                                }));
+                            }
                     }
                 }
             }
