@@ -78,7 +78,7 @@
         maximumSongLength: 7,
         autodisable: false,
         commandCooldown: 30,
-        usercommandsEnabled: false,
+        usercommandsEnabled: true,
         lockskipPosition: 3,
         lockskipReasons: [
             ["theme", "This song does not fit the room theme. "],
