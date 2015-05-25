@@ -210,8 +210,8 @@
     "challengeexists": "\/me NikkiBot: A challenge already exists. Please wait for it to be completed or withdrawn.",
     "nochallenge": "\/me NikkiBot: There are currently no existing challenges!",
     "acceptedchallenge": "\/me NikkiBot: %%NAME1%% has accepted %%NAME2%%'s challenge.",
-    "notchallenged": "\/me NikkiBot: %%NAME%%, you are not involved in this battle."
-    "winningchallenger": "\/me NikkiBot: %%NAME1%% has proven their strength against %%NAME2%%."
-    "swap": "\/me Positions on the waitlist will now be switched!"
+    "notchallenged": "\/me NikkiBot: %%NAME%%, you are not involved in this battle.",
+    "winningchallenger": "\/me NikkiBot: %%NAME1%% has proven their strength against %%NAME2%%.",
+    "swap": "\/me Positions on the waitlist will now be switched!",
     "notonwaitlist": "\/me One of the challengers are not on the waitlist, therefore no one will be moved."
 }
