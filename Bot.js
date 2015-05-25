@@ -2702,13 +2702,13 @@
                                 fighter1 = chat.un,
                                 fighter2 = user.username
                                 setTimeout(function() {
-                                if (!challenge){
-                                    fighter1 = null;
-                                    fighter2 = null;
-                                    API.sendChat(subChat(basicBot.chat.withdraw, {
-                                        name1: chat.un,
-                                        name2: user.username
-                                    }))
+                                    if (!challenge){
+                                        fighter1 = null;
+                                        fighter2 = null;
+                                        API.sendChat(subChat(basicBot.chat.withdraw, {
+                                            name1: chat.un,
+                                            name2: user.username
+                                        }))
                                     }, 15 * 1000);
                                 }
                                 return API.sendChat(subChat(basicBot.chat.battle, {
