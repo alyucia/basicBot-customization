@@ -20,12 +20,15 @@ USER
 !website - Links to maple royals page.<br>
 !attack - Attacks the bot!<br>
 !hp - Checks for the bot's HP.<br>
-!challenge (@user) - Challenges the user for their waitlist position. (COMING SOON))
+!challenge (@user) - Challenges the user for their waitlist position.
+!accept - Accepts the challenge from the other user.
 
 BOUNCER
 ===========
 !add (@user) - Adds the user to the waitlist.<br>
 !remove (@user) - Removes the user from the waitlist.<br>
+!mute (@user) (x) - Mutes the user for x mins.<br>
+!unmute (@user) - Unmutes the user. (BUGGED)<br>
 !ban (@user) - Bans the user for one day.<br>
 !unban (@user) - Unbans the user. (BUGGED)<br>
 !afkreset (@user) - Resets the user's afk timer.<br>
@@ -33,8 +36,6 @@ BOUNCER
 !autoskip - Toggles skipping songs when bugged.<br>
 !filter -  Filters the chat.<br>
 !kick (x) - Kicks the user for x mins.<br>
-!mute (@user) (x) - Mutes the user for x mins.<br>
-!unmute (@user) - Unmutes the user. (BUGGED)<br>
 !roulette - Starts a round of roulette.<br>
 !skip - Skips the current song.<br>
 !reset - Sets the current DJ to 1st on waitlist.<br>
