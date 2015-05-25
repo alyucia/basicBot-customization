@@ -2614,8 +2614,8 @@
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 < id2) {
 										API.sendChat(basicBot.chat.swap);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2), id1, false);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1), id2, false);
+										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id, id1, false);
+										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id, id2, false);
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter2
 										}));
@@ -2635,8 +2635,8 @@
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 < id2) {
 										API.sendChat(basicBot.chat.swap);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1), id2, false);
-										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2), id1, false);
+										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id, id2, false);
+										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id, id1, false);
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter1
 										}));
