@@ -2290,7 +2290,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
-                        $(".icon-population").click();
+                        $("i.icon.icon-population").click();
                         setTimeout(function (chat) {
                             var msg = chat.message;
                             if (msg.length === cmd.length) return API.sendChat();
@@ -2368,7 +2368,7 @@
                         var permUser = basicBot.userUtilities.getPermission(user.id);
                         if (permFrom > permUser) {
                             try {
-                            	$(".icon-population").click();
+                            	$("i.icon.icon-population").click();
                             	setTimeout(function () {
                                 API.moderateUnmuteUser(user.id);
                                 API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
