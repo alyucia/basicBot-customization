@@ -2589,7 +2589,7 @@
 					if (this.type === 'exact' && chat.message.length !== cmd.length) return
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-					if (basicbot.settings.fighter1 == null) {
+					if (basicBot.settings.fighter1 == null) {
 						API.sendChat(basicBot.chat.nochallenger);
 						return void(0);
 					} else {
@@ -2609,9 +2609,9 @@
 						} else if (user.username === chat.un) {
 							return API.sendChat(subChat(basicBot.chat.selfchallenge));
 						} else {
-							basicbot.settings.fighter1 = chat.un,
-							basicbot.settings.fighter2 = user.username
-							if (!basicbot.settings.challenge) {
+							basicBot.settings.fighter1 = chat.un,
+							basicBot.settings.fighter2 = user.username
+							if (!basicBot.settings.challenge) {
 								setTimeout(function() {
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
