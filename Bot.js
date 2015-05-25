@@ -187,7 +187,7 @@
             voteSkipLimit: 6,
             timeGuard: true,
             maximumSongLength: 7,
-            commandCooldown: 30,
+            commandCooldown: 1,
             usercommandsEnabled: true,
             lockskipPosition: 1,
             afkpositionCheck: 1,
