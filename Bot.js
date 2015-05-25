@@ -193,6 +193,7 @@
             maximumDc: 60,
             fighter1:null,
             fighter2:null,
+            challenge: false;
             blacklistEnabled: false,
             lockdownEnabled: false,
             lockGuard: false,
@@ -2677,6 +2678,10 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return
                     void(0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+                    if (!fighter1 == null){
+                        API.sendChat(basicBot.chat.nochallenger);
+                        return void(0);
+                    }
                     else {
                         var msg = chat.message;
                         var space = msg.indexOf(' ');
@@ -2696,6 +2701,16 @@
                             } else {
                                 fighter1 = chat.un,
                                 fighter2 = user.username
+                                setTimeout(function() {
+                                if (!challenge){
+                                    fighter1 = null;
+                                    fighter2 = null;
+                                    API.sendChat(subChat(basicBot.chat.withdraw, {
+                                        name1: chat.un,
+                                        name2: user.username
+                                    }))
+                                    }, 15 * 1000);
+                                }
                                 return API.sendChat(subChat(basicBot.chat.battle, {
                                     name1: chat.un,
                                     name2: user.username
