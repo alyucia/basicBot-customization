@@ -2614,8 +2614,8 @@
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
 									API.sendChat(subChat(basicBot.chat.withdraw, {
-										name1: chat.un,
-										name2: user.username
+										name1: basicBot.settings.fighter1,
+										name2: basicBot.settings.fighter2
 									}));
 								}, 15000);
 							}
