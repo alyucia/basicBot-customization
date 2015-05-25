@@ -2611,7 +2611,7 @@
 						} else {
 							basicbot.settings.fighter1 = chat.un,
 							basicbot.settings.fighter2 = user.username
-							if (!challenge) {
+							if (!basicbot.settings.challenge) {
 								setTimeout(function() {
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
