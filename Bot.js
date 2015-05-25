@@ -2589,8 +2589,8 @@
 					if (this.type === 'exact' && chat.message.length !== cmd.length) return
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
-					if (basicBot.settings.fighter1 == null) {
-						API.sendChat(basicBot.chat.nochallenger);
+					if (!basicBot.settings.fighter1 == null) {
+						API.sendChat(basicBot.chat.challengeexists);
 						return void(0);
 					} else {
 						var msg = chat.message;
