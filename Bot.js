@@ -2617,9 +2617,10 @@
 										API.sendChat(basicBot.chat.swap);
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
-									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										name: chat.un
-										}));
+									} else 	//API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
+										//name: chat.un
+										//}));
+										API.sendChat(basicBot.settings.fighter2.id);
 								}, 4000);
 							} else {
 								setTimeout(function() {
@@ -2636,9 +2637,10 @@
 										API.sendChat(basicBot.chat.swap);
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
-									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										name: chat.un
-										}));
+									} else 	//API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
+										//name: chat.un
+										//}));
+										API.sendChat(basicBot.settings.fighter1.id);
 								}, 4000);
 							}
 							setTimeout(function() {
