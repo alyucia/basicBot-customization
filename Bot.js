@@ -2595,11 +2595,6 @@
 						return void(0);
 					} else {
 						var msg = chat.message;
-						var space = msg.indexOf(' ');
-						if (space === -1) {
-							API.sendChat(subChat(basicBot.chat.nochallenger));
-							return false;
-						}						
 						var name = msg.substring(space + 2);
 						var user = basicBot.userUtilities.lookupUserName(name);
 						if (user === false || !user.inRoom) {
