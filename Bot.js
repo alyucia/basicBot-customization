@@ -2617,7 +2617,7 @@
 										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id, id1, false);
 										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id, id2, false);
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										name: basicBot.settings.fighter2
+										name: basicBot.settings.fighter1
 										}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;		
@@ -2638,7 +2638,7 @@
 										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1).id, id2, false);
 										basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2).id, id1, false);
 									} else 	API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
-										name: basicBot.settings.fighter1
+										name: basicBot.settings.fighter2
 										}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
