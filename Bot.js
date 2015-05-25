@@ -2207,7 +2207,7 @@
 						msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + 'mins. ';
 						msg += '. ';
 						msg += basicBot.chat.timeguard + ': ';
-						if (basicBot.settings.timeGuard) msg += 'Y';
+						if (basicBot.settings.timeGuard) msg += basicBot.settings.maximumSongLength;
 						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.chatfilter + ': ';
