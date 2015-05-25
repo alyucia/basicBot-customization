@@ -1749,7 +1749,7 @@
                         API.sendChat(subChat(basicBot.chat.facebook));
                         setTimeout(function() {
                                 API.sendChat(subChat(basicbot.settings.facebook));
-                        }, 1000);
+                        }, 2000);
                     }
                 }
             },
@@ -2610,7 +2610,7 @@
                         API.sendChat(subChat(basicBot.chat.website));
                         setTimeout(function() {
                                 API.sendChat(subChat(basicbot.settings.website));
-                            }, 1000);
+                            }, 2000);
                     }
                 }
             },
