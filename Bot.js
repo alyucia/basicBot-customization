@@ -2621,7 +2621,6 @@
 									}));
 								}, 15000);
 							}
-						}
 							return API.sendChat(subChat(basicBot.chat.battle, {
 								name1: chat.un,
 								name2: user.username,
