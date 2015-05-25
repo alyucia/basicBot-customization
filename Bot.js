@@ -2306,7 +2306,7 @@
                             if (!found) {
                                 return API.sendChat(subChat(basicBot.chat.notbanned, {name: chat.un}));
                             }
-                            API.moderateUnbanUser(bannedUser.id);
+                            API.moderateUnbanUser(basicBot.userUtilities.lookupUserName(bannedUser).id);
                             console.log("Unbanned " + name);
                     }
                 }
@@ -2361,7 +2361,7 @@
                         var permUser = basicBot.userUtilities.getPermission(user);
                         if (permFrom > permUser) {
                             try {
-                                API.moderateUnmuteUser(user.id);
+                                API.moderateUnmuteUser(user);
                                 API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
                             }
                             catch (e) {
