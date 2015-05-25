@@ -193,7 +193,7 @@
             maximumDc: 60,
             fighter1:null,
             fighter2:null,
-            challenge: false;
+            challenge: false,
             blacklistEnabled: false,
             lockdownEnabled: false,
             lockGuard: false,
