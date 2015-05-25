@@ -134,7 +134,7 @@
     "chatfilter": "Chat filter",
     "historyskip": "History Skip",
     "lockdown": "Chatbox Lock",
-    "lockguard": "Lock guard",
+    "timeguard": "Limit Song Duration",
     "usercommands": "User Commands",
     "motd": "Notice",
     "welcomemsg": "Player Welcome Message",
