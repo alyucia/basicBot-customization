@@ -2597,7 +2597,7 @@
 						var msg = chat.message;
 						var space = msg.indexOf(' ');
 						if (space === -1) {
-							API.sendChat(basicBot.chat.nochallenger);
+							API.sendChat(subChat(basicBot.chat.nochallenger));
 							return false;
 						}						
 						var name = msg.substring(space + 2);
