@@ -2608,8 +2608,8 @@
 									name2: basicBot.settings.fighter1
 								}));
 								setTimeout(function() {
-									var id1 = API.getWaitListPosition(basicBot.settings.fighter2.id)
-									var id2 = API.getWaitListPosition(basicBot.settings.fighter1.id)
+									var id1 = API.getWaitListPosition(basicBot.settings.fighter2.id);
+									var id2 = API.getWaitListPosition(basicBot.settings.fighter1.id);
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 > id2) {
 										API.sendChat(basicBot.chat.swap);
@@ -2625,8 +2625,8 @@
 									name2: basicBot.settings.fighter2
 								}));
 								setTimeout(function() {
-									var id1 = API.getWaitListPosition(basicBot.settings.fighter1.id)
-									var id2 = API.getWaitListPosition(basicBot.settings.fighter2.id)
+									var id1 = API.getWaitListPosition(basicBot.settings.fighter1.id);
+									var id2 = API.getWaitListPosition(basicBot.settings.fighter2.id);
 									if (id1 === -1 || id2 === -1) API.sendChat(basicBot.chat.notonwaitlist);
 									else if (id1 > id2) {
 										API.sendChat(basicBot.chat.swap);
