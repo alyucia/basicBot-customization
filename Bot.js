@@ -2586,9 +2586,6 @@
 				command: 'challenge',
 				rank: 'user',
 				type: 'startsWith',
-				getWinner: function(chat) {
-					return Math.floor(Math.random() * 100);
-				},
 				functionality: function(chat, cmd) {
 					if (this.type === 'exact' && chat.message.length !== cmd.length) return
 					void(0);
@@ -2599,12 +2596,12 @@
 					} else {
 						var msg = chat.message;
 						var space = msg.indexOf(' ');
-						var name = msg.substring(space + 2);
-						var user = basicBot.userUtilities.lookupUserName(name);
 						if (space === -1) {
 							API.sendChat(basicBot.chat.nochallenger);
-							return void(0);
-						}
+							return false;
+						}						
+						var name = msg.substring(space + 2);
+						var user = basicBot.userUtilities.lookupUserName(name);
 						if (user === false || !user.inRoom) {
 							return API.sendChat(subChat(basicBot.chat.nothere, {
 								name: name
