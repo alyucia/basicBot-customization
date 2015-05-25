@@ -2580,6 +2580,33 @@
 					}
 				}
 			},
+			acceptCommand: {
+				command: 'accept',
+				rank: 'user',
+				type: 'exact',
+				functionality: function(chat, cmd) {
+					if (this.type === 'exact' && chat.message.length !== cmd.length) return
+					void(0);
+					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+					else {
+						if (basicBot.settings.fighter1 == null)
+							API.sendChat(subChat(basicBot.chat.nochallenge,{
+								name: chat.un
+							}));	
+						else if (chat.un === basicBot.settings.fighter2) {
+							API.sendChat(subChat(basicBot.chat.acceptedchallenge,{
+								name1: chat.un,
+								name2: basicBot.settings.fighter1
+							}));
+						}
+						else {
+							API.sendChat(subChat(basicBot.chat.notchallenged,{
+								name: chat.un
+							}));
+						}
+					}
+				}
+			},
 			challengeCommand: {
 				command: 'challenge',
 				rank: 'user',
