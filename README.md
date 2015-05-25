@@ -12,7 +12,7 @@ USER
 !ask (x) - Answers yes/no to question x.<br>
 !attack - Attacks the bot!<br>
 !challenge (@user) - Challenges the user for their waitlist position.<br>
-!eta - Shows how long until your turn to play music.<br>
+!eta (@user) - Shows how long until the user's turn to play music.<br>
 !fb - Shows facebook page for Royals.<br>
 !geturl - Shows url to current song.<br>
 !give (@user) - Gives a random thing to the user. <br>
