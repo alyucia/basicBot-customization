@@ -2566,13 +2566,12 @@
 										setTimeout(function() {
 											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter2)
 												.id, id1, false);
-										}, 2000);
+										}, 4000);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter1
 									}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
-									basicBot.settings.challenge = false;
 								}, 4000);
 							} else {
 								setTimeout(function() {
@@ -2594,13 +2593,12 @@
 										setTimeout(function() {
 											basicBot.userUtilities.moveUser(basicBot.userUtilities.lookupUserName(basicBot.settings.fighter1)
 												.id, id2, false);
-										}, 2000);
+										}, 4000);
 									} else API.sendChat(subChat(basicBot.chat.unnecessaryswap, {
 										name: basicBot.settings.fighter2
 									}));
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
-									basicBot.settings.challenge = false;
 								}, 4000);
 							}
 						} else {
@@ -2647,6 +2645,8 @@
 										name2: user.username
 									}));
 								}
+								else
+									basicBot.settings.challenge = false;
 							}, 30000);
 							return API.sendChat(subChat(basicBot.chat.battle, {
 								name1: basicBot.settings.fighter1,
