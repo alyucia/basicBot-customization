@@ -2686,6 +2686,7 @@
                             if (space === -1) {
                             API.sendChat(basicBot.chat.nochallenger);
                             return false;
+                            }
                             if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nothere, {
                                     name: name
