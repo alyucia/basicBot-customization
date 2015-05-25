@@ -2607,8 +2607,8 @@
 						} else if (user.username === chat.un) {
 							return API.sendChat(subChat(basicBot.chat.selfchallenge));
 						} else {
-							basicBot.settings.fighter1 = chat.un,
-								basicBot.settings.fighter2 = user.username
+							basicBot.settings.fighter1 = chat.un;
+							basicBot.settings.fighter2 = user.username;
 							if (!basicBot.settings.challenge) {
 								setTimeout(function() {
 									basicBot.settings.fighter1 = null;
