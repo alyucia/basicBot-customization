@@ -285,7 +285,7 @@
 						position: pos
 					}));
 					setTimeout(function(winner, pos) {
-						if (user.id == basicBot.getDJ()
+						if (user.id == API.getDJ()
 							.id) API.sendChat(subChat(basicBot.chat.winnerdj));
 						else if (basicBot.getWaitListPosition(user.id) == -1) API.moderateAddDJ(
 							user.id);
