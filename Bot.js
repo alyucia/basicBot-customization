@@ -285,8 +285,10 @@
 						position: pos
 					}));
 					setTimeout(function(winner, pos) {
-						if (winner == API.getDJ().id) API.sendChat(subChat(basicBot.chat.winnerdj));
-						else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
+						if (winner == API.getDJ()
+							.id) API.sendChat(subChat(basicBot.chat.winnerdj));
+						else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(
+							winner);
 						basicBot.userUtilities.moveUser(winner, pos, false);
 					}, 1 * 1000, winner, pos);
 				}
@@ -2589,18 +2591,52 @@
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
-						if (basicBot.settings.fighter1 == null)
-							API.sendChat(subChat(basicBot.chat.nochallenge,{
+						if (basicBot.settings.fighter1 == null) API.sendChat(subChat(basicBot.chat
+							.nochallenge, {
 								name: chat.un
-							}));	
+							}));
 						else if (chat.un === basicBot.settings.fighter2) {
-							API.sendChat(subChat(basicBot.chat.acceptedchallenge,{
-								name1: chat.un,
+							var id1;
+							var id2;
+							basicBot.settings.challenge = true;
+							API.sendChat(subChat(basicBot.chat.acceptedchallenge, {
+								name1: basicBot.settings.fighter2,
 								name2: basicBot.settings.fighter1
 							}));
-						}
-						else {
-							API.sendChat(subChat(basicBot.chat.notchallenged,{
+							var random = Math.random() * 2;
+							if (random > 1) {
+								API.sendChat(subChat(basicBot.chat.winningchallenger, {
+									name1: basicBot.settings.fighter2,
+									name2: basicBot.settings.fighter1
+								}));
+								setTimeout(function() {
+									id1 = API.getWaitListPosition(basicBot.settings.fighter2.id)
+									id2 = API.getWaitListPosition(basicBot.settings.fighter1.id)
+									if (id1 == -1 || id2 == -1) API.sendChat(basicBot.chat.notonwaitlist);
+									else if (id1 > id2) {
+										API.sendChat(basicBot.chat.swap);
+										basicBot.userUtilities.moveUser(name1.id, id2, false);
+										basicBot.userUtilities.moveUser(name2.id, id1, false);
+									} else API.sendChat(basicBot.chat.unnecessaryswap);
+								}, 3000);
+							} else {
+								API.sendChat(subChat(basicBot.chat.winningchallenger, {
+									name1: basicBot.settings.fighter1,
+									name2: basicBot.settings.fighter2
+								}));
+								setTimeout(function() {
+									id1 = API.getWaitListPosition(basicBot.settings.fighter1.id)
+									id2 = API.getWaitListPosition(basicBot.settings.fighter2.id)
+									if (id1 == -1 || id2 == -1) API.sendChat(basicBot.chat.notonwaitlist);
+									else if (id1 > id2) {
+										API.sendChat(basicBot.chat.swap);
+										basicBot.userUtilities.moveUser(name1.id, id2, false);
+										basicBot.userUtilities.moveUser(name2.id, id1, false);
+									} else API.sendChat(basicBot.chat.unnecessaryswap);
+								}, 3000);
+							}
+						} else {
+							API.sendChat(subChat(basicBot.chat.notchallenged, {
 								name: chat.un
 							}));
 						}
@@ -2619,7 +2655,7 @@
 					if (basicBot.settings.fighter1 != null) {
 						API.sendChat(basicBot.chat.challengeexists);
 						return false;
-					}else if (space === -1) {
+					} else if (space === -1) {
 						API.sendChat(basicBot.chat.nochallenger);
 						return false;
 					} else {
@@ -2632,6 +2668,7 @@
 						} else if (user.username === chat.un) {
 							return API.sendChat(subChat(basicBot.chat.selfchallenge));
 						} else {
+							basicBot.settings.challenge = false;
 							basicBot.settings.fighter1 = chat.un;
 							basicBot.settings.fighter2 = user.username;
 							if (!basicBot.settings.challenge) {
