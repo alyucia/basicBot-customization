@@ -2589,13 +2589,12 @@
 				functionality: function(chat, cmd) {
 					if (this.type === 'exact' && chat.message.length !== cmd.length) return
 					void(0);
+					var msg = chat.message;
+					var space = msg.indexOf(' ');
 					if (!basicBot.settings.fighter1 == null) {
 						API.sendChat(basicBot.chat.challengeexists);
 						return false;
-					}
-					var msg = chat.message;
-					var space = msg.indexOf(' ');
-					if (space === -1) {
+					}else if (space === -1) {
 						API.sendChat(basicBot.chat.nochallenger);
 						return false;
 					} else {
