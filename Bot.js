@@ -1489,10 +1489,10 @@
 						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.afksremoved + ": " + basicBot.room.afkList.length + '. ';
-						msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + 'mins. ';
-						msg += '. ';
+						msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk;
+						msg += 'mins. ';
 						msg += basicBot.chat.timeguard + ': ';
-						if (basicBot.settings.timeGuard) msg += basicBot.settings.maximumSongLength;
+						if (basicBot.settings.timeGuard) msg += basicBot.settings.maximumSongLength+'mins';
 						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.chatfilter + ': ';
