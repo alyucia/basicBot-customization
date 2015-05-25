@@ -1747,7 +1747,9 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.facebook));
-                        API.sendChat(subChat(basicBot.settings.facebook));
+                        setTimeout(function() {
+                                API.sendChat(subChat(basicbot.settings.facebook));
+                        }, 1000);
                     }
                 }
             },
@@ -2606,7 +2608,9 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.website));
-                        API.sendChat(subChat(basicbot.settings.website));
+                        setTimeout(function() {
+                                API.sendChat(subChat(basicbot.settings.website));
+                            }, 1000);
                     }
                 }
             },
