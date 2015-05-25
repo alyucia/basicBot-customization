@@ -154,7 +154,7 @@
     "commandslink": "\/me NikkiBot: Commands: %%LINK%%",
     "eatcookie": "\/me NikkiBot eats all your cookies!",
     "nousercookie": "\/em NikkiBot: You can't give anything to someone who isn't here.",
-    "selfcookie": "\/me NikkiBot already ate all the cookies! :D",
+    "selfcookie": "\/me NikkiBot already ate all the cookies!",
     "cookie": "\/me %%NAMETO%%, %%NAMEFROM%% %%COOKIE%%",
     "notinwaitlist": "\/me NikkiBot: %%NAME%%, you're not on the waitlist.",
     "eta": "\/me NikkiBot: %%NAME%%, your turn is in approximately %%TIME%%.",
@@ -200,5 +200,8 @@
     "attack": "\/me NikkiBot: %%HITS%%",
     "hp": "\/me NikkiBot has %%HP%%/20 HP remaining.",
     "dead": "\/me NikkiBot went offline.",
-    "reborn": "\/me NikkiBot: Guess who's back from the dead?! Mwahaha!!"
+    "reborn": "\/me NikkiBot: Guess who's back from the dead?! Mwahaha!!",
+    "nothere": "\/me NikkiBot: %%NAME%% is not in the room.",
+    "selfchallenge": "\/me NikkiBot: What's the point of challenging yourself?",
+    "battle": "\/me %%NAME1%% has challenged %%NAME2%% to a battle. %%NAME2%%, type !accept to confirm."
 }
