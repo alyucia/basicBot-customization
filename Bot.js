@@ -2601,7 +2601,6 @@
 						var space = msg.indexOf(' ');
 						var name = msg.substring(space + 2);
 						var user = basicBot.userUtilities.lookupUserName(name);
-						var space = msg.indexOf(' ');
 						if (space === -1) {
 							API.sendChat(basicBot.chat.nochallenger);
 							return void(0);
