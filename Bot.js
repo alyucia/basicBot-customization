@@ -2198,14 +2198,13 @@
 					void(0);
 					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
 					else {
-						var msg = '/me [Settings:] ';
+						var msg = '/me [Settings] - ';
 						msg += basicBot.chat.afkremoval + ': ';
 						if (basicBot.settings.afkRemoval) msg += 'Y';
 						else msg += 'N';
 						msg += '. ';
 						msg += basicBot.chat.afksremoved + ": " + basicBot.room.afkList.length + '. ';
-						msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + '. ';
-						msg += 'Bouncer+: ';
+						msg += basicBot.chat.afklimit + ': ' + basicBot.settings.maximumAfk + 'mins. ';
 						msg += '. ';
 						msg += basicBot.chat.timeguard + ': ';
 						if (basicBot.settings.timeGuard) msg += 'Y';
