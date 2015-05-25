@@ -2634,6 +2634,8 @@
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
 									} else API.sendChat(basicBot.chat.unnecessaryswap);
 								}, 3000);
+								basicBot.settings.fighter1 = null;
+								basicBot.settings.fighter2 = null;
 							}
 						} else {
 							API.sendChat(subChat(basicBot.chat.notchallenged, {
