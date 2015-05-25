@@ -2685,7 +2685,7 @@
                             var space = msg.indexOf(' ');
                             if (space === -1) {
                                 API.sendChat(basicBot.chat.nochallenger);
-                                return false;
+                                return void(0);
                             }
                             if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(basicBot.chat.nothere, {
