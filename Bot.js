@@ -2282,37 +2282,39 @@
 					}
 				}
 			},
-		unbanCommand: {
-                command: 'unban',
-                rank: 'bouncer',
-                type: 'startsWith',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                    	    var user;
-                            var msg = chat.message;
-                            if (msg.length === cmd.length) return API.sendChat();
-                            var name = msg.substring(cmd.length + 2);
-                            var bannedUsers = API.getBannedUsers();
-                            var found = false;
-                            var bannedUser = null;
-                            for (var i = 0; i < bannedUsers.length; i++) {
-                                user = bannedUsers[i];
-                                if (user.username === name) {
-                                    bannedUser = user;
-                                    found = true;
-                                }
-                            }
-                            if (!found) {
-                                return API.sendChat(subChat(basicBot.chat.notbanned, {name: chat.un}));
-                            }
-                            API.moderateUnbanUser(basicBot.userUtilities.lookupUserName(user).id);
-                            console.log("Unbanned " + name);
-                    }
-                }
-            },
-
+			unbanCommand: {
+				command: 'unban',
+				rank: 'bouncer',
+				type: 'startsWith',
+				functionality: function(chat, cmd) {
+					if (this.type === 'exact' && chat.message.length !== cmd.length) return
+					void(0);
+					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+					else {
+						var msg = chat.message;
+						if (msg.length === cmd.length) return API.sendChat();
+						var name = msg.substring(cmd.length + 2);
+						var bannedUsers = API.getBannedUsers();
+						var found = false;
+						var bannedUser = null;
+						for (var i = 0; i < bannedUsers.length; i++) {
+							var user = bannedUsers[i];
+							if (user.username === name) {
+								bannedUser = user;
+								API.moderateUnbanUser(bannedUser.id);
+								console.log("Unbanned " + name);
+							}
+						}
+						if (!found) {
+							$(".icon-chat")
+								.click();
+							return API.sendChat(subChat(basicBot.chat.notbanned, {
+								name: chat.un
+							}));
+						}
+					}
+				}
+			},
 			reloadCommand: {
 				command: 'reload',
 				rank: 'bouncer',
@@ -2345,28 +2347,42 @@
 					}
 				}
 			},
-		unmuteCommand: {
-                command: 'unmute',
-                rank: 'bouncer',
-                type: 'startsWith',
-                functionality: function (chat, cmd) {
-                    if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
-                    if (!basicBot.commands.executable(this.rank, chat)) return void (0);
-                    else {
-                        var msg = chat.message;
-                        var name = msg.substr(cmd.length + 2);
-                        if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
-                            try {
-                                API.moderateUnmuteUser(basicBot.userUtilities.lookupUserName(name).id);
-                                API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
-                            }
-                            catch (e) {
-                                API.sendChat(subChat(basicBot.chat.notmuted, {name: chat.un}));
-                            }
-                    }
-                }
-            },
-
+			unmuteCommand: {
+				command: 'unmute',
+				rank: 'bouncer',
+				type: 'startsWith',
+				functionality: function(chat, cmd) {
+					if (this.type === 'exact' && chat.message.length !== cmd.length) return
+					void(0);
+					if (!basicBot.commands.executable(this.rank, chat)) return void(0);
+					else {
+						var msg = chat.message;
+						var permFrom = basicBot.userUtilities.getPermission(chat.uid);
+						var from = chat.un;
+						var name = msg.substr(cmd.length + 2);
+						var user = basicBot.userUtilities.lookupUserName(name);
+						if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {
+							name: chat.un
+						}));
+						var permUser = basicBot.userUtilities.getPermission(user.id);
+						if (permFrom > permUser) {
+							try {
+								API.moderateUnmuteUser(user.id);
+								API.sendChat(subChat(basicBot.chat.unmuted, {
+									name: chat.un,
+									username: name
+								}));
+							} catch (e) {
+								API.sendChat(subChat(basicBot.chat.notmuted, {
+									name: chat.un
+								}));
+							}
+						} else API.sendChat(subChat(basicBot.chat.unmuterank, {
+							name: chat.un
+						}));
+					}
+				}
+			},
 			usercommandsCommand: {
 				command: 'usercommands',
 				rank: 'manager',
