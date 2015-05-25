@@ -285,6 +285,10 @@
 						position: pos
 					}));
 					setTimeout(function(winner, pos) {
+						if (winner == basicBot.getDJ().id)
+							API.sendChat(subChat(basicBot.chat.winnerdj));
+						if (basicBot.getWaitListPosition(winner) == -1)
+							API.moderateAddDJ(winner);
 						basicBot.userUtilities.moveUser(winner, pos, false);
 					}, 1 * 1000, winner, pos);
 				}
