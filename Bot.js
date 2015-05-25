@@ -2614,15 +2614,15 @@
 									basicBot.settings.fighter1 = null;
 									basicBot.settings.fighter2 = null;
 									API.sendChat(subChat(basicBot.chat.withdraw, {
-										name1: basicBot.settings.fighter1,
-										name2: basicBot.settings.fighter2
+										name1: chat.un,
+										name2: user.username
 									}));
 								}, 15000);
 							}
 							return API.sendChat(subChat(basicBot.chat.battle, {
-								name1: chat.un,
-								name2: user.username,
-								name3: user.username
+								name1: basicBot.settings.fighter1,
+								name2: basicBot.settings.fighter2,
+								name3: basicBot.settings.fighter2
 							}));
 						}
 					}
