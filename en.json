@@ -100,6 +100,7 @@
     "isopen": "\/me NikkiBot: DJ Roulette is now open! Type !join to participate in the roulette!",
     "ishalfway": "\/me NikkiBot: 30 seconds remaining! Type !join to participate in the roulette.",
     "isnearend": "\/me NikkiBot: 10 seconds remaining! Type !join to participate in the roulette.",
+    "winnerdj": "\/me NikkiBot: Oh, you're already the DJ! I guess no one's being moved!",
     "winnerpicked": "\/me NikkiBot: Congratulations %%NAME%%, you're our lucky DJ! You will be moved to %%POSITION%% on the waitlist.",
     "ball": "\/me NikkiBot: Question: %%QUESTION%%Answer: %%RESPONSE%%",
     "alreadyadding": "\/me NikkiBot: User is already being added! Changed the desired position to %%POSITION%%.",
