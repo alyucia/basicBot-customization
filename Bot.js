@@ -2617,6 +2617,8 @@
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
 									} else API.sendChat(basicBot.chat.unnecessaryswap);
 								}, 5000);
+							basicBot.settings.fighter1 = null;
+							basicBot.settings.fighter2 = null;	
 							} else {
 								API.sendChat(subChat(basicBot.chat.winningchallenger, {
 									name1: basicBot.settings.fighter1,
@@ -2631,9 +2633,9 @@
 										basicBot.userUtilities.moveUser(name1.id, id2, false);
 										basicBot.userUtilities.moveUser(name2.id, id1, false);
 									} else API.sendChat(basicBot.chat.unnecessaryswap);
-								}, 5000);
 								basicBot.settings.fighter1 = null;
 								basicBot.settings.fighter2 = null;
+								}, 5000);
 							}
 						} else {
 							API.sendChat(subChat(basicBot.chat.notchallenged, {
