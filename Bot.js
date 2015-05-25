@@ -185,17 +185,17 @@
             startupEmoji: false, // true or false
             cmdDeletion: true,
             chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
+            website: "http://mapleroyals.com/?page=index",
+            facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
             hp: 20,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
             bouncerPlus: false,
-            blacklistEnabled: true,
+            blacklistEnabled: false,
             lockdownEnabled: false,
             lockGuard: false,
-            maximumLocktime: 10,
             cycleGuard: false,
-            maximumCycletime: 10,
             voteSkip: true,
             voteSkipLimit: 6,
             timeGuard: true,
@@ -204,17 +204,7 @@
             commandCooldown: 30,
             usercommandsEnabled: true,
             lockskipPosition: 1,
-            lockskipReasons: [
-                ["theme", "This song does not fit the room theme. "],
-                ["op", "This song is on the OP list. "],
-                ["history", "This song is in the history. "],
-                ["mix", "You played a mix, which is against the rules. "],
-                ["sound", "The song you played had bad sound quality or no sound. "],
-                ["nsfw", "The song you contained was NSFW (image or sound). "],
-                ["unavailable", "The song you played was not available for some users. "]
-            ],
             afkpositionCheck: 1,
-            afkRankCheck: "ambassador",
             motdEnabled: true,
             motdInterval: 3,
             motd: "Notice: Use !help for a list of commands.",
@@ -222,14 +212,10 @@
             etaRestriction: false,
             welcome: true,
             opLink: null,
-            rulesLink: null,
-            themeLink: null,
-            youtubeLink: null,
             intervalMessages: [],
             messageInterval: 5,
             songstats: false,
             commandLiteral: "!",
-            blacklists: {}
         },
         room: {
             users: [],
@@ -1761,6 +1747,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.facebook));
+                        API.sendChat(subChat(basicBot.settings.facebook));
                     }
                 }
             },
@@ -2619,6 +2606,7 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(basicBot.chat.website));
+                        API.sendChat(subChat(basicbot.settings.website));
                     }
                 }
             },
