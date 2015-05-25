@@ -207,5 +207,8 @@
     "selfchallenge": "\/me NikkiBot: What's the point of challenging yourself?",
     "battle": "\/me NikkiBot: %%NAME1%% has challenged %%NAME2%% to a battle. %%NAME3%%, type !accept to confirm.",
     "withdraw": "\/me NikkiBot: @%%NAME1%%, %%NAME2%% did not respond to your challenge. Your battle has been withdrawn..",
-    "challengeexists": "\/me NikkiBot: A challenge already exists. Please wait for it to be completed or withdrawn."
+    "challengeexists": "\/me NikkiBot: A challenge already exists. Please wait for it to be completed or withdrawn.",
+    "nochallenge": "\/me NikkiBot: There are currently no existing challenges!",
+    "acceptedchallenge": "\/me NikkiBot: %%NAME%% has accepted %%NAME%%'s challenge.",
+    "notchallenged": "\/me NikkiBot: %%NAME%%, you are not involved in this battle."
 }
