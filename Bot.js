@@ -181,8 +181,8 @@
 			maximumAfk: 120,
 			afkRemoval: false,
 			maximumDc: 60,
-			fighter1: "*",
-			fighter2: "*",
+			fighter1: null,
+			fighter2: null,
 			challenge: false,
 			blacklistEnabled: false,
 			lockdownEnabled: false,
@@ -2589,7 +2589,7 @@
 					void(0);
 					var msg = chat.message;
 					var space = msg.indexOf(' ');
-					if (!basicBot.settings.fighter1 === "*") {
+					if (basicBot.settings.fighter1 != null) {
 						API.sendChat(basicBot.chat.challengeexists);
 						return false;
 					}else if (space === -1) {
@@ -2609,8 +2609,8 @@
 							basicBot.settings.fighter2 = user.username;
 							if (!basicBot.settings.challenge) {
 								setTimeout(function() {
-									basicBot.settings.fighter1 = "*";
-									basicBot.settings.fighter2 = "*";
+									basicBot.settings.fighter1 = null;
+									basicBot.settings.fighter2 = null;
 									API.sendChat(subChat(basicBot.chat.withdraw, {
 										name1: chat.un,
 										name2: user.username
