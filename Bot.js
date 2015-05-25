@@ -2589,7 +2589,7 @@
 					void(0);
 					var msg = chat.message;
 					var space = msg.indexOf(' ');
-					if (!basicBot.settings === "*") {
+					if (!basicBot.settings.fighter1 === "*") {
 						API.sendChat(basicBot.chat.challengeexists);
 						return false;
 					}else if (space === -1) {
