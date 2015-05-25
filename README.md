@@ -19,7 +19,8 @@ USER
 !rules - Links to rules. (COMING SOON)<br>
 !website - Links to maple royals page.<br>
 !attack - Attacks the bot!<br>
-!hp - Checks for the bot's HP.
+!hp - Checks for the bot's HP.<br>
+!challenge (@user) - Challenges the user for their waitlist position.
 
 BOUNCER
 ===========
