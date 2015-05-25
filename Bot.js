@@ -2290,6 +2290,7 @@
                     if (this.type === 'exact' && chat.message.length !== cmd.length) return void (0);
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
+                    	    var user;
                             var msg = chat.message;
                             if (msg.length === cmd.length) return API.sendChat();
                             var name = msg.substring(cmd.length + 2);
@@ -2297,7 +2298,7 @@
                             var found = false;
                             var bannedUser = null;
                             for (var i = 0; i < bannedUsers.length; i++) {
-                                var user = bannedUsers[i];
+                                user = bannedUsers[i];
                                 if (user.username === name) {
                                     bannedUser = user;
                                     found = true;
@@ -2306,7 +2307,7 @@
                             if (!found) {
                                 return API.sendChat(subChat(basicBot.chat.notbanned, {name: chat.un}));
                             }
-                            API.moderateUnbanUser(basicBot.userUtilities.lookupUserName(bannedUser).id);
+                            API.moderateUnbanUser(basicBot.userUtilities.lookupUserName(user).id);
                             console.log("Unbanned " + name);
                     }
                 }
@@ -2353,22 +2354,15 @@
                     if (!basicBot.commands.executable(this.rank, chat)) return void (0);
                     else {
                         var msg = chat.message;
-                        var permFrom = basicBot.userUtilities.getPermission(chat.uid);
-                        var from = chat.un;
                         var name = msg.substr(cmd.length + 2);
-                        var user = basicBot.userUtilities.lookupUserName(name).id;
                         if (typeof user === 'boolean') return API.sendChat(subChat(basicBot.chat.invaliduserspecified, {name: chat.un}));
-                        var permUser = basicBot.userUtilities.getPermission(user);
-                        if (permFrom > permUser) {
                             try {
-                                API.moderateUnmuteUser(user);
+                                API.moderateUnmuteUser(basicBot.userUtilities.lookupUserName(name).id);
                                 API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
                             }
                             catch (e) {
                                 API.sendChat(subChat(basicBot.chat.notmuted, {name: chat.un}));
                             }
-                        }
-                        else API.sendChat(subChat(basicBot.chat.unmuterank, {name: chat.un}));
                     }
                 }
             },
