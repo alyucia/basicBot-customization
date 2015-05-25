@@ -2370,7 +2370,6 @@
                         if (permFrom > permUser) {
                             try {
                             	$(".icon-population").click();
-                        	$(".icon-mute").click();
                                 API.moderateUnmuteUser(user.id);
                                 API.sendChat(subChat(basicBot.chat.unmuted, {name: chat.un, username: name}));
                                 $(".icon-chat").click();
