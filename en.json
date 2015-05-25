@@ -209,6 +209,6 @@
     "withdraw": "\/me NikkiBot: @%%NAME1%%, %%NAME2%% did not respond to your challenge. Your battle has been withdrawn..",
     "challengeexists": "\/me NikkiBot: A challenge already exists. Please wait for it to be completed or withdrawn.",
     "nochallenge": "\/me NikkiBot: There are currently no existing challenges!",
-    "acceptedchallenge": "\/me NikkiBot: %%NAME%% has accepted %%NAME%%'s challenge.",
+    "acceptedchallenge": "\/me NikkiBot: %%NAME1%% has accepted %%NAME2%%'s challenge.",
     "notchallenged": "\/me NikkiBot: %%NAME%%, you are not involved in this battle."
 }
