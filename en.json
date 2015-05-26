@@ -185,7 +185,7 @@
     "eta": "\/me NikkiBot: @%%NAME%%, your turn is in approximately %%TIME%%.",
     "facebook": "\/me NikkiBot: Like us on facebook at %%URL%%",
     "greyuser": "Only bouncers and up can run the bot.",
-    "hp": "\/me NikkiBot has %%HP%%/20 HP remaining.",
+    "hp": "\/me NikkiBot has %%HP%%/50 HP remaining.",
     "inactivefor": "\/me NikkiBot: %%USERNAME%% has been afk for %%TIME%%.",
     "inactivelonger": "\/me NikkiBot: %%USERNAME%% has been inactive longer than I've been online.",
     "invalidlimitspecified": "\/me NikkiBot: Invalid limit.",
