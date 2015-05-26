@@ -2358,9 +2358,10 @@
                                 bot.settings.heal = bot.settings.hp;
                                 setTimeout(function() {
                                     if ((bot.settings.heal - bot.settings.hp) >= 3){
-                                        bot.settings.hp += (bot.settings.heal - bot.settings.hp);
+                                        var heal = bot.settings.heal - bot.settings.hp;
+                                        bot.settings.hp += heal;
                                         API.sendChat(subChat(bot.chat.heal, {
-                                        hp: (bot.settings.heal - bot.settings.hp)
+                                        hp: heal
                                         }))
                                         bot.settings.spam = false;
                                     }
