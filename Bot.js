@@ -2356,6 +2356,7 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
+                        var pushback;
                         if (bot.settings.shell) {
                             bot.settings.shell = false;
                             API.sendChat(subChat(bot.chat.fire, {
@@ -2363,7 +2364,7 @@
                             }));
                             setTimeout(function() {
                                 var random = Math.random() * 10;
-                                var pushback = Math.floor(Math.random() * 5) + 1;
+                                pushback = Math.floor(Math.random() * 5) + 1;
                                 if (random > 4) {
                                     var index = Math.floor(Math.random() * (API.getUsers().length - 1));
                                     bot.settings.target = API.getUser(API.getUsers()[index]).id;
