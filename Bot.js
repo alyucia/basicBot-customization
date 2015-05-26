@@ -269,7 +269,7 @@
                         name: name,
                         position: pos
                     }));
-                    if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
+                    if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner.toString());
                     else if (winner == API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                         setTimeout(function() {
                         bot.userUtilities.moveUser(winner, pos, false);
