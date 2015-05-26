@@ -217,6 +217,7 @@
     "nochallenger": "\/me NikkiBot: You didn't challenge anyone.",
     "nolimitspecified": "\/me NikkiBot: No limit specified.",
     "noposition": "\/me NikkiBot: No last position known. The waitlist needs to update at least once to register a user's last position.",
+    "noshell": "\/me NikkiBot: There aren't any snail shells to play with! Maybe you should ask SnailSnack for some..",
     "notbanned": "\/me NikkiBot: The user isn't banned.",
     "notchallenged": "\/me NikkiBot: %%NAME%%, you are not involved in this battle.",
     "notdisconnected": "\/me NikkiBot: %%NAME%% did not disconnect during my time here.",
