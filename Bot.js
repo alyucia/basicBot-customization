@@ -625,7 +625,7 @@
                         var messageNumber = bot.room.roomstats.songCount % bot.settings.intervalMessages.length;
                         msg = bot.settings.intervalMessages[messageNumber];
                     }
-                    API.sendChat('/me Notice:' + msg);
+                    API.sendChat('/me NikkiBot: ' + msg);
                 }
             }
         },
