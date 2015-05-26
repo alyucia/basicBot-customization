@@ -678,11 +678,14 @@
                 }
             }
             if (basicBot.settings.welcome && greet) {
-                welcomeback ? API.sendChat(subChat(basicBot.chat.welcomeback, {
-                    name: user.username
-                })) : API.sendChat(subChat(basicBot.chat.welcome, {
-                    name: user.username
-                }))
+                welcomeback ?
+                    setTimeout(function (user) {
+                        API.sendChat(subChat(basicBot.chat.welcomeback, {name: user.username}));
+                    }, 1 * 1000, user)
+                    :
+                    setTimeout(function (user) {
+                        API.sendChat(subChat(basicBot.chat.welcome, {name: user.username}));
+                    }, 1 * 1000, user);
             }
         },
         eventUserleave: function(user) {
