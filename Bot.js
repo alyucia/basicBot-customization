@@ -2489,7 +2489,7 @@
                 }
             },
             declineCommand: {
-                command: 'decline', 'cancel',
+                command: ('decline', 'cancel'),
                 rank: 'user',
                 type: 'exact',
                 functionality: function(chat, cmd) {
