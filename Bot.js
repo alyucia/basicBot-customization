@@ -269,7 +269,7 @@
                         position: pos
                     }));
                     if (API.getWaitList().length === 0) API.moderateAddDJ(user.id);
-                    else if (winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
+                    else if (user.id === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                     else if (API.getWaitListPosition(user.id) === -1) API.moderateAddDJ(user.id);
                     setTimeout(function() {
                         bot.userUtilities.moveUser(user.id, pos, false);
