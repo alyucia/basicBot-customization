@@ -248,13 +248,13 @@
                     API.sendChat(bot.chat.isopen);
                     setTimeout(function() {
                         API.sendChat(subChat(bot.chat.ishalfway))
-                    }, 5 * 1000);
+                    }, 30 * 1000);
                     setTimeout(function() {
                         API.sendChat(subChat(bot.chat.isnearend))
-                    }, 10 * 1000);
+                    }, 50 * 1000);
                     bot.room.roulette.countdown = setTimeout(function() {
                         bot.room.roulette.endRoulette();
-                    }, 20 * 1000);
+                    }, 58 * 1000);
                 },
                 endRoulette: function() {
                     bot.room.roulette.rouletteStatus = false;
