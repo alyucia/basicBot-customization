@@ -268,11 +268,11 @@
                         name: name,
                         position: pos
                     }));
-                    if (API.getWaitList().length === 0) API.moderateAddDJ(winner);
+                    if (API.getWaitList().length === 0) API.moderateAddDJ(user.id);
                     else if (winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
-                    else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
+                    else if (API.getWaitListPosition(user.id) === -1) API.moderateAddDJ(user.id);
                     setTimeout(function() {
-                        bot.userUtilities.moveUser(winner, pos, false);
+                        bot.userUtilities.moveUser(user.id, pos, false);
                     }, 2000);
                 }
             }
