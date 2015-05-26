@@ -177,6 +177,8 @@
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
+            spam: false,
+            heal: null;
             fighter1: null,
             fighter2: null,
             timeout: null,
@@ -2370,24 +2372,24 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        var spam;
+                        var bot.settings.spam;
                         var check;
                         if (bot.settings.hp > 1) {
-                            if (spam){
+                            if (bot.settings.spam){
                                 setTimeout(function() {
-                                    if (bot.settings.hp <= (check - 5)){
-                                        bot.settings.hp += (bot.settings.hp - check);
+                                    if (bot.settings.hp <= (bot.settings.heal - 5)){
+                                        bot.settings.hp += (bot.settings.hp - bot.settings.heal);
                                         API.sendChat(subChat(bot.chat.heal, {
-                                        hp: (bot.settings.hp - check)
+                                        hp: (bot.settings.hp - bot.settings.heal)
                                         }))
-                                        spam = false;
+                                        bot.settings.spam = false;
                                     }
                                     else
-                                        spam = false;
+                                        bot.settings.spam = false;
                                 }, 10000);
                             } else{
-                                check = bot.settings.hp;
-                                spam = true;
+                                bot.settings.heal = bot.settings.hp;
+                                bot.settings.spam = true;
                             }
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
