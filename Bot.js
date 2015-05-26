@@ -268,7 +268,7 @@
                         name: name,
                         position: pos
                     }));
-                    if (API.getWaitList === 0) API.moderateAddDJ(winner);
+                    if (API.getWaitList().length === 0) API.moderateAddDJ(winner);
                     else if (winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                     else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
                     setTimeout(function() {
