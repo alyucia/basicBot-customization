@@ -803,8 +803,7 @@
             if (bot.room.autoskip) {
                 var remaining = obj.media.duration * 1000;
                 bot.room.autoskipTimer = setTimeout(function () {
-                    console.log("Skipping track.");
-                    //API.sendChat('Song stuck, skipping...');
+                    console.log("Skipping track..");
                     API.moderateForceSkip();
                 }, remaining + 3000);
             }
@@ -935,7 +934,6 @@
                     } else cmd = chat.message.substring(0, space);
                 } else return false;
                 var userPerm = bot.userUtilities.getPermission(chat.uid);
-                //console.log("name: " + chat.un + ", perm: " + userPerm);
                 if (chat.message !== "!join" && chat.message !== "!leave") {
                     if (userPerm === 0 && !bot.room.usercommand) return void(0);
                     if (!bot.room.allcommand) return void(0);
@@ -1006,12 +1004,10 @@
                 eventUserskip: $.proxy(this.eventUserskip, this),
                 eventUserjoin: $.proxy(this.eventUserjoin, this),
                 eventUserleave: $.proxy(this.eventUserleave, this),
-                //eventFriendjoin: $.proxy(this.eventFriendjoin, this),
                 eventVoteupdate: $.proxy(this.eventVoteupdate, this),
                 eventCurateupdate: $.proxy(this.eventCurateupdate, this),
                 eventRoomscoreupdate: $.proxy(this.eventRoomscoreupdate, this),
                 eventDjadvance: $.proxy(this.eventDjadvance, this),
-                //eventDjupdate: $.proxy(this.eventDjupdate, this),
                 eventWaitlistupdate: $.proxy(this.eventWaitlistupdate, this),
                 eventVoteskip: $.proxy(this.eventVoteskip, this),
                 eventModskip: $.proxy(this.eventModskip, this),
