@@ -195,7 +195,7 @@
             msgEnabled: true,
             msgInterval: 3,
             messageInterval: 3,
-            msg: "Notice: Type !help for a list of commands.",
+            msg: "Type !help for a list of commands.",
             intervalMessages: [],
             filterChat: true,
             etaRestriction: false,
@@ -625,7 +625,7 @@
                         var messageNumber = bot.room.roomstats.songCount % bot.settings.intervalMessages.length;
                         msg = bot.settings.intervalMessages[messageNumber];
                     }
-                    API.sendChat('/me ' + msg);
+                    API.sendChat('/me Notice:' + msg);
                 }
             }
         },
@@ -1850,14 +1850,12 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         var msg = chat.message;
-                        if (msg.length <= cmd.length + 1) return API.sendChat('/me msg: ' + bot.settings.msg);
+                        if (msg.length <= cmd.length + 1) return API.sendChat('Current Notice: '+ bot.settings.msg);
                         var argument = msg.substring(cmd.length + 1);
                         if (!bot.settings.msgEnabled) bot.settings.msgEnabled = !bot.settings.msgEnabled;
                         if (isNaN(argument)) {
                             bot.settings.msg = argument;
-                            API.sendChat(subChat(bot.chat.msgset, {
-                                msg: bot.settings.msg
-                            }));
+                            API.sendChat(subChat(bot.chat.msgset));
                         } else {
                             bot.settings.msgInterval = argument;
                             API.sendChat(subChat(bot.chat.msgintervalset, {
