@@ -2365,7 +2365,7 @@
                                         }))
                                         bot.settings.spam = false;
                                     }
-                                }, 5000);
+                                }, 6000);
                             }    
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
