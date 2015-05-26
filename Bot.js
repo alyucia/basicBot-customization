@@ -2375,27 +2375,23 @@
                         API.sendChat("Test");
                         if (bot.settings.hp > 1) {
                             if (!bot.settings.spam){
+                                bot.settings.heal = bot.settings.hp;
+                            }
                                 setTimeout(function() {
-                                    if (bot.settings.hp <= (bot.settings.heal - 3)){
+                                    if (!bot.settings.spam && (bot.settings.heal - bot.settings.hp) >= 5){
                                         bot.settings.hp += (bot.settings.heal - bot.settings.hp);
                                         API.sendChat(subChat(bot.chat.heal, {
                                         hp: (bot.settings.heal - bot.settings.hp)
                                         }))
-                                        bot.settings.spam = true;
-                                    }
-                                    else
                                         bot.settings.spam = false;
+                                    }
                                 }, 5000);
-                            } else{
-                                bot.settings.heal = bot.settings.hp;
-                                bot.settings.spam = true;
-                            }
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
                             API.sendChat(subChat(bot.chat.attack, {
                                 hits: bot.chat.hits[ow]
                             }));
-                        } else if (bot.settings.hp == 1) {
+                        } else if (bot.settings.hp == 1 && !bot.settings.spam) {
                             API.sendChat(subChat(bot.chat.kill));
                             API.sendChat(subChat(bot.chat.dead));
                             bot.settings.hp = 50;
@@ -2406,8 +2402,9 @@
                                 API.sendChat(subChat(bot.chat.reborn));
                             }, 3 * 60000);
                         } else {
-                            API.sendChat(subChat(bot.chat.dead));
+                            API.sendChat(subChat(bot.chat.shield));
                         }
+                        bot.settings.spam = true;
                     }
                 }
             },
