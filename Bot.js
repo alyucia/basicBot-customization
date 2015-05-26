@@ -178,7 +178,7 @@
             afkRemoval: false,
             maximumDc: 60,
             spam: false,
-            heal: null;
+            heal: null,
             fighter1: null,
             fighter2: null,
             timeout: null,
@@ -2372,8 +2372,6 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        var bot.settings.spam;
-                        var check;
                         if (bot.settings.hp > 1) {
                             if (bot.settings.spam){
                                 setTimeout(function() {
