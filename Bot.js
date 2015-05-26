@@ -171,7 +171,7 @@
             chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             website: "http://mapleroyals.com/?page=index",
             facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
-            hp: 50,
+            hp: 10,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
@@ -2351,7 +2351,10 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if (bot.settings.hp > 1) {
+                        if {bot.settings.spam && bot.settings.hp <= 5)
+                            API.sendChat(subChat(bot.chat.shield));
+                        }
+                        else if (bot.settings.hp > 1) {
                             if (!bot.settings.spam){
                                 bot.settings.heal = bot.settings.hp;
                                 setTimeout(function() {
@@ -2380,8 +2383,6 @@
                                 $.getScript(bot.scriptLink);
                                 API.sendChat(subChat(bot.chat.reborn));
                             }, 3 * 60000);
-                        } else {
-                            API.sendChat(subChat(bot.chat.shield));
                         }
                         bot.settings.spam = true;
                     }
