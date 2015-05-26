@@ -159,7 +159,7 @@
     "voteskip": "Vote Skip",
     "toggleon": "\/me NikkiBot: %%FUNCTION%% Enabled.",
     "toggleoff": "\/me NikkiBot: %%FUNCTION%% Disabled.",
-    "acceptcancel": "\/me NikkiBot: One of the challengers has withdrawn from the battle."
+    "acceptcancel": "\/me NikkiBot: One of the challengers has withdrawn from the battle.",
     "acceptedchallenge": "\/me NikkiBot: %%NAME1%% has accepted %%NAME2%%'s challenge.",
     "activefor": "Duration Online: %%TIME%%.",
     "activeusersintime": "\/me NikkiBot: There have been %%AMOUNT%% people chatting in the last %%TIME%% minutes.",
@@ -228,7 +228,7 @@
     "nouserspecified": "\/me NikkiBot: No user specified.",
     "online": "\/me NikkiBot is now online.",
     "reborn": "\/me NikkiBot: Guess who's back from the dead?! Mwahaha!!",
-    "rejectcancel": "\/ NikkiBot: It's too late, your fate has already been sealed!"
+    "rejectcancel": "\/ NikkiBot: It's too late, your fate has already been sealed!",
     "reload": "\/me NikkiBot: Forgetting all custom settings..",
     "removenotinwl": "\/me NikkiBot: %%USERNAME%% is not in the waitlist.",
     "roomrules": "\/me NikkiBot: Link to Rules: %%LINK%%",
