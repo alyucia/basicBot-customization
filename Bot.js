@@ -268,11 +268,11 @@
                         name: name,
                         position: pos
                     }));
-                    if (API.getDJ() !== undefined && winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
-                    else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
+                    if (API.getDJ() === undefined || API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
+                    else if (winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                     setTimeout(function() {
-                    bot.userUtilities.moveUser(winner, pos, false);
-                }, 2000);
+                        bot.userUtilities.moveUser(winner, pos, false);
+                    }, 2000);
                 }
             }
         },
@@ -674,14 +674,15 @@
                 }
             }
             if (bot.settings.welcome && greet) {
-                welcomeback ?
-                    setTimeout(function (user) {
-                        API.sendChat(subChat(bot.chat.welcomeback, {name: user.username}));
-                    }, 1 * 1000, user)
-                    :
-                    setTimeout(function (user) {
-                        API.sendChat(subChat(bot.chat.welcome, {name: user.username}));
-                    }, 1 * 1000, user);
+                welcomeback ? setTimeout(function(user) {
+                    API.sendChat(subChat(bot.chat.welcomeback, {
+                        name: user.username
+                    }));
+                }, 1 * 1000, user) : setTimeout(function(user) {
+                    API.sendChat(subChat(bot.chat.welcome, {
+                        name: user.username
+                    }));
+                }, 1 * 1000, user);
             }
         },
         eventUserleave: function(user) {
@@ -1852,7 +1853,7 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         var msg = chat.message;
-                        if (msg.length <= cmd.length + 1) return API.sendChat('\/me NikkiBot: Current Notice - '+ bot.settings.msg);
+                        if (msg.length <= cmd.length + 1) return API.sendChat('\/me NikkiBot: Current Notice - ' + bot.settings.msg);
                         var argument = msg.substring(cmd.length + 1);
                         if (!bot.settings.msgEnabled) bot.settings.msgEnabled = !bot.settings.msgEnabled;
                         if (isNaN(argument)) {
@@ -2353,25 +2354,38 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if (bot.settings.shell){
+                        if (bot.settings.shell) {
                             bot.settings.shell = false;
                             API.sendChat(subChat(bot.chat.fire, {
-                            name: chat.un
+                                name: chat.un
                             }));
                             setTimeout(function() {
-                            var random = Math.random() * 10;    
-                            if (random > 4) {
-                                var index = Math.floor(Math.random() * (API.getUsers().length-1));
-                                bot.settings.target = API.getUser(API.getUsers()[index]).id;
-                            }
-                            else    
-                                bot.settings.target = chat.uid;
+                                var random = Math.random() * 10;
+                                var pushback = Math.floor(Math.random() * 5) + 1;
+                                if (random > 4) {
+                                    var index = Math.floor(Math.random() * (API.getUsers().length - 1));
+                                    bot.settings.target = API.getUser(API.getUsers()[index]).id;
+                                } else bot.settings.target = chat.uid;
                                 API.sendChat(subChat(bot.chat.target));
                             }, 7000);
                             setTimeout(function() {
-                                API.sendChat(subChat(API.getUser(bot.settings.target).username));
+                                if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target === -1)) API.sendChat(subChat(bot.chat.shellmiss));
+                                else if (API.getWaitList().length <= pushback + bot.settings.target) pushback = API.getWaitList().length;
+                                else {
+                                    pushback += bot.settings.target;
+                                    API.sendChat(subChat(bot.chat.land, {
+                                        name: API.getUser(bot.settings.target).username,
+                                        position: pushback
+                                    }))
+                                    API.moderateMoveDJ(bot.settings.target, pushback, false);
+                                }
                             }, 10000);
-                        }
+                            setTimeout(function() {
+                                API.sendChat(subChat(bot.chat.foundshell));
+                                bot.settings.shell = false;
+                                bot.settings.target = null;
+                            }, 60000);
+                        } else API.sendChat(subChat(bot.chat.noshell));
                     }
                 }
             },
@@ -2384,22 +2398,21 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if (bot.settings.spam && bot.settings.hp <= 5)
-                            API.sendChat(subChat(bot.chat.shield));
+                        if (bot.settings.spam && bot.settings.hp <= 5) API.sendChat(subChat(bot.chat.shield));
                         else if (bot.settings.hp > 1) {
-                            if (!bot.settings.spam){
+                            if (!bot.settings.spam) {
                                 bot.settings.heal = bot.settings.hp;
                                 setTimeout(function() {
-                                    if ((bot.settings.heal - bot.settings.hp) >= 3){
+                                    if ((bot.settings.heal - bot.settings.hp) >= 3) {
                                         var heal = bot.settings.heal - bot.settings.hp;
                                         bot.settings.hp += heal;
                                         API.sendChat(subChat(bot.chat.heal, {
-                                        hp: heal
+                                            hp: heal
                                         }))
                                         bot.settings.spam = false;
                                     }
                                 }, 6000);
-                            }    
+                            }
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
                             API.sendChat(subChat(bot.chat.attack, {
@@ -2457,48 +2470,48 @@
                             var random = Math.random() * 2;
                             if (random > 1) {
                                 setTimeout(function() {
-                                API.sendChat(subChat(bot.chat.winningchallenger, {
-                                    name1: bot.settings.fighter1,
-                                    name2: bot.settings.fighter2
-                                }));
+                                    API.sendChat(subChat(bot.chat.winningchallenger, {
+                                        name1: bot.settings.fighter1,
+                                        name2: bot.settings.fighter2
+                                    }));
                                 }, 3000);
                                 setTimeout(function() {
-                                var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
-                                var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
-                                if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
-                                else if (id2 < id1) {
-                                    API.sendChat(bot.chat.swap);
-                                    API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1, false);
-                                    API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1, false);
-                                } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
-                                    name: bot.settings.fighter1
-                                }));
-                                bot.settings.fighter1 = null;
-                                bot.settings.fighter2 = null;
-                                bot.settings.challenge = false;
+                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
+                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
+                                    if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
+                                    else if (id2 < id1) {
+                                        API.sendChat(bot.chat.swap);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1, false);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1, false);
+                                    } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
+                                        name: bot.settings.fighter1
+                                    }));
+                                    bot.settings.fighter1 = null;
+                                    bot.settings.fighter2 = null;
+                                    bot.settings.challenge = false;
                                 }, 5000);
                             } else {
                                 setTimeout(function() {
-                                API.sendChat(subChat(bot.chat.winningchallenger, {
-                                    name1: bot.settings.fighter2,
-                                    name2: bot.settings.fighter1
-                                }));
+                                    API.sendChat(subChat(bot.chat.winningchallenger, {
+                                        name1: bot.settings.fighter2,
+                                        name2: bot.settings.fighter1
+                                    }));
                                 }, 3000);
                                 setTimeout(function() {
-                                var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
-                                var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
-                                if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
-                                else if (id1 < id2) {
-                                    API.sendChat(bot.chat.swap);
-                                    API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1, false);
-                                    API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1, false);
-                                } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
-                                    name: bot.settings.fighter2
-                                }));
-                                bot.settings.fighter1 = null;
-                                bot.settings.fighter2 = null;
-                                bot.settings.challenge = false;
-                            }, 5000);
+                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
+                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
+                                    if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
+                                    else if (id1 < id2) {
+                                        API.sendChat(bot.chat.swap);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1, false);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1, false);
+                                    } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
+                                        name: bot.settings.fighter2
+                                    }));
+                                    bot.settings.fighter1 = null;
+                                    bot.settings.fighter2 = null;
+                                    bot.settings.challenge = false;
+                                }, 5000);
                             }
                         } else {
                             API.sendChat(subChat(bot.chat.notchallenged, {
@@ -2520,11 +2533,9 @@
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
                             name: chat.un
                         }));
-                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && bot.settings.challenge)
-                        {
+                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && bot.settings.challenge) {
                             API.sendChat(subChat(bot.chat.rejectcancel));
-                        }
-                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && !bot.settings.challenge) {
+                        } else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && !bot.settings.challenge) {
                             clearTimeout(bot.settings.timeout);
                             API.sendChat(subChat(bot.chat.acceptcancel));
                             bot.settings.fighter1 = null;
@@ -2586,5 +2597,4 @@
         }
     }
     loadChat(bot.startup);
-})
-.call(this);
+}).call(this);
