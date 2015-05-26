@@ -2380,6 +2380,7 @@
                                         API.sendChat(subChat(bot.chat.heal, {
                                         hp: (bot.settings.hp - check)
                                         }))
+                                        spam = false;
                                     }
                                     else
                                         spam = false;
