@@ -13,6 +13,7 @@ USER
 !ask (x) - Answers yes/no to question x.<br>
 !attack - Attacks the bot!<br>
 !challenge (@user) - Challenges the user for their waitlist position.<br>
+!cancel or !decline - Cancels the participant's challenge request.<br>
 !eta (@user)* - Shows how long until the specified user's turn to play music.<br>
 !fb - Shows facebook page for Royals.<br>
 !fire - I wonder what this does..<br>
