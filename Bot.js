@@ -677,14 +677,14 @@
                     bot.room.users[j].jointime = Date.now();
                 }
             }
-            if (basicBot.settings.welcome && greet) {
+            if (bot.settings.welcome && greet) {
                 welcomeback ?
                     setTimeout(function (user) {
-                        API.sendChat(subChat(basicBot.chat.welcomeback, {name: user.username}));
+                        API.sendChat(subChat(bot.chat.welcomeback, {name: user.username}));
                     }, 1 * 1000, user)
                     :
                     setTimeout(function (user) {
-                        API.sendChat(subChat(basicBot.chat.welcome, {name: user.username}));
+                        API.sendChat(subChat(bot.chat.welcome, {name: user.username}));
                     }, 1 * 1000, user);
             }
         },
