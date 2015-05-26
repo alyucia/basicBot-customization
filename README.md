@@ -15,6 +15,7 @@ USER
 !challenge (@user) - Challenges the user for their waitlist position.<br>
 !eta (@user)* - Shows how long until the specified user's turn to play music.<br>
 !fb - Shows facebook page for Royals.<br>
+!fire - I wonder what this does..<br>
 !geturl - Shows url to current song.<br>
 !give (@user) - Gives a random thing to the user. <br>
 !help - Shows a link to this help page.<br>
