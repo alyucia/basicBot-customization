@@ -2371,7 +2371,7 @@
                                 API.sendChat(subChat(bot.chat.target));
                             }, 7000);
                             setTimeout(function() {
-                                if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target === -1)) API.sendChat(subChat(bot.chat.shellmiss));
+                                if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target) === -1) API.sendChat(subChat(bot.chat.shellmiss));
                                 else if (API.getWaitList().length <= pushback + bot.settings.target) pushback = API.getWaitList().length;
                                 else {
                                     pushback += bot.settings.target;
