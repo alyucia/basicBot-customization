@@ -2370,7 +2370,24 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
+                        var spam;
+                        var check;
                         if (bot.settings.hp > 1) {
+                            if (spam){
+                                setTimeout(function() {
+                                    if (bot.settings.hp <= (check - 5)){
+                                        bot.settings.hp += (bot.settings.hp - check);
+                                        API.sendChat(subChat(bot.chat.heal, {
+                                        hp: (bot.settings.hp - check)
+                                        }))
+                                    }
+                                    else
+                                        spam = false;
+                                }, 10000);
+                            } else{
+                                check = bot.settings.hp;
+                                spam = true;
+                            }
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
                             API.sendChat(subChat(bot.chat.attack, {
