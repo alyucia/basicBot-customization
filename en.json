@@ -185,6 +185,7 @@
     "eta": "\/me NikkiBot: @%%NAME%%, your turn is in approximately %%TIME%%.",
     "facebook": "\/me NikkiBot: Like us on facebook at %%URL%%",
     "fire": "\/me NikkiBot: %%NAME%% has thrown a green snail shell into the air!",
+    "foundshell": "\/me NikkiBot: Look! A snail shell! I wonder what that's for.",
     "greyuser": "Only bouncers and up can run the bot.",
     "heal": "\/me NikkiBot absorbed your attacks and recovered %%HP%% HP. Hehe! <3",
     "hp": "\/me NikkiBot has %%HP%%/50 HP remaining.",
