@@ -261,8 +261,7 @@
                     var ind = Math.floor(Math.random() * bot.room.roulette.participants.length);
                     var winner = bot.room.roulette.participants[ind];
                     bot.room.roulette.participants = [];
-                    var pos = Math.floor((Math.random() * API.getWaitList()
-                        .length) + 1);
+                    var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
                     var user = bot.userUtilities.lookupUser(winner);
                     var name = user.username;
                     API.sendChat(subChat(bot.chat.winnerpicked, {
@@ -270,12 +269,12 @@
                         position: pos
                     }));
                     setTimeout(function() {
-                    if (API.getDJ() !== undefined && winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
-                    else{
-                        if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner.toString())
-                        bot.userUtilities.moveUser(winner, pos, false);
-                        }, 2000);
-                    }
+                        if (API.getDJ() !== undefined && winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
+                        else {
+                            if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner.toString());
+                            bot.userUtilities.moveUser(winner, pos, false);
+                        }
+                    }, 2000);
                 }
             }
         },
@@ -2376,17 +2375,14 @@
                                 else if (API.getWaitList().length <= pushback + bot.settings.target) pushback = API.getWaitList().length;
                                 else {
                                     pushback += bot.settings.target;
-                                    if (bot.settings.target === chat.uid)
-                                    API.sendChat(subChat(bot.chat.landsame, {
+                                    if (bot.settings.target === chat.uid) API.sendChat(subChat(bot.chat.landsame, {
                                         name: API.getUser(bot.settings.target).username,
                                         position: pushback
                                     }));
-                                    else
-                                    API.sendChat(subChat(bot.chat.land, {
+                                    else API.sendChat(subChat(bot.chat.land, {
                                         name: API.getUser(bot.settings.target).username,
                                         position: pushback
                                     }));
-                                    
                                     API.moderateMoveDJ(bot.settings.target, pushback, false);
                                 }
                             }, 10000);
