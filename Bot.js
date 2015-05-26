@@ -2372,6 +2372,7 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
+                        API.sendChat("Test");
                         if (bot.settings.hp > 1) {
                             if (!bot.settings.spam){
                                 setTimeout(function() {
