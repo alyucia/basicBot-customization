@@ -2447,6 +2447,7 @@
                                     }));
                                     basicBot.settings.fighter1 = null;
                                     basicBot.settings.fighter2 = null;
+                                    basicBot.settings.challenge = false;
                                 }, 6000);
                             } else {
                                 setTimeout(function() {
@@ -2472,6 +2473,7 @@
                                     }));
                                     basicBot.settings.fighter1 = null;
                                     basicBot.settings.fighter2 = null;
+                                    basicBot.settings.challenge = false;
                                 }, 6000);
                             }
                         } else {
@@ -2510,14 +2512,14 @@
                             basicBot.settings.fighter1 = chat.un;
                             basicBot.settings.fighter2 = user.username;
                             setTimeout(function() {
-                                if (!basicBot.settings.challenge) {
+                                if (!basicBot.settings.challenge && basicBot.settings.fighter1 !== null) {
                                     basicBot.settings.fighter1 = null;
                                     basicBot.settings.fighter2 = null;
                                     API.sendChat(subChat(basicBot.chat.withdraw, {
                                         name1: chat.un,
                                         name2: user.username
                                     }));
-                                } else basicBot.settings.challenge = false;
+                                }
                             }, 30000);
                             return API.sendChat(subChat(basicBot.chat.battle, {
                                 name1: basicBot.settings.fighter1,
