@@ -1640,7 +1640,10 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        console.log("HelpTest.");
+                            API.sendChat(subChat(bot.chat.commandslink, {
+                            botname: bot.settings.botName,
+                            link: bot.cmdLink
+                        }));
                     }
                 }
             },
