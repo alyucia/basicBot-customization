@@ -171,7 +171,7 @@
             chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             website: "http://mapleroyals.com/?page=index",
             facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
-            hp: 10,
+            hp: 50,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
