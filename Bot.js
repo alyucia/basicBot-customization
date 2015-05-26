@@ -261,20 +261,19 @@
                     var ind = Math.floor(Math.random() * bot.room.roulette.participants.length);
                     var winner = bot.room.roulette.participants[ind];
                     bot.room.roulette.participants = [];
-                    var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
+                    var pos = Math.floor((Math.random() * API.getWaitList()
+                        .length) + 1);
                     var user = bot.userUtilities.lookupUser(winner);
-                    var id = API.getUser(user.id);
                     var name = user.username;
                     API.sendChat(subChat(bot.chat.winnerpicked, {
                         name: name,
                         position: pos
                     }));
-                    if (API.getDJ() === undefined && API.getWaitList().length === 0) API.moderateAddDJ(id);
-                    else if (id === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
-                    else if (API.getWaitListPosition(id) === -1) API.moderateAddDJ(id);
-                    setTimeout(function() {
-                        bot.userUtilities.moveUser(id, pos, false);
-                    }, 2000);
+                    if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
+                    else if (winner == API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
+                        setTimeout(function() {
+                        bot.userUtilities.moveUser(winner, pos, false);
+                        }, 2000);
                 }
             }
         },
