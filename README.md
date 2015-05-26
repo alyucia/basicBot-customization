@@ -3,8 +3,7 @@ NikkiBot Commands
 (@user) = You have to type the "@" symbol and use correct capitalization.<br>
 (x) = Commands that take time as arguments will be rounded to nearest value on the plug.dj API.<br>
 () = Exclude the parentheses when typing in arguments.<br>
-()* = Optional Argument<br>
-Often times, the bot will not respond to a command due to lag. If that is the case, try the command until it works.
+()* = Optional
 
 USER
 ===========
