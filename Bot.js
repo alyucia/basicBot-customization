@@ -267,12 +267,10 @@
                         name: name,
                         position: pos
                     }));
-                    setTimeout(function(winner, pos) {
                         if (winner == API.getDJ()
                             .id) API.sendChat(subChat(bot.chat.winnerdj));
                         else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
                         bot.userUtilities.moveUser(winner, pos, false);
-                    }, 1 * 1000, winner, pos);
                 }
             }
         },
@@ -377,9 +375,8 @@
                 if (API.getWaitListPosition(id) === -1) {
                     if (wlist.length < 50) {
                         API.moderateAddDJ(id);
-                        if (pos !== 0) setTimeout(function(id, pos) {
+                        if (pos !== 0) 
                             API.moderateMoveDJ(id, pos);
-                        }, 1250, id, pos);
                     } else {
                         var alreadyQueued = -1;
                         for (var i = 0; i < bot.room.queue.id.length; i++) {
@@ -530,16 +527,13 @@
                 }
             },
             booth: {
-                lockTimer: setTimeout(function () {
-                }, 1000),
+                lockTimer: 
                 locked: false,
                 lockBooth: function () {
                     API.moderateLockWaitList(!bot.roomUtilities.booth.locked);
                     bot.roomUtilities.booth.locked = false;
                     if (bot.settings.lockGuard) {
-                        bot.roomUtilities.booth.lockTimer = setTimeout(function () {
-                            API.moderateLockWaitList(bot.roomUtilities.booth.locked);
-                        }, bot.settings.maximumLocktime * 60 * 1000);
+                        bot.roomUtilities.booth.lockTimer = API.moderateLockWaitList(bot.roomUtilities.booth.locked);
                     }
                 },
                 unlockBooth: function () {
@@ -682,13 +676,9 @@
             }
             if (bot.settings.welcome && greet) {
                 welcomeback ?
-                    setTimeout(function (user) {
                         API.sendChat(subChat(bot.chat.welcomeback, {name: user.username}));
-                    }, 1 * 1000, user)
                     :
-                    setTimeout(function (user) {
                         API.sendChat(subChat(bot.chat.welcome, {name: user.username}));
-                    }, 1 * 1000, user);
             }
         },
         eventUserleave: function (user) {
@@ -1061,9 +1051,7 @@
                     console.log("Killing bot after room change.");
                     storeToStorage();
                     bot.disconnectAPI();
-                    setTimeout(function() {
                         kill();
-                    }, 1000);
                 }
             };
             Check = setInterval(function() {
@@ -1656,11 +1644,9 @@
                     else {
                         if (bot.room.roulette.rouletteStatus && bot.room.roulette.participants.indexOf(chat.uid) < 0) {
                             bot.room.roulette.participants.push(chat.uid);
-                            setTimeout(function() {
                                 API.sendChat(subChat(bot.chat.roulettejoin, {
                                     name: chat.un
                                 }));
-                            }, 1000);
                         }
                     }
                 }
@@ -1725,9 +1711,7 @@
                         storeToStorage();
                         API.sendChat(bot.chat.kill);
                         bot.disconnectAPI();
-                        setTimeout(function() {
                             kill();
-                        }, 1000);
                     }
                 }
             },
@@ -2014,9 +1998,7 @@
                         storeToStorage();
                         bot.disconnectAPI();
                         localStorage.clear();
-                        setTimeout(function() {
                             $.getScript(bot.scriptLink);
-                        }, 2000);
                     }
                 }
             },
@@ -2042,9 +2024,7 @@
                                 if (API.getDJ()
                                     .id === user.id) {
                                     API.moderateForceSkip();
-                                    setTimeout(function() {
                                         API.moderateRemoveDJ(user.id);
-                                    }, 1 * 1000, user);
                                 } else API.moderateRemoveDJ(user.id);
                             } else API.sendChat(subChat(bot.chat.removenotinwl, {
                                 name: chat.un,
@@ -2122,9 +2102,7 @@
                         }));
                         API.moderateForceSkip();
                         bot.room.skippable = false;
-                        setTimeout(function() {
                             bot.room.skippable = true
-                        }, 5 * 1000);
                     }
                 }
             },
@@ -2429,13 +2407,10 @@
                             }));
                             var random = Math.random() * 2;
                             if (random > 1) {
-                                setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
                                         name1: bot.settings.fighter1,
                                         name2: bot.settings.fighter2
                                     }));
-                                }, 2000);
-                                setTimeout(function() {
                                     var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1)
                                         .id);
                                     var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2)
@@ -2453,15 +2428,11 @@
                                     bot.settings.fighter1 = null;
                                     bot.settings.fighter2 = null;
                                     bot.settings.challenge = false;
-                                }, 4000);
                             } else {
-                                setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
                                         name1: bot.settings.fighter2,
                                         name2: bot.settings.fighter1
                                     }));
-                                }, 2000);
-                                setTimeout(function() {
                                     var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1)
                                         .id);
                                     var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2)
@@ -2479,7 +2450,6 @@
                                     bot.settings.fighter1 = null;
                                     bot.settings.fighter2 = null;
                                     bot.settings.challenge = false;
-                                }, 4000);
                             }
                         } else {
                             API.sendChat(subChat(bot.chat.notchallenged, {
