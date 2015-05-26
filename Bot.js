@@ -2422,9 +2422,6 @@
                         if (bot.settings.hp > 0) API.sendChat(subChat(bot.chat.hp, {
                             hp: bot.settings.hp
                         }));
-                        else {
-                            API.sendChat(subChat(bot.chat.dead));
-                        }
                     }
                 }
             },
