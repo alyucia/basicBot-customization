@@ -2373,11 +2373,11 @@
                         } else if (basicBot.settings.hp == 1) {
                             API.sendChat(subChat(basicBot.chat.kill));
                             API.sendChat(subChat(basicBot.chat.dead));
+                            basicBot.settings.hp = 20;
                             storeToStorage();
                             basicBot.disconnectAPI();
                             setTimeout(function() {
                                 $.getScript(basicBot.scriptLink);
-                                basicBot.settings.hp = 20;
                                 API.sendChat(subChat(basicBot.chat.reborn));
                             }, 60000);
                         } else {
