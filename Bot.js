@@ -2376,10 +2376,17 @@
                                 else if (API.getWaitList().length <= pushback + bot.settings.target) pushback = API.getWaitList().length;
                                 else {
                                     pushback += bot.settings.target;
+                                    if (bot.settings.target === chat.uid)
+                                    API.sendChat(subChat(bot.chat.landsame, {
+                                        name: API.getUser(bot.settings.target).username,
+                                        position: pushback
+                                    }));
+                                    else
                                     API.sendChat(subChat(bot.chat.land, {
                                         name: API.getUser(bot.settings.target).username,
                                         position: pushback
-                                    }))
+                                    }));
+                                    
                                     API.moderateMoveDJ(bot.settings.target, pushback, false);
                                 }
                             }, 10000);
