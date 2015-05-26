@@ -194,6 +194,7 @@
             afkpositionCheck: 1,
             msgEnabled: true,
             msgInterval: 1,
+            messageInterval: 1,
             msg: "Notice: Use !help for a list of commands.",
             intervalMessages: [],
             filterChat: true,
@@ -636,7 +637,7 @@
                         var messageNumber = basicBot.room.roomstats.songCount % basicBot.settings.intervalMessages.length;
                         msg = basicBot.settings.intervalMessages[messageNumber];
                     }
-                    API.sendChat('\/me ' + msg);
+                    API.sendChat(msg);
                 }
             },
         eventChat: function(chat) {
