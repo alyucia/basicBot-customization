@@ -182,7 +182,6 @@
             timeout: null,
             challenge: false,
             shell: true,
-            pushback: null,
             target: null,
             lockdownEnabled: false,
             lockGuard: false,
@@ -2358,13 +2357,14 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         if (bot.settings.shell) {
+                            var pushback;
                             bot.settings.shell = false;
                             API.sendChat(subChat(bot.chat.fire, {
                                 name: chat.un
                             }));
                             setTimeout(function() {
                                 var random = Math.random() * 10;
-                                bot.settings.pushback = Math.floor(Math.random() * 5) + 1;
+                                pushback = Math.floor(Math.random() * 5) + 1;
                                 if (random > 4) {
                                     var index = Math.floor(Math.random() * (API.getUsers().length - 1));
                                     bot.settings.target = API.getUser(API.getUsers()[index]).id;
@@ -2373,24 +2373,24 @@
                             }, 7000);
                             setTimeout(function() {
                                 if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target) === -1) API.sendChat(subChat(bot.chat.shellmiss));
-                                else if (API.getWaitList().length <= bot.settings.pushback + API.getWaitListPosition(bot.settings.target)) bot.settings.pushback = API.getWaitList().length;
+                                else if (API.getWaitList().length <= pushback + API.getWaitListPosition(bot.settings.target)) pushback = API.getWaitList().length;
                                 else {
-                                    bot.settings.pushback += API.getWaitListPosition(bot.settings.target);
+                                    pushback += API.getWaitListPosition(bot.settings.target);
                                     if (bot.settings.target === chat.uid) API.sendChat(subChat(bot.chat.landsame, {
                                         name: API.getUser(bot.settings.target).username,
-                                        position: bot.settings.pushback
+                                        position: pushback
                                     }));
                                     else API.sendChat(subChat(bot.chat.land, {
                                         name: API.getUser(bot.settings.target).username,
-                                        position: bot.settings.pushback
+                                        position: pushback
                                     }));
-                                    API.moderateMoveDJ(bot.settings.target, bot.settings.pushback, false);
+                                    API.moderateMoveDJ(bot.settings.target, pushback, false);
                                 }
                             }, 10000);
                             setTimeout(function() {
                                 API.sendChat(subChat(bot.chat.foundshell));
                                 bot.settings.shell = true;
-                                bot.settings.pushback = null;
+                                pushback = null;
                                 bot.settings.target = null;
                             }, 60000);
                         } else API.sendChat(subChat(bot.chat.noshell));
