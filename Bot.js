@@ -181,6 +181,8 @@
             fighter2: null,
             timeout: null,
             challenge: false,
+            shell: true,
+            target: null,
             lockdownEnabled: false,
             lockGuard: false,
             cycleGuard: false,
@@ -2342,6 +2344,37 @@
                     }
                 }
             },
+            fireCommand: {
+                command: 'fire',
+                rank: 'user',
+                type: 'exact',
+                functionality: function(chat, cmd) {
+                    if (this.type === 'exact' && chat.message.length !== cmd.length) return
+                    void(0);
+                    if (!bot.commands.executable(this.rank, chat)) return void(0);
+                    else {
+                        if (bot.settings.shell){
+                            bot.settings.shell = false;
+                            API.sendChat(subChat(bot.chat.fire, {
+                            name: chat.un
+                            }));
+                            setTimeout(function() {
+                            var random = Math.random() * 10;    
+                            if (random > 4) {
+                                var index = Math.floor(Math.random() * (API.getUsers().length-1));
+                                bot.settings.target = API.getUser(API.getUsers()[index]).id;
+                            }
+                            else    
+                                bot.settings.target = chat.uid;
+                                API.sendChat(subChat(bot.chat.target));
+                            }, 7000);
+                            setTimeout(function() {
+                                API.sendChat(subChat(API.getUser(bot.settings.target).username));
+                            }, 10000);
+                        }
+                    }
+                }
+            },
             attackCommand: {
                 command: 'attack',
                 rank: 'user',
@@ -2351,9 +2384,8 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        if {bot.settings.spam && bot.settings.hp <= 5)
+                        if (bot.settings.spam && bot.settings.hp <= 5)
                             API.sendChat(subChat(bot.chat.shield));
-                        }
                         else if (bot.settings.hp > 1) {
                             if (!bot.settings.spam){
                                 bot.settings.heal = bot.settings.hp;
