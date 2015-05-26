@@ -451,11 +451,14 @@
             }
         },
         roomUtilities: {
-            rankToNumber: function(rankString) {
+            rankToNumber: function (rankString) {
                 var rankInt = null;
                 switch (rankString) {
                     case "admin":
                         rankInt = 10;
+                        break;
+                    case "ambassador":
+                        rankInt = 7;
                         break;
                     case "host":
                         rankInt = 5;
@@ -472,16 +475,13 @@
                     case "residentdj":
                         rankInt = 1;
                         break;
-                    case "ambassador":
-                        rankInt = 0;
-                        break;
                     case "user":
                         rankInt = 0;
                         break;
                 }
                 return rankInt;
             },
-            msToStr: function(msTime) {
+            msToStr: function (msTime) {
                 var ms, msg, timeAway;
                 msg = '';
                 timeAway = {
@@ -530,28 +530,29 @@
                 }
             },
             booth: {
-                lockTimer: setTimeout(function() {}, 1000),
+                lockTimer: setTimeout(function () {
+                }, 1000),
                 locked: false,
-                lockBooth: function() {
+                lockBooth: function () {
                     API.moderateLockWaitList(!basicBot.roomUtilities.booth.locked);
                     basicBot.roomUtilities.booth.locked = false;
                     if (basicBot.settings.lockGuard) {
-                        basicBot.roomUtilities.booth.lockTimer = setTimeout(function() {
+                        basicBot.roomUtilities.booth.lockTimer = setTimeout(function () {
                             API.moderateLockWaitList(basicBot.roomUtilities.booth.locked);
                         }, basicBot.settings.maximumLocktime * 60 * 1000);
                     }
                 },
-                unlockBooth: function() {
+                unlockBooth: function () {
                     API.moderateLockWaitList(basicBot.roomUtilities.booth.locked);
                     clearTimeout(basicBot.roomUtilities.booth.lockTimer);
                 }
             },
-            afkCheck: function() {
-                if (!basicBot.status || !basicBot.settings.afkRemoval) return void(0);
+            afkCheck: function () {
+                if (!basicBot.status || !basicBot.settings.afkRemoval) return void (0);
                 var rank = basicBot.roomUtilities.rankToNumber(basicBot.settings.afkRankCheck);
                 var djlist = API.getWaitList();
                 var lastPos = Math.min(djlist.length, basicBot.settings.afkpositionCheck);
-                if (lastPos - 1 > djlist.length) return void(0);
+                if (lastPos - 1 > djlist.length) return void (0);
                 for (var i = 0; i < lastPos; i++) {
                     if (typeof djlist[i] !== 'undefined') {
                         var id = djlist[i].id;
@@ -566,39 +567,32 @@
                                 var warncount = user.afkWarningCount;
                                 if (inactivity > basicBot.settings.maximumAfk * 60 * 1000) {
                                     if (warncount === 0) {
-                                        API.sendChat(subChat(basicBot.chat.warning1, {
-                                            name: name,
-                                            time: time
-                                        }));
+                                        API.sendChat(subChat(basicBot.chat.warning1, {name: name, time: time}));
                                         user.afkWarningCount = 3;
-                                        user.afkCountdown = setTimeout(function(userToChange) {
+                                        user.afkCountdown = setTimeout(function (userToChange) {
                                             userToChange.afkWarningCount = 1;
                                         }, 90 * 1000, user);
-                                    } else if (warncount === 1) {
-                                        API.sendChat(subChat(basicBot.chat.warning2, {
-                                            name: name
-                                        }));
+                                    }
+                                    else if (warncount === 1) {
+                                        API.sendChat(subChat(basicBot.chat.warning2, {name: name}));
                                         user.afkWarningCount = 3;
-                                        user.afkCountdown = setTimeout(function(userToChange) {
+                                        user.afkCountdown = setTimeout(function (userToChange) {
                                             userToChange.afkWarningCount = 2;
                                         }, 30 * 1000, user);
-                                    } else if (warncount === 2) {
+                                    }
+                                    else if (warncount === 2) {
                                         var pos = API.getWaitListPosition(id);
                                         if (pos !== -1) {
                                             pos++;
                                             basicBot.room.afkList.push([id, Date.now(), pos]);
                                             user.lastDC = {
+
                                                 time: null,
                                                 position: null,
                                                 songCount: 0
                                             };
                                             API.moderateRemoveDJ(id);
-                                            API.sendChat(subChat(basicBot.chat.afkremove, {
-                                                name: name,
-                                                time: time,
-                                                position: pos,
-                                                maximumafk: basicBot.settings.maximumAfk
-                                            }));
+                                            API.sendChat(subChat(basicBot.chat.afkremove, {name: name, time: time, position: pos, maximumafk: basicBot.settings.maximumAfk}));
                                         }
                                         user.afkWarningCount = 0;
                                     }
@@ -608,22 +602,22 @@
                     }
                 }
             },
-            changeDJCycle: function() {
+            changeDJCycle: function () {
                 var toggle = $(".cycle-toggle");
                 if (toggle.hasClass("disabled")) {
                     toggle.click();
                     if (basicBot.settings.cycleGuard) {
-                        basicBot.room.cycleTimer = setTimeout(function() {
+                        basicBot.room.cycleTimer = setTimeout(function () {
                             if (toggle.hasClass("enabled")) toggle.click();
                         }, basicBot.settings.cycleMaxTime * 60 * 1000);
                     }
-                } else {
+                }
+                else {
                     toggle.click();
                     clearTimeout(basicBot.room.cycleTimer);
                 }
             },
-        },
-        intervalMessage: function () {
+            intervalMessage: function () {
                 var interval;
                 if (basicBot.settings.msgEnabled) interval = basicBot.settings.msgInterval;
                 else interval = basicBot.settings.messageInterval;
@@ -637,10 +631,11 @@
                         var messageNumber = basicBot.room.roomstats.songCount % basicBot.settings.intervalMessages.length;
                         msg = basicBot.settings.intervalMessages[messageNumber];
                     }
-                    API.sendChat(msg);
+                    API.sendChat('/me ' + msg);
                 }
-            },
-        eventChat: function(chat) {
+            }
+        },
+        eventChat: function (chat) {
             chat.message = linkFixer(chat.message);
             chat.message = chat.message.trim();
             for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -651,10 +646,11 @@
                     }
                 }
             }
-            if (basicBot.chatUtilities.chatFilter(chat)) return void(0);
-            if (!basicBot.chatUtilities.commandCheck(chat)) basicBot.chatUtilities.action(chat);
+            if (basicBot.chatUtilities.chatFilter(chat)) return void (0);
+            if (!basicBot.chatUtilities.commandCheck(chat))
+                basicBot.chatUtilities.action(chat);
         },
-        eventUserjoin: function(user) {
+        eventUserjoin: function (user) {
             var known = false;
             var index = null;
             for (var i = 0; i < basicBot.room.users.length; i++) {
@@ -672,30 +668,30 @@
                 var t = Date.now() - jt;
                 if (t < 10 * 1000) greet = false;
                 else welcomeback = true;
-            } else {
+            }
+            else {
                 basicBot.room.users.push(new basicBot.User(user.id, user.username));
                 welcomeback = false;
             }
             for (var j = 0; j < basicBot.room.users.length; j++) {
-                if (basicBot.userUtilities.getUser(basicBot.room.users[j])
-                    .id === user.id) {
+                if (basicBot.userUtilities.getUser(basicBot.room.users[j]).id === user.id) {
                     basicBot.userUtilities.setLastActivity(basicBot.room.users[j]);
                     basicBot.room.users[j].jointime = Date.now();
                 }
+
             }
             if (basicBot.settings.welcome && greet) {
-                welcomeback ? setTimeout(function(user) {
-                    API.sendChat(subChat(basicBot.chat.welcomeback, {
-                        name: user.username
-                    }));
-                }, 1 * 1000, user) : setTimeout(function(user) {
-                    API.sendChat(subChat(basicBot.chat.welcome, {
-                        name: user.username
-                    }));
-                }, 1 * 1000, user);
+                welcomeback ?
+                    setTimeout(function (user) {
+                        API.sendChat(subChat(basicBot.chat.welcomeback, {name: user.username}));
+                    }, 1 * 1000, user)
+                    :
+                    setTimeout(function (user) {
+                        API.sendChat(subChat(basicBot.chat.welcome, {name: user.username}));
+                    }, 1 * 1000, user);
             }
         },
-        eventUserleave: function(user) {
+        eventUserleave: function (user) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
                 if (basicBot.room.users[i].id === user.id) {
                     basicBot.userUtilities.updateDC(basicBot.room.users[i]);
@@ -703,44 +699,43 @@
                 }
             }
         },
-        eventVoteupdate: function(obj) {
+        eventVoteupdate: function (obj) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
                 if (basicBot.room.users[i].id === obj.user.id) {
                     if (obj.vote === 1) {
                         basicBot.room.users[i].votes.woot++;
-                    } else {
+                    }
+                    else {
                         basicBot.room.users[i].votes.meh++;
                     }
                 }
             }
-            var mehs = API.getScore()
-                .negative;
-            var woots = API.getScore()
-                .positive;
+
+            var mehs = API.getScore().negative;
+            var woots = API.getScore().positive;
             var dj = API.getDJ();
+
             if (basicBot.settings.voteSkip) {
                 if ((mehs - woots) >= (basicBot.settings.voteSkipLimit)) {
-                    API.sendChat(subChat(basicBot.chat.voteskipexceededlimit, {
-                        name: dj.username,
-                        limit: basicBot.settings.voteSkipLimit
-                    }));
+                    API.sendChat(subChat(basicBot.chat.voteskipexceededlimit, {name: dj.username, limit: basicBot.settings.voteSkipLimit}));
                     API.moderateForceSkip();
                 }
             }
+
         },
-        eventCurateupdate: function(obj) {
+        eventCurateupdate: function (obj) {
             for (var i = 0; i < basicBot.room.users.length; i++) {
                 if (basicBot.room.users[i].id === obj.user.id) {
                     basicBot.room.users[i].votes.curate++;
                 }
             }
         },
-        eventDjadvance: function(obj) {
-            $("#woot")
-                .click(); // autowoot
+        eventDjadvance: function (obj) {
+            $("#woot").click(); // autowoot
+
             var user = basicBot.userUtilities.lookupUser(obj.dj.id)
-            for (var i = 0; i < basicBot.room.users.length; i++) {
-                if (basicBot.room.users[i].id === user.id) {
+            for(var i = 0; i < basicBot.room.users.length; i++){
+                if(basicBot.room.users[i].id === user.id){
                     basicBot.room.users[i].lastDC = {
                         time: null,
                         position: null,
@@ -748,20 +743,15 @@
                     };
                 }
             }
+
             var lastplay = obj.lastPlay;
             if (typeof lastplay === 'undefined') return;
             if (basicBot.settings.songstats) {
                 if (typeof basicBot.chat.songstatistics === "undefined") {
-                    API.sendChat("/me " + lastplay.media.author + " - " + lastplay.media.title + ": " + lastplay.score.positive + "W/" + lastplay.score.grabs + "G/" + lastplay.score.negative +
-                        "M.")
-                } else {
-                    API.sendChat(subChat(basicBot.chat.songstatistics, {
-                        artist: lastplay.media.author,
-                        title: lastplay.media.title,
-                        woots: lastplay.score.positive,
-                        grabs: lastplay.score.grabs,
-                        mehs: lastplay.score.negative
-                    }))
+                    API.sendChat("/me " + lastplay.media.author + " - " + lastplay.media.title + ": " + lastplay.score.positive + "W/" + lastplay.score.grabs + "G/" + lastplay.score.negative + "M.")
+                }
+                else {
+                    API.sendChat(subChat(basicBot.chat.songstatistics, {artist: lastplay.media.author, title: lastplay.media.title, woots: lastplay.score.positive, grabs: lastplay.score.grabs, mehs: lastplay.score.negative}))
                 }
             }
             basicBot.room.roomstats.totalWoots += lastplay.score.positive;
@@ -770,17 +760,25 @@
             basicBot.room.roomstats.songCount++;
             basicBot.roomUtilities.intervalMessage();
             basicBot.room.currentDJID = obj.dj.id;
+
+            var mid = obj.media.format + ':' + obj.media.cid;
+            for (var bl in basicBot.room.blacklists) {
+                if (basicBot.settings.blacklistEnabled) {
+                    if (basicBot.room.blacklists[bl].indexOf(mid) > -1) {
+                        API.sendChat(subChat(basicBot.chat.isblacklisted, {blacklist: bl}));
+                        return API.moderateForceSkip();
+                    }
+                }
+            }
             clearTimeout(historySkip);
             if (basicBot.settings.historySkip) {
                 var alreadyPlayed = false;
                 var apihistory = API.getHistory();
                 var name = obj.dj.username;
-                var historySkip = setTimeout(function() {
+                var historySkip = setTimeout(function () {
                     for (var i = 0; i < apihistory.length; i++) {
                         if (apihistory[i].media.cid === obj.media.cid) {
-                            API.sendChat(subChat(basicBot.chat.songknown, {
-                                name: name
-                            }));
+                            API.sendChat(subChat(basicBot.chat.songknown, {name: name}));
                             API.moderateForceSkip();
                             basicBot.room.historyList[i].push(+new Date());
                             alreadyPlayed = true;
@@ -793,51 +791,49 @@
             }
             var newMedia = obj.media;
             if (basicBot.settings.timeGuard && newMedia.duration > basicBot.settings.maximumSongLength * 60 && !basicBot.room.roomevent) {
-                var name2 = obj.dj.username;
-                API.sendChat(subChat(basicBot.chat.timelimit, {
-                    name2: name,
-                    maxlength: basicBot.settings.maximumSongLength
-                }));
+                var name = obj.dj.username;
+                API.sendChat(subChat(basicBot.chat.timelimit, {name: name, maxlength: basicBot.settings.maximumSongLength}));
                 API.moderateForceSkip();
             }
             if (user.ownSong) {
-                API.sendChat(subChat(basicBot.chat.permissionownsong, {
-                    name: user.username
-                }));
+                API.sendChat(subChat(basicBot.chat.permissionownsong, {name: user.username}));
                 user.ownSong = false;
             }
             clearTimeout(basicBot.room.autoskipTimer);
             if (basicBot.room.autoskip) {
                 var remaining = obj.media.duration * 1000;
-                basicBot.room.autoskipTimer = setTimeout(function() {
+                basicBot.room.autoskipTimer = setTimeout(function () {
                     console.log("Skipping track.");
                     //API.sendChat('Song stuck, skipping...');
                     API.moderateForceSkip();
                 }, remaining + 3000);
             }
             storeToStorage();
+
         },
-        eventWaitlistupdate: function(users) {
+        eventWaitlistupdate: function (users) {
             if (users.length < 50) {
                 if (basicBot.room.queue.id.length > 0 && basicBot.room.queueable) {
                     basicBot.room.queueable = false;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         basicBot.room.queueable = true;
                     }, 500);
                     basicBot.room.queueing++;
                     var id, pos;
-                    setTimeout(function() {
-                        id = basicBot.room.queue.id.splice(0, 1)[0];
-                        pos = basicBot.room.queue.position.splice(0, 1)[0];
-                        API.moderateAddDJ(id, pos);
-                        setTimeout(function(id, pos) {
-                            API.moderateMoveDJ(id, pos);
-                            basicBot.room.queueing--;
-                            if (basicBot.room.queue.id.length === 0) setTimeout(function() {
-                                basicBot.roomUtilities.booth.unlockBooth();
-                            }, 1000);
-                        }, 1000, id, pos);
-                    }, 1000 + basicBot.room.queueing * 2500);
+                    setTimeout(
+                        function () {
+                            id = basicBot.room.queue.id.splice(0, 1)[0];
+                            pos = basicBot.room.queue.position.splice(0, 1)[0];
+                            API.moderateAddDJ(id, pos);
+                            setTimeout(
+                                function (id, pos) {
+                                    API.moderateMoveDJ(id, pos);
+                                    basicBot.room.queueing--;
+                                    if (basicBot.room.queue.id.length === 0) setTimeout(function () {
+                                        basicBot.roomUtilities.booth.unlockBooth();
+                                    }, 1000);
+                                }, 1000, id, pos);
+                        }, 1000 + basicBot.room.queueing * 2500);
                 }
             }
             for (var i = 0; i < users.length; i++) {
@@ -845,7 +841,7 @@
                 basicBot.userUtilities.updatePosition(user, API.getWaitListPosition(users[i].id) + 1);
             }
         },
-        chatcleaner: function(chat) {
+        chatcleaner: function (chat) {
             if (!basicBot.settings.filterChat) return false;
             if (basicBot.userUtilities.getPermission(chat.uid) > 1) return false;
             var msg = chat.message;
@@ -861,28 +857,22 @@
             msg = msg.replace(/[ ,;.:\/=~+%^*\-\\"'&@#]/g, '');
             var capitals = 0;
             var ch;
-            for (var j = 0; j < msg.length; j++) {
-                ch = msg.charAt(j);
+            for (var i = 0; i < msg.length; i++) {
+                ch = msg.charAt(i);
                 if (ch >= 'A' && ch <= 'Z') capitals++;
             }
             if (capitals >= 40) {
-                API.sendChat(subChat(basicBot.chat.caps, {
-                    name: chat.un
-                }));
+                API.sendChat(subChat(basicBot.chat.caps, {name: chat.un}));
                 return true;
             }
             msg = msg.toLowerCase();
             if (msg === 'skip') {
-                API.sendChat(subChat(basicBot.chat.askskip, {
-                    name: chat.un
-                }));
+                API.sendChat(subChat(basicBot.chat.askskip, {name: chat.un}));
                 return true;
             }
             for (var j = 0; j < basicBot.chatUtilities.spam.length; j++) {
                 if (msg === basicBot.chatUtilities.spam[j]) {
-                    API.sendChat(subChat(basicBot.chat.spam, {
-                        name: chat.un
-                    }));
+                    API.sendChat(subChat(basicBot.chat.spam, {name: chat.un}));
                     return true;
                 }
             }
