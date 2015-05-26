@@ -238,6 +238,7 @@
     "selfchallenge": "\/me NikkiBot: What's the point of challenging yourself?",
     "selfcookie": "\/me NikkiBot already ate all the cookies!",
     "sessionstats": "\/me NikkiBot: %%WOOTS%% loved it, %%MEHS%% hated it, %%GRABS%% stole it.",
+    "shield": "\/me NikkiBot: You can't defeat me while my shield is activated!",
     "skip": "\/me NikkiBot: The current DJ has been skipped.",
     "songknown": "@%%NAME%%, this song is in the DJ history.",
     "songlink": "\/me NikkiBot: Current Song: %%LINK%%",
