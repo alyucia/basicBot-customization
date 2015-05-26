@@ -171,7 +171,7 @@
     "askskip": "\/me NikkiBot: @%%NAME%%, don't ask us for skips.",
     "attack": "\/me NikkiBot: %%HITS%%",
     "autowoot": "\/me NikkiBot: This feature doesn't work.",
-    "ball": "\/me NikkiBot: Question: %%QUESTION%%Answer: %%RESPONSE%%",
+    "ball": "\/me NikkiBot: Question: %%QUESTION%% Answer: %%RESPONSE%%",
     "battle": "\/me NikkiBot: %%NAME1%% has challenged %%NAME2%% to a battle. @%%NAME3%%, type !accept to confirm.",
     "botnameset": "\/me NikkiBot: My nickname is now: %%BOTNAME%%",
     "caps": "\/me NikkiBot: @%%NAME%%, please use your inside voice.",
