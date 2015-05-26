@@ -266,7 +266,7 @@
                         name: name,
                         position: pos
                     }));
-                    if (winner == API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
+                    if (winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                     else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
                     setTimeout(function() {
                     bot.userUtilities.moveUser(winner, pos, false);
@@ -335,7 +335,7 @@
             },
             lookupUserName: function(name) {
                 for (var i = 0; i < bot.room.users.length; i++) {
-                    var match = bot.room.users[i].username.trim() == name.trim();
+                    var match = bot.room.users[i].username.trim() === name.trim();
                     if (match) {
                         return bot.room.users[i];
                     }
@@ -1333,7 +1333,7 @@
                         var time = bot.roomUtilities.msToStr(inactivity);
                         var launchT = bot.room.roomstats.launchTime;
                         var durationOnline = Date.now() - launchT;
-                        if (inactivity == durationOnline) {
+                        if (inactivity === durationOnline) {
                             API.sendChat(subChat(bot.chat.inactivelonger, {
                                 botname: bot.settings.botName,
                                 name: chat.un,
@@ -2372,7 +2372,7 @@
                             API.sendChat(subChat(bot.chat.attack, {
                                 hits: bot.chat.hits[ow]
                             }));
-                        } else if (bot.settings.hp == 1 && !bot.settings.spam) {
+                        } else if (bot.settings.hp === 1 && !bot.settings.spam) {
                             API.sendChat(subChat(bot.chat.kill));
                             API.sendChat(subChat(bot.chat.dead));
                             bot.settings.hp = 50;
@@ -2416,7 +2416,7 @@
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
                             name: chat.un
                         }));
-                        else if (chat.un == bot.settings.fighter2) {
+                        else if (chat.un === bot.settings.fighter2) {
                             clearTimeout(bot.settings.timeout);
                             bot.settings.challenge = true;
                             API.sendChat(subChat(bot.chat.acceptedchallenge, {
