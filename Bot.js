@@ -2489,7 +2489,7 @@
                 }
             },
             declineCommand: {
-                command: ('decline', 'cancel'),
+                command: ['decline', 'cancel'],
                 rank: 'user',
                 type: 'exact',
                 functionality: function(chat, cmd) {
@@ -2500,11 +2500,11 @@
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
                             name: chat.un
                         }));
-                        else if (chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1 && bot.settings.challenge)
+                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && bot.settings.challenge)
                         {
                             API.sendChat(subChat(bot.chat.rejectcancel));
                         }
-                        else if (chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1 && !bot.settings.challenge) {
+                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && !bot.settings.challenge) {
                             clearTimeout(bot.settings.timeout);
                             API.sendChat(subChat(bot.chat.acceptcancel));
                             bot.settings.fighter1 = null;
