@@ -972,9 +972,7 @@
                         API.moderateDeleteChat(chat.cid);
                     }
                     bot.room.allcommand = false;
-                    setTimeout(function() {
-                        bot.room.allcommand = true;
-                    }, 5 * 1000);
+                    bot.room.allcommand = true;
                 }
                 return executed;
             },
