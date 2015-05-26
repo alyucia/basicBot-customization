@@ -2373,12 +2373,12 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         if (bot.settings.hp > 1) {
-                            if (bot.settings.spam){
+                            if (!bot.settings.spam){
                                 setTimeout(function() {
                                     if (bot.settings.hp <= (bot.settings.heal - 5)){
-                                        bot.settings.hp += (bot.settings.hp - bot.settings.heal);
+                                        bot.settings.hp += (bot.settings.heal - bot.settings.hp);
                                         API.sendChat(subChat(bot.chat.heal, {
-                                        hp: (bot.settings.hp - bot.settings.heal)
+                                        hp: (bot.settings.heal - bot.settings.hp)
                                         }))
                                         bot.settings.spam = false;
                                     }
