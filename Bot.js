@@ -179,6 +179,7 @@
             maximumDc: 60,
             fighter1: null,
             fighter2: null,
+            timeout: null,
             challenge: false,
             lockdownEnabled: false,
             lockGuard: false,
@@ -2417,7 +2418,7 @@
                             name: chat.un
                         }));
                         else if (chat.un == basicBot.settings.fighter2) {
-                            clearTimeout(challenge);
+                            clearTimeout(basicBot.settings.timeout);
                             basicBot.settings.challenge = true;
                             API.sendChat(subChat(basicBot.chat.acceptedchallenge, {
                                 name1: basicBot.settings.fighter2,
@@ -2512,7 +2513,7 @@
                         } else {
                             basicBot.settings.fighter1 = chat.un;
                             basicBot.settings.fighter2 = user.username;
-                            var challenge = setTimeout(function() {
+                            basicBot.settings.timeout = setTimeout(function() {
                                 if (!basicBot.settings.challenge) {
                                     basicBot.settings.fighter1 = null;
                                     basicBot.settings.fighter2 = null;
