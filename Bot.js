@@ -270,8 +270,9 @@
                         position: pos
                     }));
                     if (winner == API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
-                    else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner.toString()){
+                    else{
                         setTimeout(function() {
+                        if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner.toString())
                         bot.userUtilities.moveUser(winner, pos, false);
                         }, 2000);
                     }
