@@ -169,11 +169,11 @@
             startupCap: 30, // 1-200
             startupVolume: 50, // 0-100
             startupEmoji: false,
-            cmdDeletion: false,
+            cmdDeletion: true,
             chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             website: "http://mapleroyals.com/?page=index",
             facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
-            hp: 20,
+            hp: 50,
             maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 60,
@@ -2374,13 +2374,13 @@
                         } else if (bot.settings.hp == 1) {
                             API.sendChat(subChat(bot.chat.kill));
                             API.sendChat(subChat(bot.chat.dead));
-                            bot.settings.hp = 20;
+                            bot.settings.hp = 50;
                             storeToStorage();
                             bot.disconnectAPI();
                             setTimeout(function() {
                                 $.getScript(bot.scriptLink);
                                 API.sendChat(subChat(bot.chat.reborn));
-                            }, 60000);
+                            }, 3 * 60000);
                         } else {
                             API.sendChat(subChat(bot.chat.dead));
                         }
