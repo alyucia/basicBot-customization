@@ -2417,7 +2417,7 @@
                             name: chat.un
                         }));
                         else if (chat.un == basicBot.settings.fighter2) {
-                            clearTimeout(myVar);
+                            clearTimeout(challenge);
                             basicBot.settings.challenge = true;
                             API.sendChat(subChat(basicBot.chat.acceptedchallenge, {
                                 name1: basicBot.settings.fighter2,
@@ -2512,7 +2512,7 @@
                         } else {
                             basicBot.settings.fighter1 = chat.un;
                             basicBot.settings.fighter2 = user.username;
-                            setTimeout(function() {
+                            var challenge = setTimeout(function() {
                                 if (!basicBot.settings.challenge) {
                                     basicBot.settings.fighter1 = null;
                                     basicBot.settings.fighter2 = null;
