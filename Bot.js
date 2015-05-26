@@ -2373,9 +2373,9 @@
                             }, 7000);
                             setTimeout(function() {
                                 if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target) === -1) API.sendChat(subChat(bot.chat.shellmiss));
-                                else if (API.getWaitList().length <= pushback + API.getWaitListPosition(bot.settings.target)) pushback = API.getWaitList().length;
                                 else {
-                                    pushback += API.getWaitListPosition(bot.settings.target);
+                                    if (API.getWaitList().length <= pushback + API.getWaitListPosition(bot.settings.target)) pushback = API.getWaitList().length;
+                                    else pushback += API.getWaitListPosition(bot.settings.target);
                                     if (bot.settings.target === chat.uid) API.sendChat(subChat(bot.chat.landsame, {
                                         name: API.getUser(bot.settings.target).username,
                                         position: pushback
