@@ -56,7 +56,7 @@ MANAGER
 !lock - Prevents people from joining the waitlist.<br>
 !maxlength (x) - Sets a limit of x mins per song. <br>
 !move (@user) (x) - Moves the user to x position on the waitlist. <br>
-!msg (x)* or (message)* - Message to be displayed per x songs.<br>
+!msg (x)* or (message)* - Sets message, displays current message, or changes message interval.<br>
 !quit - Ends the bot.<br>
 !togglechat - Disables user chat and only allows staff members to speak.<br>
 !togglemsg - Toggles whether or not the message will be shown.<br>
