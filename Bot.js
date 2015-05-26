@@ -2375,9 +2375,8 @@
                         if (bot.settings.hp > 1) {
                             if (!bot.settings.spam){
                                 bot.settings.heal = bot.settings.hp;
-                            }
                                 setTimeout(function() {
-                                    if (!bot.settings.spam && (bot.settings.heal - bot.settings.hp) >= 5){
+                                    if ((bot.settings.heal - bot.settings.hp) >= 3){
                                         bot.settings.hp += (bot.settings.heal - bot.settings.hp);
                                         API.sendChat(subChat(bot.chat.heal, {
                                         hp: (bot.settings.heal - bot.settings.hp)
@@ -2385,6 +2384,7 @@
                                         bot.settings.spam = false;
                                     }
                                 }, 5000);
+                            }    
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
                             API.sendChat(subChat(bot.chat.attack, {
