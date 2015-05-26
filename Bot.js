@@ -248,13 +248,13 @@
                     API.sendChat(bot.chat.isopen);
                     setTimeout(function() {
                         API.sendChat(subChat(bot.chat.ishalfway))
-                    }, 30 * 1000);
+                    }, 5 * 1000);
                     setTimeout(function() {
                         API.sendChat(subChat(bot.chat.isnearend))
-                    }, 50 * 1000);
+                    }, 10 * 1000);
                     bot.room.roulette.countdown = setTimeout(function() {
                         bot.room.roulette.endRoulette();
-                    }, 60 * 1000);
+                    }, 20 * 1000);
                 },
                 endRoulette: function() {
                     bot.room.roulette.rouletteStatus = false;
@@ -268,7 +268,7 @@
                         name: name,
                         position: pos
                     }));
-                    if (API.getWaitList().length === 0) API.moderateAddDJ(user.id);
+                    if (API.getDJ() === undefined && API.getWaitList().length === 0) API.moderateAddDJ(user.id);
                     else if (user.id === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                     else if (API.getWaitListPosition(user.id) === -1) API.moderateAddDJ(user.id);
                     setTimeout(function() {
