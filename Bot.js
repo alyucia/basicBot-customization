@@ -169,7 +169,7 @@
             startupCap: 30, // 1-200
             startupVolume: 50, // 0-100
             startupEmoji: false,
-            cmdDeletion: true,
+            cmdDeletion: false,
             chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             website: "http://mapleroyals.com/?page=index",
             facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
@@ -193,8 +193,9 @@
             lockskipPosition: 1,
             afkpositionCheck: 1,
             msgEnabled: true,
-            msgInterval: 3,
+            msgInterval: 1,
             msg: "Notice: Use !help for a list of commands.",
+            intervalMessages: [],
             filterChat: true,
             etaRestriction: false,
             welcome: true,
@@ -621,6 +622,23 @@
                 }
             },
         },
+        intervalMessage: function () {
+                var interval;
+                if (basicBot.settings.msgEnabled) interval = basicBot.settings.msgInterval;
+                else interval = basicBot.settings.messageInterval;
+                if ((basicBot.room.roomstats.songCount % interval) === 0 && basicBot.status) {
+                    var msg;
+                    if (basicBot.settings.msgEnabled) {
+                        msg = basicBot.settings.msg;
+                    }
+                    else {
+                        if (basicBot.settings.intervalMessages.length === 0) return void (0);
+                        var messageNumber = basicBot.room.roomstats.songCount % basicBot.settings.intervalMessages.length;
+                        msg = basicBot.settings.intervalMessages[messageNumber];
+                    }
+                    API.sendChat('\/me ' + msg);
+                }
+            },
         eventChat: function(chat) {
             chat.message = linkFixer(chat.message);
             chat.message = chat.message.trim();
