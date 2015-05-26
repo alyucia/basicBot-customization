@@ -2357,7 +2357,6 @@
                     void(0);
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
-                        var bot.settings.pushback;
                         if (bot.settings.shell) {
                             bot.settings.shell = false;
                             API.sendChat(subChat(bot.chat.fire, {
