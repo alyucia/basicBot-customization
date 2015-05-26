@@ -201,6 +201,7 @@
     "kick": "\/me NikkiBot: @%%USERNAME%%, you are being kicked from the room for %%TIME%%.",
     "kickrank": "\/me NikkiBot: You can't kick users with an equal or higher rank than you!",
     "kill": "\/me NikkiBot: NOOO!!! My powers, they're fading!.. You'll regret this!",
+    "land": "\/me NikkiBot: Mano's shell has exploded on top of %%NAME%% and knocked them into position %%POSITON%%!",
     "lockskippos": "\/me NikkiBot: Current DJ will be placed on the waitlist at position %%POSITION%%.",
     "maximumafktimeset": "\/me NikkiBot:  Maximum afk duration before waitlist kick set to %%TIME%% minutes.",
     "maxlengthtime": "\/me NikkiBot: The maximum song duration is set to %%TIME%% minutes.",
