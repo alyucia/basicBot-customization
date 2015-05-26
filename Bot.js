@@ -152,7 +152,7 @@
         return m;
     };
     var bot = {
-        version: "1.0.0",
+        version: "2.4.5",
         status: false,
         name: "NikkiBot",
         loggedInID: null,
@@ -169,7 +169,7 @@
             startupCap: 30, // 1-200
             startupVolume: 50, // 0-100
             startupEmoji: false,
-            cmdDeletion: true,
+            cmdDeletion: false,
             chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             website: "http://mapleroyals.com/?page=index",
             facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
@@ -195,13 +195,13 @@
             msgEnabled: true,
             msgInterval: 1,
             messageInterval: 1,
-            msg: "Notice: Use /help for a list of commands.",
+            msg: "Notice: Type !help for a list of commands.",
             intervalMessages: [],
             filterChat: true,
             etaRestriction: false,
             welcome: true,
             songstats: false,
-            commandLiteral: "/",
+            commandLiteral: "!",
         },
         room: {
             users: [],
@@ -908,7 +908,7 @@
                     }));
                     return true;
                 }
-                if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('/afkdisable') > 0 || msg.indexOf('/joindisable') > 0 ||
+                if (msg.indexOf('autojoin was not enabled') > 0 || msg.indexOf('AFK message was not enabled') > 0 || msg.indexOf('!afkdisable') > 0 || msg.indexOf('!joindisable') > 0 ||
                     msg.indexOf('autojoin disabled') > 0 || msg.indexOf('AFK message disabled') > 0) {
                     API.moderateDeleteChat(chat.cid);
                     return true;
@@ -928,7 +928,7 @@
             },
             commandCheck: function(chat) {
                 var cmd;
-                if (chat.message.charAt(0) === '/') {
+                if (chat.message.charAt(0) === '!') {
                     var space = chat.message.indexOf(' ');
                     if (space === -1) {
                         cmd = chat.message;
@@ -936,11 +936,11 @@
                 } else return false;
                 var userPerm = bot.userUtilities.getPermission(chat.uid);
                 //console.log("name: " + chat.un + ", perm: " + userPerm);
-                if (chat.message !== "/join" && chat.message !== "/leave") {
+                if (chat.message !== "!join" && chat.message !== "!leave") {
                     if (userPerm === 0 && !bot.room.usercommand) return void(0);
                     if (!bot.room.allcommand) return void(0);
                 }
-                if (chat.message === '/eta' && bot.settings.etaRestriction) {
+                if (chat.message === '!eta' && bot.settings.etaRestriction) {
                     if (userPerm < 2) {
                         var u = bot.userUtilities.lookupUser(chat.uid);
                         if (u.lastEta !== null && (Date.now() - u.lastEta) < 1 * 60 * 60 * 1000) {
