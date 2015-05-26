@@ -266,7 +266,7 @@
                         name: name,
                         position: pos
                     }));
-                    if (API.getDJ() !== null && winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
+                    if (API.getDJ() !== undefined && winner === API.getDJ().id) API.sendChat(subChat(bot.chat.winnerdj));
                     else if (API.getWaitListPosition(winner) === -1) API.moderateAddDJ(winner);
                     setTimeout(function() {
                     bot.userUtilities.moveUser(winner, pos, false);
