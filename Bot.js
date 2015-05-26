@@ -2388,7 +2388,7 @@
                             }, 10000);
                             setTimeout(function() {
                                 API.sendChat(subChat(bot.chat.foundshell));
-                                bot.settings.shell = false;
+                                bot.settings.shell = true;
                                 bot.settings.target = null;
                             }, 60000);
                         } else API.sendChat(subChat(bot.chat.noshell));
