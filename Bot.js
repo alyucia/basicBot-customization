@@ -1850,7 +1850,7 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         var msg = chat.message;
-                        if (msg.length <= cmd.length + 1) return API.sendChat('Current Notice: '+ bot.settings.msg);
+                        if (msg.length <= cmd.length + 1) return API.sendChat('\/me NikkiBot: Current Notice - '+ bot.settings.msg);
                         var argument = msg.substring(cmd.length + 1);
                         if (!bot.settings.msgEnabled) bot.settings.msgEnabled = !bot.settings.msgEnabled;
                         if (isNaN(argument)) {
