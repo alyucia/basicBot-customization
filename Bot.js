@@ -262,6 +262,7 @@
                     bot.room.roulette.participants = [];
                     var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
                     var user = bot.userUtilities.lookupUser(winner);
+                    var name = user.username;
                     API.sendChat(subChat(bot.chat.winnerpicked, {
                         name: API.getUser(user.id).username,
                         position: pos
@@ -396,9 +397,9 @@
                             bot.room.queue.id.push(id);
                             bot.room.queue.position.push(pos);
                         }
-                        var name = API.getUser(user.id).username;
+                        var name = user.username;
                         return API.sendChat(subChat(bot.chat.adding, {
-                            name: name,
+                            name: API.getUser(user.id).username,
                             position: bot.room.queue.position.length
                         }));
                     }
@@ -407,9 +408,9 @@
             dclookup: function(id) {
                 var user = bot.userUtilities.lookupUser(id);
                 if (typeof user === 'boolean') return bot.chat.usernotfound;
-                var name = API.getUser(user.id).username;
+                var name = user.username;
                 if (user.lastDC.time === null) return subChat(bot.chat.notdisconnected, {
-                    name: name
+                    name: API.getUser(user.id).username
                 });
                 var dc = user.lastDC.time;
                 var pos = user.lastDC.position;
@@ -551,7 +552,7 @@
                         if (typeof user !== 'boolean') {
                             var plugUser = bot.userUtilities.getUser(user);
                             if (rank !== null && bot.userUtilities.getPermission(plugUser) <= rank) {
-                                var name = API.getUser(user.id).username;
+                                var name = plugUser.username;
                                 var lastActive = bot.userUtilities.getLastActivity(user);
                                 var inactivity = Date.now() - lastActive;
                                 var time = bot.roomUtilities.msToStr(inactivity);
@@ -559,7 +560,7 @@
                                 if (inactivity > bot.settings.maximumAfk * 60 * 1000) {
                                     if (warncount === 0) {
                                         API.sendChat(subChat(bot.chat.warning1, {
-                                            name: name,
+                                            name: API.getUser(plugUser.id).username,
                                             time: time
                                         }));
                                         user.afkWarningCount = 3;
@@ -568,7 +569,7 @@
                                         }, 90 * 1000, user);
                                     } else if (warncount === 1) {
                                         API.sendChat(subChat(bot.chat.warning2, {
-                                            name: name
+                                            name: API.getUser(plugUser.id).username
                                         }));
                                         user.afkWarningCount = 3;
                                         user.afkCountdown = setTimeout(function(userToChange) {
@@ -586,7 +587,7 @@
                                             };
                                             API.moderateRemoveDJ(id);
                                             API.sendChat(subChat(bot.chat.afkremove, {
-                                                name: name,
+                                                name: API.getUser(plugUser.id).username,
                                                 time: time,
                                                 position: pos,
                                                 maximumafk: bot.settings.maximumAfk
@@ -637,8 +638,8 @@
             for (var i = 0; i < bot.room.users.length; i++) {
                 if (bot.room.users[i].id === chat.uid) {
                     bot.userUtilities.setLastActivity(bot.room.users[i]);
-                    if (bot.room.users[i].username !== API.getUser(chat.uid).username) {
-                        bot.room.users[i].username = API.getUser(chat.uid).username;
+                    if (bot.room.users[i].username !== chat.un) {
+                        bot.room.users[i].username = chat.un;
                     }
                 }
             }
@@ -664,7 +665,7 @@
                 if (t < 10 * 1000) greet = false;
                 else welcomeback = true;
             } else {
-                bot.room.users.push(new bot.User(user.id, API.getUser(user.id).username));
+                bot.room.users.push(new bot.User(user.id, user.username));
                 welcomeback = false;
             }
             for (var j = 0; j < bot.room.users.length; j++) {
@@ -709,7 +710,7 @@
             if (bot.settings.voteSkip) {
                 if ((mehs - woots) >= (bot.settings.voteSkipLimit)) {
                     API.sendChat(subChat(bot.chat.voteskipexceededlimit, {
-                        name: dj.username,
+                        name: API.getUser(dj.id).username,
                         limit: bot.settings.voteSkipLimit
                     }));
                     API.moderateForceSkip();
@@ -777,7 +778,7 @@
                     for (var i = 0; i < apihistory.length; i++) {
                         if (apihistory[i].media.cid === obj.media.cid) {
                             API.sendChat(subChat(bot.chat.songknown, {
-                               name: API.getUser(user.id).username
+                                name: API.getUser(user.id).username
                             }));
                             API.moderateForceSkip();
                             bot.room.historyList[i].push(+new Date());
@@ -1542,13 +1543,13 @@
                                 return API.sendChat(subChat(bot.chat.nousercookie, {
                                     name: API.getUser(user.id).username
                                 }));
-                            } else if (API.getUser(user.id).username === API.getUser(chat.uid).username) {
+                            } else if (user.username === chat.un) {
                                 return API.sendChat(subChat(bot.chat.selfcookie, {
                                     name: API.getUser(user.id).username
                                 }));
                             } else {
                                 return API.sendChat(subChat(bot.chat.cookie, {
-                                    nameto: API.getUser(user.id).username,
+                                    nameto: user.username,
                                     namefrom: API.getUser(chat.uid).username,
                                     cookie: this.getCookie()
                                 }));
@@ -1572,7 +1573,7 @@
                         if (msg.length > cmd.length) {
                             if (perm < 2) return void(0);
                             name = msg.substring(cmd.length + 2);
-                        } else name = API.getUser(chat.uid).username;
+                        } else name = chat.un;
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
                             name: API.getUser(chat.uid).username
@@ -1686,7 +1687,7 @@
                             name = msg.substring(cmd.length + 2, lastSpace);
                         }
                         var user = bot.userUtilities.lookupUserName(name);
-                        var from = API.getUser(chat.uid).username;
+                        var from = chat.un;
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.nouserspecified, {
                             name: API.getUser(chat.uid).username
                         }));
@@ -1758,7 +1759,7 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         var media = API.getMedia();
-                        var from = API.getUser(chat.uid).username;
+                        var from = chat.un;
                         var user = bot.userUtilities.lookupUser(chat.uid);
                         var perm = bot.userUtilities.getPermission(chat.uid);
                         var dj = API.getDJ().id;
@@ -1938,7 +1939,7 @@
                             }
                             name = msg.substring(cmd.length + 2, lastSpace);
                         }
-                        var from = API.getUser(chat.uid).username;
+                        var from = chat.un;
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
                             name: API.getUser(chat.uid).username
@@ -2186,7 +2187,7 @@
                         var bannedUser = null;
                         for (var i = 0; i < bannedUsers.length; i++) {
                             var user = bannedUsers[i];
-                            if (API.getUser(user.id).username === name) {
+                            if (user.username === name) {
                                 bannedUser = user;
                                 API.moderateUnbanUser(bannedUser.id);
                                 console.log("Unbanned " + name);
@@ -2225,7 +2226,7 @@
                     else {
                         var msg = chat.message;
                         var permFrom = bot.userUtilities.getPermission(chat.uid);
-                        var from = API.getUser(chat.uid).username;
+                        var from = chat.un;
                         var name = msg.substr(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
@@ -2235,7 +2236,7 @@
                         if (permFrom > permUser) {
                             try {
                                 API.moderateUnmuteUser(user.id);
-                                API.sendChat(subChat(bot.API.getUser(chat.uid).usernamemuted, {
+                                API.sendChat(subChat(bot.chat.unmuted, {
                                     name: API.getUser(chat.uid).username,
                                     username: name
                                 }));
@@ -2244,7 +2245,7 @@
                                     name: API.getUser(chat.uid).username
                                 }));
                             }
-                        } else API.sendChat(subChat(bot.API.getUser(chat.uid).usernamemuterank, {
+                        } else API.sendChat(subChat(bot.chat.unmuterank, {
                             name: API.getUser(chat.uid).username
                         }));
                     }
@@ -2464,19 +2465,19 @@
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
                             name: API.getUser(chat.uid).username
                         }));
-                        else if (API.getUser(chat.uid).username === bot.settings.fighter2) {
+                        else if (chat.un === bot.settings.fighter2) {
                             clearTimeout(bot.settings.timeout);
                             bot.settings.challenge = true;
                             API.sendChat(subChat(bot.chat.acceptedchallenge, {
-                                name1: bot.settings.fighter2,
-                                name2: bot.settings.fighter1
+                                name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id),
+                                name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id)
                             }));
                             var random = Math.random() * 2;
                             if (random > 1) {
                                 setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
-                                        name1: bot.settings.fighter1,
-                                        name2: bot.settings.fighter2
+                                        name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id),
+                                        name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id)
                                     }));
                                 }, 3000);
                                 setTimeout(function() {
@@ -2487,7 +2488,7 @@
                                         API.sendChat(bot.chat.swap);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
-                                    } else API.sendChat(subChat(bot.API.getUser(chat.uid).usernamenecessaryswap, {
+                                    } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
                                         name: bot.settings.fighter1
                                     }));
                                     bot.settings.fighter1 = null;
@@ -2497,8 +2498,8 @@
                             } else {
                                 setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
-                                        name1: bot.settings.fighter2,
-                                        name2: bot.settings.fighter1
+                                        name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id),
+                                        name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id)
                                     }));
                                 }, 3000);
                                 setTimeout(function() {
@@ -2509,7 +2510,7 @@
                                         API.sendChat(bot.chat.swap);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
-                                    } else API.sendChat(subChat(bot.API.getUser(chat.uid).usernamenecessaryswap, {
+                                    } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
                                         name: bot.settings.fighter2
                                     }));
                                     bot.settings.fighter1 = null;
@@ -2537,9 +2538,9 @@
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
                             name: API.getUser(chat.uid).username
                         }));
-                        else if ((API.getUser(chat.uid).username === bot.settings.fighter2 || API.getUser(chat.uid).username === bot.settings.fighter1) && bot.settings.challenge) {
+                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && bot.settings.challenge) {
                             API.sendChat(subChat(bot.chat.rejectcancel));
-                        } else if ((API.getUser(chat.uid).username === bot.settings.fighter2 || API.getUser(chat.uid).username === bot.settings.fighter1) && !bot.settings.challenge) {
+                        } else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && !bot.settings.challenge) {
                             clearTimeout(bot.settings.timeout);
                             API.sendChat(subChat(bot.chat.acceptcancel));
                             bot.settings.fighter1 = null;
@@ -2572,13 +2573,13 @@
                         var user = bot.userUtilities.lookupUserName(name);
                         if (user === false || !user.inRoom) {
                             return API.sendChat(subChat(bot.chat.nothere, {
-                               name: API.getUser(user.id).username
+                                name: API.getUser(user.id).username
                             }));
-                        } else if (API.getUser(user.id).username === API.getUser(chat.uid).username) {
+                        } else if (user.username === chat.un) {
                             return API.sendChat(subChat(bot.chat.selfchallenge));
                         } else {
-                            bot.settings.fighter1 = API.getUser(chat.uid).username;
-                            bot.settings.fighter2 = API.getUser(user.id).username;
+                            bot.settings.fighter1 = chat.un;
+                            bot.settings.fighter2 = user.username;
                             bot.settings.timeout = setTimeout(function() {
                                 if (!bot.settings.challenge) {
                                     bot.settings.fighter1 = null;
@@ -2590,9 +2591,9 @@
                                 }
                             }, 30000);
                             return API.sendChat(subChat(bot.chat.battle, {
-                                name1: bot.settings.fighter1,
-                                name2: bot.settings.fighter2,
-                                name3: bot.settings.fighter2
+                                name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id),
+                                name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id),
+                                name3: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id)
                             }));
                         }
                     }
