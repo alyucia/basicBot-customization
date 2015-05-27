@@ -2503,8 +2503,8 @@
                                     }));
                                 }, 3000);
                                 setTimeout(function() {
-                                     var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);		+                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username;
--                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
+                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
+                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
                                     if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
                                     else if (id1 < id2) {
                                         API.sendChat(bot.chat.swap);
