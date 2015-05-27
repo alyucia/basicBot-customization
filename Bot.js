@@ -2384,7 +2384,7 @@
                                         name: API.getUser(bot.settings.target).username,
                                         position: pushback
                                     }));
-                                    API.moderateMoveDJ(API.getUser(bot.settings.target).id, pushback);
+                                    API.moderateMoveDJ(bot.userUtilities.lookupUserName(API.getUser(bot.settings.target).username).id, pushback);
                                 }
                             }, 15000);
                             setTimeout(function() {
