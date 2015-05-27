@@ -2405,15 +2405,15 @@
                             if (!bot.settings.spam) {
                                 bot.settings.heal = bot.settings.hp;
                                 setTimeout(function() {
-                                    if ((bot.settings.heal - bot.settings.hp) >= 3) {
+                                    if ((bot.settings.heal - bot.settings.hp) >= 2) {
                                         var heal = bot.settings.heal - bot.settings.hp;
                                         bot.settings.hp += heal;
                                         API.sendChat(subChat(bot.chat.heal, {
                                             hp: heal
                                         }))
-                                        bot.settings.spam = false;
                                     }
-                                }, 6000);
+                                    bot.settings.spam = false;
+                                }, 4000);
                             }
                             bot.settings.hp--;
                             var ow = Math.floor(Math.random() * bot.chat.hits.length);
