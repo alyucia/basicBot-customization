@@ -1049,8 +1049,8 @@
                 return 'Function.'
             };
             var u = API.getUser();
-            //if (bot.userUtilities.getPermission(u) < 2) return API.chatLog(bot.chat.greyuser);
-            //if (bot.userUtilities.getPermission(u) === 2) API.chatLog(bot.chat.bouncer);
+            if (bot.userUtilities.getPermission(u) < 2) return API.chatLog(bot.chat.greyuser);
+            if (bot.userUtilities.getPermission(u) === 2) API.chatLog(bot.chat.bouncer);
             bot.connectAPI();
             API.moderateDeleteChat = function(cid) {
                 $.ajax({
