@@ -39,7 +39,7 @@
     };
     var loadChat = function(cb) {
         if (!cb) cb = function() {};
-        $.get("https://raw.githubusercontent.com/iEclipse/Settings/master/langIndex.json", function(json) {
+        $.get("https://rawgit.com/iEclipse/Settings/master/langIndex.json", function(json) {
             var link = bot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -154,9 +154,9 @@
         status: false,
         name: "NikkiBot",
         loggedInID: null,
-        scriptLink: "https://raw.githubusercontent.com/iEclipse/Settings/master/Bot.js",
+        scriptLink: "https://rawgit.com/iEclipse/Settings/master/Bot.js",
         cmdLink: "https://github.com/iEclipse/Settings/blob/master/README.md#nikkibot-commands",
-        chatLink: "https://raw.githubusercontent.com/iEclipse/Settings/master/en.json",
+        chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -168,7 +168,7 @@
             startupVolume: 50, // 0-100
             startupEmoji: false,
             cmdDeletion: true,
-            chatLink: "https://raw.githubusercontent.com/iEclipse/Settings/master/en.json",
+            chatLink: "https://rawgit.com/iEclipse/Settings/master/en.json",
             website: "http://mapleroyals.com/?page=index",
             facebook: "https://www.facebook.com/MapleRoyals?fref=ts",
             hp: 50,
