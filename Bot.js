@@ -2423,6 +2423,7 @@
                             API.sendChat(subChat(bot.chat.attack, {
                                 hits: bot.chat.hits[ow]
                             }));
+                            bot.settings.spam = true;
                         } else if (bot.settings.hp === 1 && !bot.settings.spam) {
                             API.sendChat(subChat(bot.chat.kill));
                             API.sendChat(subChat(bot.chat.dead));
@@ -2434,7 +2435,6 @@
                                 API.sendChat(subChat(bot.chat.reborn));
                             }, 3 * 60000);
                         }
-                        bot.settings.spam = true;
                     }
                 }
             },
