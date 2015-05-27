@@ -2384,7 +2384,7 @@
                                         name: API.getUser(bot.settings.target).username,
                                         position: pushback
                                     }));
-                                    API.moderateMoveDJ(bot.settings.pushback, pushback, false);
+                                    API.moderateMoveDJ(bot.settings.target, pushback);
                                 }
                             }, 15000);
                             setTimeout(function() {
@@ -2489,8 +2489,8 @@
                                     if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
                                     else if (id2 < id1) {
                                         API.sendChat(bot.chat.swap);
-                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1, false);
-                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1, false);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
                                     } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
                                         name: bot.settings.fighter1
                                     }));
@@ -2511,8 +2511,8 @@
                                     if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
                                     else if (id1 < id2) {
                                         API.sendChat(bot.chat.swap);
-                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1, false);
-                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1, false);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
+                                        API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
                                     } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
                                         name: bot.settings.fighter2
                                     }));
