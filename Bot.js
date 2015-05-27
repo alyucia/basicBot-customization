@@ -2370,7 +2370,7 @@
                                     bot.settings.target = API.getUser(API.getUsers()[index]).id;
                                 } else bot.settings.target = chat.uid;
                                 API.sendChat(subChat(bot.chat.target));
-                            }, 7000);
+                            }, 10000);
                             setTimeout(function() {
                                 if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target) === -1) API.sendChat(subChat(bot.chat.shellmiss));
                                 else {
@@ -2386,7 +2386,7 @@
                                     }));
                                     API.moderateMoveDJ(bot.settings.target, pushback, false);
                                 }
-                            }, 10000);
+                            }, 15000);
                             setTimeout(function() {
                                 API.sendChat(subChat(bot.chat.foundshell));
                                 bot.settings.shell = true;
