@@ -182,7 +182,6 @@
             timeout: null,
             challenge: false,
             shell: true,
-            target: null,
             lockdownEnabled: false,
             lockGuard: false,
             cycleGuard: false,
@@ -2357,6 +2356,7 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         if (bot.settings.shell) {
+                            var target;
                             var pushback;
                             bot.settings.shell = false;
                             API.sendChat(subChat(bot.chat.fire, {
@@ -2364,34 +2364,31 @@
                             }));
                             setTimeout(function() {
                                 var random = Math.random() * 2;
-                                pushback = Math.floor(Math.random() * 4) + 1;
+                                pushback = Math.floor(Math.random() * 5) + 1;
                                 if (random > 1) {
-                                    var index = Math.floor(Math.random() * (API.getUsers().length - 1));
-                                    bot.settings.target = API.getUser(API.getUsers()[index]).id;
-                                } else bot.settings.target = chat.uid;
-                                API.sendChat(subChat(bot.chat.target));
+                                    var index = Math.floor(Math.random() * API.getUsers().length);
+                                    target = API.getUser(API.getUsers()[index]).id;
+                                } else target = chat.uid;
                             }, 10000);
                             setTimeout(function() {
-                                if (API.getWaitList().length === 0 || API.getWaitListPosition(bot.settings.target) === -1) API.sendChat(subChat(bot.chat.shellmiss));
+                                if (API.getWaitList().length === 0 || API.getWaitListPosition(target) === -1) API.sendChat(subChat(bot.chat.shellmiss));
                                 else {
-                                    if (API.getWaitList().length <= pushback + API.getWaitListPosition(bot.settings.target)) pushback = API.getWaitList().length;
-                                    else pushback += API.getWaitListPosition(bot.settings.target);
-                                    if (bot.settings.target === chat.uid) API.sendChat(subChat(bot.chat.landsame, {
-                                        name: API.getUser(bot.settings.target).username,
+                                    if (API.getWaitList().length <= pushback + API.getWaitListPosition(target)) pushback = API.getWaitList().length;
+                                    else pushback += API.getWaitListPosition(target);
+                                    if (target === chat.uid) API.sendChat(subChat(bot.chat.landsame, {
+                                        name: API.getUser(target).username,
                                         position: pushback
                                     }));
                                     else API.sendChat(subChat(bot.chat.land, {
-                                        name: API.getUser(bot.settings.target).username,
+                                        name: API.getUser(target).username,
                                         position: pushback
                                     }));
-                                    API.moderateMoveDJ(bot.userUtilities.lookupUserName(API.getUser(bot.settings.target).username).id, pushback);
+                                    API.moderateMoveDJ(target, pushback);
                                 }
                             }, 15000);
                             setTimeout(function() {
                                 API.sendChat(subChat(bot.chat.foundshell));
                                 bot.settings.shell = true;
-                                pushback = null;
-                                bot.settings.target = null;
                             }, 60000);
                         } else API.sendChat(subChat(bot.chat.noshell));
                     }
