@@ -2363,9 +2363,9 @@
                                 name: chat.un
                             }));
                             setTimeout(function() {
-                                var random = Math.random() * 10;
-                                pushback = Math.floor(Math.random() * 5) + 1;
-                                if (random > 4) {
+                                var random = Math.random() * 2;
+                                pushback = Math.floor(Math.random() * 4) + 1;
+                                if (random > 1) {
                                     var index = Math.floor(Math.random() * (API.getUsers().length - 1));
                                     bot.settings.target = API.getUser(API.getUsers()[index]).id;
                                 } else bot.settings.target = chat.uid;
