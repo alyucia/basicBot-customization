@@ -2469,20 +2469,20 @@
                             clearTimeout(bot.settings.timeout);
                             bot.settings.challenge = true;
                             API.sendChat(subChat(bot.chat.acceptedchallenge, {
-                                name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id),
-                                name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id)
+                                name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username,
+                                name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username
                             }));
                             var random = Math.random() * 2;
                             if (random > 1) {
                                 setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
-                                        name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id),
-                                        name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id)
+                                        name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username,
+                                        name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username
                                     }));
                                 }, 3000);
                                 setTimeout(function() {
-                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
-                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
+                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username;
+                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username;
                                     if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
                                     else if (id2 < id1) {
                                         API.sendChat(bot.chat.swap);
@@ -2498,13 +2498,13 @@
                             } else {
                                 setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
-                                        name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id),
-                                        name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id)
+                                        name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username,
+                                        name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username
                                     }));
                                 }, 3000);
                                 setTimeout(function() {
-                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id);
-                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id);
+                                    var id1 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username;
+                                    var id2 = API.getWaitListPosition(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username;
                                     if (id1 === -1 || id2 === -1) API.sendChat(bot.chat.notonwaitlist);
                                     else if (id1 < id2) {
                                         API.sendChat(bot.chat.swap);
@@ -2591,9 +2591,9 @@
                                 }
                             }, 30000);
                             return API.sendChat(subChat(bot.chat.battle, {
-                                name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id),
-                                name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id),
-                                name3: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id)
+                                name1: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username,
+                                name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username,
+                                name3: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter2).id).username
                             }));
                         }
                     }
