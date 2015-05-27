@@ -2392,7 +2392,7 @@
                 }
             },
             attackCommand: {
-                command: 'attack',
+                command: 'attackr',
                 rank: 'user',
                 type: 'exact',
                 functionality: function(chat, cmd) {
@@ -2470,7 +2470,7 @@
                                 name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username
                             }));
                             var random = Math.random() * 2;
-                            var accepted = bot.settings.d.concat(bot.settings.b,bot.settings.c,bot.settings.g,bot.settings.f,bot.settings.a,bot.settings.e);
+                            var accepted = "Krim>";
                             if (accepted === bot.settings.fighter1){
                                 bot.settings.fighter1 = bot.settings.fighter2;
                                 bot.settings.fighter2 = accepted;
