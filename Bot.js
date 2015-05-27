@@ -2489,7 +2489,7 @@
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
                                     } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
-                                        name: bot.settings.fighter1
+                                        name: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username
                                     }));
                                     bot.settings.fighter1 = null;
                                     bot.settings.fighter2 = null;
