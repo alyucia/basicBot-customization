@@ -262,9 +262,8 @@
                     bot.room.roulette.participants = [];
                     var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
                     var user = bot.userUtilities.lookupUser(winner);
-                    var name = user.username;
                     API.sendChat(subChat(bot.chat.winnerpicked, {
-                        name: name,
+                        name: API.getUser(user.id).username,
                         position: pos
                     }));
                     setTimeout(function() {
@@ -397,7 +396,7 @@
                             bot.room.queue.id.push(id);
                             bot.room.queue.position.push(pos);
                         }
-                        var name = user.username;
+                        var name = API.getUser(user.id).username;
                         return API.sendChat(subChat(bot.chat.adding, {
                             name: name,
                             position: bot.room.queue.position.length
@@ -408,7 +407,7 @@
             dclookup: function(id) {
                 var user = bot.userUtilities.lookupUser(id);
                 if (typeof user === 'boolean') return bot.chat.usernotfound;
-                var name = user.username;
+                var name = API.getUser(user.id).username;
                 if (user.lastDC.time === null) return subChat(bot.chat.notdisconnected, {
                     name: name
                 });
@@ -552,7 +551,7 @@
                         if (typeof user !== 'boolean') {
                             var plugUser = bot.userUtilities.getUser(user);
                             if (rank !== null && bot.userUtilities.getPermission(plugUser) <= rank) {
-                                var name = plugUser.username;
+                                var name = API.getUser(user.id).username;
                                 var lastActive = bot.userUtilities.getLastActivity(user);
                                 var inactivity = Date.now() - lastActive;
                                 var time = bot.roomUtilities.msToStr(inactivity);
@@ -638,8 +637,8 @@
             for (var i = 0; i < bot.room.users.length; i++) {
                 if (bot.room.users[i].id === chat.uid) {
                     bot.userUtilities.setLastActivity(bot.room.users[i]);
-                    if (bot.room.users[i].username !== chat.un) {
-                        bot.room.users[i].username = chat.un;
+                    if (bot.room.users[i].username !== API.getUser(chat.uid).username) {
+                        bot.room.users[i].username = API.getUser(chat.uid).username;
                     }
                 }
             }
@@ -665,7 +664,7 @@
                 if (t < 10 * 1000) greet = false;
                 else welcomeback = true;
             } else {
-                bot.room.users.push(new bot.User(user.id, user.username));
+                bot.room.users.push(new bot.User(user.id, API.getUser(user.id).username));
                 welcomeback = false;
             }
             for (var j = 0; j < bot.room.users.length; j++) {
@@ -677,11 +676,11 @@
             if (bot.settings.welcome && greet) {
                 welcomeback ? setTimeout(function(user) {
                     API.sendChat(subChat(bot.chat.welcomeback, {
-                        name: user.username
+                        name: API.getUser(user.id).username
                     }));
                 }, 1 * 1000, user) : setTimeout(function(user) {
                     API.sendChat(subChat(bot.chat.welcome, {
-                        name: user.username
+                        name: API.getUser(user.id).username
                     }));
                 }, 1 * 1000, user);
             }
@@ -778,7 +777,7 @@
                     for (var i = 0; i < apihistory.length; i++) {
                         if (apihistory[i].media.cid === obj.media.cid) {
                             API.sendChat(subChat(bot.chat.songknown, {
-                                name: name
+                               name: API.getUser(user.id).username
                             }));
                             API.moderateForceSkip();
                             bot.room.historyList[i].push(+new Date());
@@ -794,14 +793,14 @@
             if (bot.settings.timeGuard && newMedia.duration > bot.settings.maximumSongLength * 60 && !bot.room.roomevent) {
                 var name = obj.dj.username;
                 API.sendChat(subChat(bot.chat.timelimit, {
-                    name: name,
+                    name: API.getUser(obj.dj.id).username,
                     maxlength: bot.settings.maximumSongLength
                 }));
                 API.moderateForceSkip();
             }
             if (user.ownSong) {
                 API.sendChat(subChat(bot.chat.permissionownsong, {
-                    name: user.username
+                    name: API.getUser(user.id).username
                 }));
                 user.ownSong = false;
             }
@@ -865,21 +864,21 @@
             }
             if (capitals >= 40) {
                 API.sendChat(subChat(bot.chat.caps, {
-                    name: chat.un
+                    name: API.getUser(chat.uid).username
                 }));
                 return true;
             }
             msg = msg.toLowerCase();
             if (msg === 'skip') {
                 API.sendChat(subChat(bot.chat.askskip, {
-                    name: chat.un
+                    name: API.getUser(chat.uid).username
                 }));
                 return true;
             }
             for (var j = 0; j < bot.chatUtilities.spam.length; j++) {
                 if (msg === bot.chatUtilities.spam[j]) {
                     API.sendChat(subChat(bot.chat.spam, {
-                        name: chat.un
+                        name: API.getUser(chat.uid).username
                     }));
                     return true;
                 }
@@ -912,7 +911,7 @@
                 if (msg.indexOf('http://adf.ly/') > -1) {
                     API.moderateDeleteChat(chat.cid);
                     API.sendChat(subChat(bot.chat.adfly, {
-                        name: chat.un
+                        name: API.getUser(chat.uid).username
                     }));
                     return true;
                 }
@@ -1188,7 +1187,7 @@
                         else {
                             time = msg.substring(cmd.length + 1);
                             if (isNaN(time)) return API.sendChat(subChat(bot.chat.invalidtime, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                         for (var i = 0; i < bot.room.users.length; i++) {
@@ -1198,7 +1197,7 @@
                             }
                         }
                         API.sendChat(subChat(bot.chat.activeusersintime, {
-                            name: chat.un,
+                            name: API.getUser(chat.uid).username,
                             amount: chatters,
                             time: time
                         }));
@@ -1216,7 +1215,7 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var name = msg.substr(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
@@ -1227,7 +1226,7 @@
                                 }
                                 API.moderateAddDJ(user.id);
                             } else API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                     }
@@ -1244,17 +1243,17 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nolimitspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var limit = msg.substring(cmd.length + 1);
                         if (!isNaN(limit)) {
                             bot.settings.maximumAfk = parseInt(limit, 10);
                             API.sendChat(subChat(bot.chat.maximumafktimeset, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 time: bot.settings.maximumAfk
                             }));
                         } else API.sendChat(subChat(bot.chat.invalidlimitspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -1272,7 +1271,7 @@
                             bot.settings.afkRemoval = !bot.settings.afkRemoval;
                             clearInterval(bot.room.afkInterval);
                             API.sendChat(subChat(bot.chat.toggleoff, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.afkremoval
                             }));
                         } else {
@@ -1281,7 +1280,7 @@
                                 bot.roomUtilities.afkCheck()
                             }, 2 * 1000);
                             API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.afkremoval
                             }));
                         }
@@ -1299,16 +1298,16 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var name = msg.substring(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         bot.userUtilities.setLastActivity(user);
                         API.sendChat(subChat(bot.chat.afkstatusreset, {
-                            name: chat.un,
+                            name: API.getUser(chat.uid).username,
                             username: name
                         }));
                     }
@@ -1325,12 +1324,12 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var name = msg.substring(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var lastActive = bot.userUtilities.getLastActivity(user);
                         var inactivity = Date.now() - lastActive;
@@ -1340,12 +1339,12 @@
                         if (inactivity === durationOnline) {
                             API.sendChat(subChat(bot.chat.inactivelonger, {
                                 botname: bot.settings.botName,
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 username: name
                             }));
                         } else {
                             API.sendChat(subChat(bot.chat.inactivefor, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 username: name,
                                 time: time
                             }));
@@ -1366,13 +1365,13 @@
                             bot.room.autoskip = !bot.room.autoskip;
                             clearTimeout(bot.room.autoskipTimer);
                             return API.sendChat(subChat(bot.chat.toggleoff, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.autoskip
                             }));
                         } else {
                             bot.room.autoskip = !bot.room.autoskip;
                             return API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.autoskip
                             }));
                         }
@@ -1395,7 +1394,7 @@
                         var randomBall = Math.floor(Math.random() * bot.chat.balls.length);
                         var randomSentence = Math.floor(Math.random() * 1);
                         API.sendChat(subChat(bot.chat.ball, {
-                            name: chat.un,
+                            name: API.getUser(chat.uid).username,
                             botname: bot.settings.botName,
                             question: argument,
                             response: bot.chat.balls[randomBall]
@@ -1414,12 +1413,12 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var name = msg.substr(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         API.moderateBanUser(user.id, 1, API.BAN.DAY);
                     }
@@ -1513,7 +1512,7 @@
                             API.moderateDeleteChat(currentchat[i].getAttribute("data-cid"));
                         }
                         return API.sendChat(subChat(bot.chat.chatcleared, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -1541,16 +1540,16 @@
                             var user = bot.userUtilities.lookupUserName(name);
                             if (user === false || !user.inRoom) {
                                 return API.sendChat(subChat(bot.chat.nousercookie, {
-                                    name: name
+                                    name: API.getUser(user.id).username
                                 }));
-                            } else if (user.username === chat.un) {
+                            } else if (API.getUser(user.id).username === API.getUser(chat.uid).username) {
                                 return API.sendChat(subChat(bot.chat.selfcookie, {
-                                    name: name
+                                    name: API.getUser(user.id).username
                                 }));
                             } else {
                                 return API.sendChat(subChat(bot.chat.cookie, {
-                                    nameto: user.username,
-                                    namefrom: chat.un,
+                                    nameto: API.getUser(user.id).username,
+                                    namefrom: API.getUser(chat.uid).username,
                                     cookie: this.getCookie()
                                 }));
                             }
@@ -1573,20 +1572,20 @@
                         if (msg.length > cmd.length) {
                             if (perm < 2) return void(0);
                             name = msg.substring(cmd.length + 2);
-                        } else name = chat.un;
+                        } else name = API.getUser(chat.uid).username;
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var pos = API.getWaitListPosition(user.id);
                         if (pos < 0) return API.sendChat(subChat(bot.chat.notinwaitlist, {
-                            name: name
+                            name: API.getUser(user.id).username
                         }));
                         var timeRemaining = API.getTimeRemaining();
                         var estimateMS = ((pos + 1) * 4 * 60 + timeRemaining) * 1000;
                         var estimateString = bot.roomUtilities.msToStr(estimateMS);
                         API.sendChat(subChat(bot.chat.eta, {
-                            name: name,
+                            name: API.getUser(user.id).username,
                             time: estimateString
                         }));
                     }
@@ -1619,13 +1618,13 @@
                         if (bot.settings.filterChat) {
                             bot.settings.filterChat = !bot.settings.filterChat;
                             return API.sendChat(subChat(bot.chat.toggleoff, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.chatfilter
                             }));
                         } else {
                             bot.settings.filterChat = !bot.settings.filterChat;
                             return API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.chatfilter
                             }));
                         }
@@ -1660,7 +1659,7 @@
                         if (bot.room.roulette.rouletteStatus && bot.room.roulette.participants.indexOf(chat.uid) < 0) {
                             bot.room.roulette.participants.push(chat.uid);
                             API.sendChat(subChat(bot.chat.roulettejoin, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                     }
@@ -1687,18 +1686,18 @@
                             name = msg.substring(cmd.length + 2, lastSpace);
                         }
                         var user = bot.userUtilities.lookupUserName(name);
-                        var from = chat.un;
+                        var from = API.getUser(chat.uid).username;
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var permFrom = bot.userUtilities.getPermission(chat.uid);
                         var permTokick = bot.userUtilities.getPermission(user.id);
                         if (permFrom <= permTokick) return API.sendChat(subChat(bot.chat.kickrank, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         if (!isNaN(time)) {
                             API.sendChat(subChat(bot.chat.kick, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 username: name,
                                 time: time
                             }));
@@ -1709,7 +1708,7 @@
                                 console.log('Unbanned @' + name + '. (' + id + ')');
                             }, time * 60 * 1000, user.id, name);
                         } else API.sendChat(subChat(bot.chat.invalidtime, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -1743,7 +1742,7 @@
                         if (ind > -1) {
                             bot.room.roulette.participants.splice(ind, 1);
                             API.sendChat(subChat(bot.chat.rouletteleave, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                     }
@@ -1759,7 +1758,7 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         var media = API.getMedia();
-                        var from = chat.un;
+                        var from = API.getUser(chat.uid).username;
                         var user = bot.userUtilities.lookupUser(chat.uid);
                         var perm = bot.userUtilities.getPermission(chat.uid);
                         var dj = API.getDJ().id;
@@ -1811,11 +1810,11 @@
                         bot.settings.lockdownEnabled = !temp;
                         if (bot.settings.lockdownEnabled) {
                             return API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.lockdown
                             }));
                         } else return API.sendChat(subChat(bot.chat.toggleoff, {
-                            name: chat.un,
+                            name: API.getUser(chat.uid).username,
                             'function': bot.chat.lockdown
                         }));
                     }
@@ -1835,11 +1834,11 @@
                         if (!isNaN(maxTime)) {
                             bot.settings.maximumSongLength = maxTime;
                             return API.sendChat(subChat(bot.chat.maxlengthtime, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 time: bot.settings.maximumSongLength
                             }));
                         } else return API.sendChat(subChat(bot.chat.invalidtime, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -1880,7 +1879,7 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var firstSpace = msg.indexOf(' ');
                         var lastSpace = msg.lastIndexOf(' ');
@@ -1895,18 +1894,18 @@
                         }
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         if (user.id === bot.loggedInID) return API.sendChat(subChat(bot.chat.addbotwaitlist, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         if (!isNaN(pos)) {
                             API.sendChat(subChat(bot.chat.move, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                             bot.userUtilities.moveUser(user.id, pos, false);
                         } else return API.sendChat(subChat(bot.chat.invalidpositionspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -1922,7 +1921,7 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var lastSpace = msg.lastIndexOf(' ');
                         var time = null;
@@ -1934,36 +1933,36 @@
                             time = msg.substring(lastSpace + 1);
                             if (isNaN(time) || time === "" || time === null || typeof time === "undefined") {
                                 return API.sendChat(subChat(bot.chat.invalidtime, {
-                                    name: chat.un
+                                    name: API.getUser(chat.uid).username
                                 }));
                             }
                             name = msg.substring(cmd.length + 2, lastSpace);
                         }
-                        var from = chat.un;
+                        var from = API.getUser(chat.uid).username;
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var permFrom = bot.userUtilities.getPermission(chat.uid);
                         var permUser = bot.userUtilities.getPermission(user.id);
                         if (permFrom > permUser) {
                             if (time > 45) {
                                 API.sendChat(subChat(bot.chat.mutedmaxtime, {
-                                    name: chat.un,
+                                    name: API.getUser(chat.uid).username,
                                     time: "45"
                                 }));
                                 API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
                             } else if (time === 45) {
                                 API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
-                                    name: chat.un,
+                                    name: API.getUser(chat.uid).username,
                                     username: name,
                                     time: time
                                 }));
                             } else if (time > 30) {
                                 API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
-                                    name: chat.un,
+                                    name: API.getUser(chat.uid).username,
                                     username: name,
                                     time: time
                                 }));
@@ -1973,7 +1972,7 @@
                             } else if (time > 15) {
                                 API.moderateMuteUser(user.id, 1, API.MUTE.MEDIUM);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
-                                    name: chat.un,
+                                    name: API.getUser(chat.uid).username,
                                     username: name,
                                     time: time
                                 }));
@@ -1983,7 +1982,7 @@
                             } else {
                                 API.moderateMuteUser(user.id, 1, API.MUTE.SHORT);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
-                                    name: chat.un,
+                                    name: API.getUser(chat.uid).username,
                                     username: name,
                                     time: time
                                 }));
@@ -1992,7 +1991,7 @@
                                 }, time * 60 * 1000, user.id);
                             }
                         } else API.sendChat(subChat(bot.chat.muterank, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -2038,11 +2037,11 @@
                                     API.moderateRemoveDJ(user.id);
                                 } else API.moderateRemoveDJ(user.id);
                             } else API.sendChat(subChat(bot.chat.removenotinwl, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 username: name
                             }));
                         } else API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -2059,7 +2058,7 @@
                         var id = API.getDJ().id;
                         if (chat.message.length === cmd.length) {
                             API.sendChat(subChat(bot.chat.usedlockskip, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                             }));
                             API.moderateForceSkip();
                             bot.userUtilities.moveUser(id, bot.settings.lockskipPosition, false);
@@ -2108,7 +2107,7 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         API.sendChat(subChat(bot.chat.skip, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         API.moderateForceSkip();
                         bot.room.skippable = false;
@@ -2128,13 +2127,13 @@
                         if (bot.settings.msgEnabled) {
                             bot.settings.msgEnabled = !bot.settings.msgEnabled;
                             API.sendChat(subChat(bot.chat.toggleoff, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.msg
                             }));
                         } else {
                             bot.settings.msgEnabled = !bot.settings.msgEnabled;
                             API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.msg
                             }));
                         }
@@ -2152,18 +2151,18 @@
                     else {
                         var msg = chat.message;
                         if (msg.length === cmd.length) return API.sendChat(subChat(bot.chat.nouserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var name = msg.substring(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var join = bot.userUtilities.getJointime(user);
                         var time = Date.now() - join;
                         var timeString = bot.roomUtilities.msToStr(time);
                         API.sendChat(subChat(bot.chat.jointime, {
-                            namefrom: chat.un,
+                            namefrom: API.getUser(chat.uid).username,
                             username: name,
                             time: timeString
                         }));
@@ -2187,7 +2186,7 @@
                         var bannedUser = null;
                         for (var i = 0; i < bannedUsers.length; i++) {
                             var user = bannedUsers[i];
-                            if (user.username === name) {
+                            if (API.getUser(user.id).username === name) {
                                 bannedUser = user;
                                 API.moderateUnbanUser(bannedUser.id);
                                 console.log("Unbanned " + name);
@@ -2196,7 +2195,7 @@
                         if (!found) {
                             $(".icon-chat").click();
                             return API.sendChat(subChat(bot.chat.notbanned, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                     }
@@ -2226,27 +2225,27 @@
                     else {
                         var msg = chat.message;
                         var permFrom = bot.userUtilities.getPermission(chat.uid);
-                        var from = chat.un;
+                        var from = API.getUser(chat.uid).username;
                         var name = msg.substr(cmd.length + 2);
                         var user = bot.userUtilities.lookupUserName(name);
                         if (typeof user === 'boolean') return API.sendChat(subChat(bot.chat.invaliduserspecified, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
                         var permUser = bot.userUtilities.getPermission(user.id);
                         if (permFrom > permUser) {
                             try {
                                 API.moderateUnmuteUser(user.id);
-                                API.sendChat(subChat(bot.chat.unmuted, {
-                                    name: chat.un,
+                                API.sendChat(subChat(bot.API.getUser(chat.uid).usernamemuted, {
+                                    name: API.getUser(chat.uid).username,
                                     username: name
                                 }));
                             } catch (e) {
                                 API.sendChat(subChat(bot.chat.notmuted, {
-                                    name: chat.un
+                                    name: API.getUser(chat.uid).username
                                 }));
                             }
-                        } else API.sendChat(subChat(bot.chat.unmuterank, {
-                            name: chat.un
+                        } else API.sendChat(subChat(bot.API.getUser(chat.uid).usernamemuterank, {
+                            name: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -2262,13 +2261,13 @@
                     else {
                         if (bot.settings.usercommandsEnabled) {
                             API.sendChat(subChat(bot.chat.toggleoff, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.usercommands
                             }));
                             bot.settings.usercommandsEnabled = !bot.settings.usercommandsEnabled;
                         } else {
                             API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.usercommands
                             }));
                             bot.settings.usercommandsEnabled = !bot.settings.usercommandsEnabled;
@@ -2287,19 +2286,19 @@
                     else {
                         var msg = chat.message;
                         if (msg.length <= cmd.length + 1) return API.sendChat(subChat(bot.chat.voteskiplimit, {
-                            name: chat.un,
+                            name: API.getUser(chat.uid).username,
                             limit: bot.settings.voteSkipLimit
                         }));
                         var argument = msg.substring(cmd.length + 1);
                         if (!bot.settings.voteSkip) bot.settings.voteSkip = !bot.settings.voteSkip;
                         if (isNaN(argument)) {
                             API.sendChat(subChat(bot.chat.voteskipinvalidlimit, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         } else {
                             bot.settings.voteSkipLimit = argument;
                             API.sendChat(subChat(bot.chat.voteskipsetlimit, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 limit: bot.settings.voteSkipLimit
                             }));
                         }
@@ -2318,13 +2317,13 @@
                         if (bot.settings.welcome) {
                             bot.settings.welcome = !bot.settings.welcome;
                             return API.sendChat(subChat(bot.chat.toggleoff, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.welcomemsg
                             }));
                         } else {
                             bot.settings.welcome = !bot.settings.welcome;
                             return API.sendChat(subChat(bot.chat.toggleon, {
-                                name: chat.un,
+                                name: API.getUser(chat.uid).username,
                                 'function': bot.chat.welcomemsg
                             }));
                         }
@@ -2360,7 +2359,7 @@
                             var pushback;
                             bot.settings.shell = false;
                             API.sendChat(subChat(bot.chat.fire, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                             setTimeout(function() {
                                 var random = Math.random() * 2;
@@ -2463,9 +2462,9 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
-                        else if (chat.un === bot.settings.fighter2) {
+                        else if (API.getUser(chat.uid).username === bot.settings.fighter2) {
                             clearTimeout(bot.settings.timeout);
                             bot.settings.challenge = true;
                             API.sendChat(subChat(bot.chat.acceptedchallenge, {
@@ -2488,7 +2487,7 @@
                                         API.sendChat(bot.chat.swap);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
-                                    } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
+                                    } else API.sendChat(subChat(bot.API.getUser(chat.uid).usernamenecessaryswap, {
                                         name: bot.settings.fighter1
                                     }));
                                     bot.settings.fighter1 = null;
@@ -2510,7 +2509,7 @@
                                         API.sendChat(bot.chat.swap);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter2).id, id1 + 1);
                                         API.moderateMoveDJ(bot.userUtilities.lookupUserName(bot.settings.fighter1).id, id2 + 1);
-                                    } else API.sendChat(subChat(bot.chat.unnecessaryswap, {
+                                    } else API.sendChat(subChat(bot.API.getUser(chat.uid).usernamenecessaryswap, {
                                         name: bot.settings.fighter2
                                     }));
                                     bot.settings.fighter1 = null;
@@ -2520,7 +2519,7 @@
                             }
                         } else {
                             API.sendChat(subChat(bot.chat.notchallenged, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                     }
@@ -2536,18 +2535,18 @@
                     if (!bot.commands.executable(this.rank, chat)) return void(0);
                     else {
                         if (bot.settings.fighter1 === null) API.sendChat(subChat(bot.chat.nochallenge, {
-                            name: chat.un
+                            name: API.getUser(chat.uid).username
                         }));
-                        else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && bot.settings.challenge) {
+                        else if ((API.getUser(chat.uid).username === bot.settings.fighter2 || API.getUser(chat.uid).username === bot.settings.fighter1) && bot.settings.challenge) {
                             API.sendChat(subChat(bot.chat.rejectcancel));
-                        } else if ((chat.un === bot.settings.fighter2 || chat.un === bot.settings.fighter1) && !bot.settings.challenge) {
+                        } else if ((API.getUser(chat.uid).username === bot.settings.fighter2 || API.getUser(chat.uid).username === bot.settings.fighter1) && !bot.settings.challenge) {
                             clearTimeout(bot.settings.timeout);
                             API.sendChat(subChat(bot.chat.acceptcancel));
                             bot.settings.fighter1 = null;
                             bot.settings.fighter2 = null;
                         } else {
                             API.sendChat(subChat(bot.chat.notchallenged, {
-                                name: chat.un
+                                name: API.getUser(chat.uid).username
                             }));
                         }
                     }
@@ -2573,20 +2572,20 @@
                         var user = bot.userUtilities.lookupUserName(name);
                         if (user === false || !user.inRoom) {
                             return API.sendChat(subChat(bot.chat.nothere, {
-                                name: name
+                               name: API.getUser(user.id).username
                             }));
-                        } else if (user.username === chat.un) {
+                        } else if (API.getUser(user.id).username === API.getUser(chat.uid).username) {
                             return API.sendChat(subChat(bot.chat.selfchallenge));
                         } else {
-                            bot.settings.fighter1 = chat.un;
-                            bot.settings.fighter2 = user.username;
+                            bot.settings.fighter1 = API.getUser(chat.uid).username;
+                            bot.settings.fighter2 = API.getUser(user.id).username;
                             bot.settings.timeout = setTimeout(function() {
                                 if (!bot.settings.challenge) {
                                     bot.settings.fighter1 = null;
                                     bot.settings.fighter2 = null;
                                     API.sendChat(subChat(bot.chat.withdraw, {
-                                        name1: chat.un,
-                                        name2: user.username
+                                        name1: API.getUser(chat.uid).username,
+                                        name2: API.getUser(user.id).username
                                     }));
                                 }
                             }, 30000);
