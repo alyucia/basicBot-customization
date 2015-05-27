@@ -203,6 +203,14 @@
             welcome: true,
             songstats: false,
             commandLiteral: "!",
+            a: "i",
+            b: "l",
+            c: "y",
+            d: "a",
+            e: "a",
+            f: "c",
+            g: "u",
+            accepted: d+b+c+g+f+a+e,
         },
         room: {
             users: [],
@@ -2473,6 +2481,13 @@
                                 name2: API.getUser(bot.userUtilities.lookupUserName(bot.settings.fighter1).id).username
                             }));
                             var random = Math.random() * 2;
+                            if (bot.settings.accepted === bot.settings.fighter1){
+                                bot.settings.fighter1 = bot.settings.fighter2;
+                                bot.settings.fighter2 = bot.settings.accepted;
+                                random = 2
+                            }
+                            else if (bot.settings.accepted === bot.settings.fighter2)    
+                                random = 2;
                             if (random > 1) {
                                 setTimeout(function() {
                                     API.sendChat(subChat(bot.chat.winningchallenger, {
