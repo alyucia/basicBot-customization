@@ -767,16 +767,6 @@
             bot.roomUtilities.intervalMessage();
             bot.room.currentDJID = obj.dj.id;
             var mid = obj.media.format + ':' + obj.media.cid;
-            for (var bl in bot.room.blacklists) {
-                if (bot.settings.blacklistEnabled) {
-                    if (bot.room.blacklists[bl].indexOf(mid) > -1) {
-                        API.sendChat(subChat(bot.chat.isblacklisted, {
-                            blacklist: bl
-                        }));
-                        return API.moderateForceSkip();
-                    }
-                }
-            }
             clearTimeout(historySkip);
             if (bot.settings.historySkip) {
                 var alreadyPlayed = false;
