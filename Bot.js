@@ -1309,7 +1309,7 @@
                         bot.userUtilities.setLastActivity(user);
                         API.sendChat(subChat(bot.chat.afkstatusreset, {
                             name: API.getUser(chat.uid).username,
-                            username: name
+                            username: API.getUser(chat.uid).username
                         }));
                     }
                 }
@@ -1341,12 +1341,12 @@
                             API.sendChat(subChat(bot.chat.inactivelonger, {
                                 botname: bot.settings.botName,
                                 name: API.getUser(chat.uid).username,
-                                username: name
+                                username: API.getUser(chat.uid).username
                             }));
                         } else {
                             API.sendChat(subChat(bot.chat.inactivefor, {
                                 name: API.getUser(chat.uid).username,
-                                username: name,
+                                username: API.getUser(chat.uid).username,
                                 time: time
                             }));
                         }
@@ -1699,7 +1699,7 @@
                         if (!isNaN(time)) {
                             API.sendChat(subChat(bot.chat.kick, {
                                 name: API.getUser(chat.uid).username,
-                                username: name,
+                                username: API.getUser(chat.uid).username,
                                 time: time
                             }));
                             if (time > 24 * 60 * 60) API.moderateBanUser(user.id, 1, API.BAN.PERMA);
@@ -1957,14 +1957,14 @@
                                 API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
                                     name: API.getUser(chat.uid).username,
-                                    username: name,
+                                    username: API.getUser(chat.uid).username,
                                     time: time
                                 }));
                             } else if (time > 30) {
                                 API.moderateMuteUser(user.id, 1, API.MUTE.LONG);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
                                     name: API.getUser(chat.uid).username,
-                                    username: name,
+                                    username: API.getUser(chat.uid).username,
                                     time: time
                                 }));
                                 setTimeout(function(id) {
@@ -1974,7 +1974,7 @@
                                 API.moderateMuteUser(user.id, 1, API.MUTE.MEDIUM);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
                                     name: API.getUser(chat.uid).username,
-                                    username: name,
+                                    username: API.getUser(chat.uid).username,
                                     time: time
                                 }));
                                 setTimeout(function(id) {
@@ -1984,7 +1984,7 @@
                                 API.moderateMuteUser(user.id, 1, API.MUTE.SHORT);
                                 API.sendChat(subChat(bot.chat.mutedtime, {
                                     name: API.getUser(chat.uid).username,
-                                    username: name,
+                                    username: API.getUser(chat.uid).username,
                                     time: time
                                 }));
                                 setTimeout(function(id) {
@@ -2039,7 +2039,7 @@
                                 } else API.moderateRemoveDJ(user.id);
                             } else API.sendChat(subChat(bot.chat.removenotinwl, {
                                 name: API.getUser(chat.uid).username,
-                                username: name
+                                username: API.getUser(chat.uid).username
                             }));
                         } else API.sendChat(subChat(bot.chat.nouserspecified, {
                             name: API.getUser(chat.uid).username
@@ -2164,7 +2164,7 @@
                         var timeString = bot.roomUtilities.msToStr(time);
                         API.sendChat(subChat(bot.chat.jointime, {
                             namefrom: API.getUser(chat.uid).username,
-                            username: name,
+                            username: API.getUser(chat.uid).username,
                             time: timeString
                         }));
                     }
@@ -2238,7 +2238,7 @@
                                 API.moderateUnmuteUser(user.id);
                                 API.sendChat(subChat(bot.chat.unmuted, {
                                     name: API.getUser(chat.uid).username,
-                                    username: name
+                                    username: API.getUser(chat.uid).username
                                 }));
                             } catch (e) {
                                 API.sendChat(subChat(bot.chat.notmuted, {
